@@ -7,6 +7,7 @@ interface usePaginationMainProps {
   enableParams?: boolean;
   param?: string;
   pageBtnClassName?: string;
+  pageBtnSize?: number;
 }
 
 type getNewPageIndexProps = {
@@ -20,6 +21,7 @@ const usePaginationMain = ({
   enableParams = false,
   param = "page",
   pageBtnClassName = "page-btn",
+  pageBtnSize = 4,
 }: usePaginationMainProps) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   let [searchParams, setSearchParams] = useSearchParams();
@@ -54,6 +56,7 @@ const usePaginationMain = ({
   const getCurrentData = () => {
     const begin = (currentPage - 1) * pageSize;
     const end = begin + pageSize;
+    console.log(currentPage, pageSize, begin, end);
     return mainDataArr.slice(begin, end);
   };
 
@@ -67,7 +70,14 @@ const usePaginationMain = ({
     setSearchParams([[param, pageNum.toString()]], { replace: true });
   };
 
-  const pageBtnArr = getPageArr().map((pageNum) => {
+  const getCurrentBtns = () => {
+    const begin = (currentPage - 1) * pageBtnSize;
+    const end = begin + pageBtnSize;
+    console.log(currentPage, pageBtnSize, begin, end);
+    return getPageArr().slice(begin, end);
+  };
+
+  const pageBtnArr = getCurrentBtns().map((pageNum) => {
     return (
       <button
         className={pageBtnClassName}
