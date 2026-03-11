@@ -70,11 +70,23 @@ const usePaginationMain = ({
     setSearchParams([[param, pageNum.toString()]], { replace: true });
   };
 
+  const handleArrowBtnClick = (isAdd: boolean) => {
+    let targetNum: number = 1;
+    isAdd
+      ? setCurrentPage((prev) => {
+          targetNum = prev + pageBtnSize;
+          return targetNum;
+        })
+      : setCurrentPage((prev) => {
+          targetNum = prev - pageBtnSize;
+          return targetNum;
+        });
+    if (!enableParams) return;
+    setSearchParams([[param, targetNum.toString()]], { replace: true });
+  };
+
   const getCurrentBtns = () => {
-    const begin = (currentPage - 1) * pageBtnSize;
-    const end = begin + pageBtnSize;
-    console.log(currentPage, pageBtnSize, begin, end);
-    return getPageArr().slice(begin, end);
+    return getPageArr().slice(currentPage - 1, currentPage + pageBtnSize);
   };
 
   const pageBtnArr = getCurrentBtns().map((pageNum) => {
@@ -88,6 +100,17 @@ const usePaginationMain = ({
       </button>
     );
   });
+  pageBtnArr.push(
+    <button
+      className={pageBtnClassName}
+      onClick={() => {
+        handleArrowBtnClick(true);
+        console.log(currentPage);
+      }}
+    >
+      Next
+    </button>,
+  );
 
   return {
     pageBtnArr,
