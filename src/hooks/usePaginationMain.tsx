@@ -100,9 +100,11 @@ const usePaginationMain = ({
       </button>
     );
   });
+
   pageBtnArr.push(
     <button
       className={pageBtnClassName}
+      disabled={(getPageArr().at(-1) as number) <= currentPage}
       onClick={() => {
         handleArrowBtnClick(true);
         console.log(currentPage);
