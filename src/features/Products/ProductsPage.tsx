@@ -5,34 +5,30 @@ import usePaginationMain from "../../hooks/usePaginationMain";
 
 const ProductsPage = () => {
   const products = useLoaderData();
-  const { pageBtnArr, getCurrentData } = usePaginationMain({
+  const {
+    getCurrentData,
+    getCurrentBtns,
+    getPageBtnClassName,
+    handlePageBtnClick,
+    ArrowBtn,
+  } = usePaginationMain({
     mainDataArr: products,
     pageSize: 10,
     enableParams: true,
   });
 
-  // let [currentPage, setCurrentPage] = useState<number>(0);
-  // let [searchParams, setSearchParams] = useSearchParams();
-
-  // const pagination = new PaginationMain({
-  //   mainElemsArray: products,
-  //   ItemComponent: Product,
-  //   pageState: currentPage,
-  //   setPageState: setCurrentPage,
-  //   enableSearchParams: true,
-  //   searchParams: searchParams,
-  //   setSearchParams: setSearchParams,
-  // });
-
-  // let [paginatedArray, navigationArray] = pagination.initPagination();
-
-  // return (
-  //   <div>
-  //     <h1>Products Page</h1>
-  //     <div className="products-wrap">{paginatedArray}</div>
-  //     <div className="pagination-wrap">{navigationArray}</div>
-  //   </div>
-  // );
+  const renderBtns = () => {
+    return getCurrentBtns().map((pageNum) => {
+      return (
+        <button
+          className={getPageBtnClassName(pageNum)}
+          onClick={() => handlePageBtnClick(pageNum)}
+        >
+          Page {pageNum}
+        </button>
+      );
+    });
+  };
 
   return (
     <div>
@@ -42,7 +38,11 @@ const ProductsPage = () => {
           <Product key={product.id} data={product} />
         ))}
       </div>
-      <div className="pagination-wrap">{pageBtnArr}</div>
+      <div className="pagination-wrap">
+        <ArrowBtn type="Prev" isAdd={false} />
+        {renderBtns()}
+        <ArrowBtn type="Next" isAdd={true} />
+      </div>
     </div>
   );
 };

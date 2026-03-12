@@ -26,19 +26,19 @@ const productsCollectionRef = collection(db, "products");
 
 export async function fetchProductsData() {
   let dataArr = [];
+  // try {
+  //   console.log("Fetching from firebase");
+  //   const querySnapshot = await getDocs(productsCollectionRef);
+  //   dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+  // } catch (error) {
   try {
-    console.log("Fetching from firebase");
-    const querySnapshot = await getDocs(productsCollectionRef);
-    dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+    console.log("Fetching from dummyjson");
+    const res = await fetch("https://dummyjson.com/products?limit=0");
+    const data = await res.json();
+    dataArr = data.products;
   } catch (error) {
-    try {
-      console.log("Fetching from dummyjson");
-      const res = await fetch("https://dummyjson.com/products?limit=0");
-      const data = await res.json();
-      dataArr = data.products;
-    } catch (error) {
-      console.log("Error fetching data", error);
-    }
+    console.log("Error fetching data", error);
   }
+  // }
   return dataArr;
 }
