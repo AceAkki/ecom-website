@@ -1,5 +1,37 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 1rem 0.5rem;
+}
+
+.menu-main {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 header ul {
   display: flex;
-  gap:1rem;
-  list-style-type:none;
+  gap: 1rem;
+  list-style-type: none;
+}
+.menu-options {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  left: 0;
+  margin: 1rem;
+  background: #000;
+}
+
+.user-wrap {
+  display: flex;
+  gap: 0.5rem;
+}
+
+@media screen and (min-width: 1080px) {
+  .menu-main .menu-btn {
+    display: none;
+  }
 }

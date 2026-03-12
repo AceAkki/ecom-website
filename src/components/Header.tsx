@@ -1,15 +1,24 @@
+import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import { ShoppingCartSimpleIcon, UserIcon } from "@phosphor-icons/react";
+import * as Icon from "@phosphor-icons/react";
 import "./Header.css";
 const Header = () => {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <header>
-      <div>
-        <NavLink to="/">Home</NavLink>
+      <div className="menu-main">
+        <div className="menu-btn">
+          <button onClick={() => setIsOpen((prev) => !prev)}>
+            <Icon.ListIcon size={32} />
+          </button>
+        </div>
+        <div>
+          <NavLink to="/">Home</NavLink>
+        </div>
       </div>
       <nav>
-        <ul className="menu-options">
+        <ul className={isOpen ? "menu-options" : "hide"}>
           <li>
             <NavLink to="/products">Shop</NavLink>
           </li>
@@ -26,10 +35,10 @@ const Header = () => {
       </nav>
       <div className="user-wrap">
         <div>
-          <ShoppingCartSimpleIcon size={32} />
+          <Icon.ShoppingCartSimpleIcon size={32} />
         </div>
         <div>
-          <UserIcon size={32} />
+          <Icon.UserIcon size={32} />
         </div>
       </div>
     </header>
