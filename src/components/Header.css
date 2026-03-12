@@ -1,9 +1,13 @@
+.header-wrap {
+  display: flex;
+  flex-direction: column;
+  margin: 0 2rem;
+}
+
 .main-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 1rem 0.5rem;
-  width: 100%;
 }
 
 .menu-main {
@@ -16,13 +20,6 @@
   display: flex;
   gap: 1rem;
   list-style-type: none;
-}
-
-.header-wrap {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  margin: 0 2rem;
 }
 
 .menu-options {
