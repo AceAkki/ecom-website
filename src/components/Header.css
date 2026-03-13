@@ -1,7 +1,11 @@
 .header-wrap {
   display: flex;
   flex-direction: column;
-  margin: 0 2rem;
+  margin: 1rem 2rem;
+}
+
+.header-wrap input {
+  width: 100%;
 }
 
 .main-header {

@@ -19,7 +19,7 @@ const Header = () => {
               <NavLink to="/">Home</NavLink>
             </div>
           </div>
-          <nav>
+          <nav className={isOpen ? "" : "hide"}>
             <ul className="menu-options">
               <li>
                 <NavLink to="/products">Shop</NavLink>
@@ -30,7 +30,6 @@ const Header = () => {
               <li>
                 <NavLink to="/products?type=new-arrivals">Brands</NavLink>
               </li>
-              <li></li>
             </ul>
           </nav>
           <div className="user-wrap">

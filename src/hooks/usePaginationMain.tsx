@@ -27,7 +27,6 @@ const usePaginationMain = ({
   const [currentPage, setCurrentPage] = useState<number>(1);
   // params for url - better for SEO
   let [searchParams, setSearchParams] = useSearchParams();
-
   // page count
   let pageCount = Math.ceil(mainDataArr.length / pageSize);
 
@@ -51,28 +50,36 @@ const usePaginationMain = ({
     );
   }, [searchParams, pageCount, param]);
 
+  // returns slice of the current data
   const getCurrentData = () => {
     const begin = (currentPage - 1) * pageSize;
     const end = begin + pageSize;
     return mainDataArr.slice(begin, end);
   };
 
+  // created array based on the overall page count
   const getPageArr = () => {
     return Array(...new Array(pageCount)).map((_, i) => i + 1);
   };
+  // gets last index of pages
   const getPageBtnLastIndex = () => {
     return getPageArr().at(-1) as number;
   };
 
+  // returns slice of the current page btns
+  const getCurrentBtns = () => {
+    return getPageArr().slice(currentPage - 1, currentPage + pageBtnSize - 1);
+  };
+
+  // handles btn click of navigation buttons - takes user to that page
   const handlePageBtnClick = (pageNum: number) => {
-    setCurrentPage((prev) => {
-      console.log(prev !== pageNum, pageNum, prev);
-      return prev !== pageNum ? pageNum : prev;
-    });
+    if (currentPage === pageNum) return;
+    setCurrentPage(pageNum);
     if (!enableParams) return;
     setSearchParams([[param, pageNum.toString()]], { replace: true });
   };
 
+  // handles arrow btn click - next or previous
   const handleArrowBtnClick = (isAdd: boolean) => {
     let targetNum: number = 1;
     isAdd
@@ -88,10 +95,6 @@ const usePaginationMain = ({
     if (!enableParams) return;
     console.log(targetNum);
     setSearchParams([[param, targetNum.toString()]], { replace: true });
-  };
-
-  const getCurrentBtns = () => {
-    return getPageArr().slice(currentPage - 1, currentPage + pageBtnSize);
   };
 
   const getPageBtnClassName = (pageNum: number) => {
