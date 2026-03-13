@@ -30,6 +30,9 @@ const Header = () => {
               <li>
                 <NavLink to="/products?type=new-arrivals">Brands</NavLink>
               </li>
+              <li>
+                <input type="text" placeholder="Search for Products..." />
+              </li>
             </ul>
           </nav>
           <div className="user-wrap">
