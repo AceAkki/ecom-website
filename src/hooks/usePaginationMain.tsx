@@ -48,7 +48,7 @@ const usePaginationMain = ({
     setCurrentPage(
       getNewPageIndex({ pageParam: pageParam, pageCount: pageCount }),
     );
-  }, [searchParams, pageCount, param]);
+  }, [searchParams, pageCount, param, enableParams]);
 
   // returns slice of the current data
   const getCurrentData = () => {
@@ -68,7 +68,11 @@ const usePaginationMain = ({
 
   // returns slice of the current page btns
   const getCurrentBtns = () => {
-    return getPageArr().slice(currentPage - 1, currentPage + pageBtnSize - 1);
+    const start = Math.max(1, currentPage - Math.floor(pageBtnSize / 2));
+    const end = Math.min(pageCount, start + pageBtnSize - 1);
+
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    // return getPageArr().slice(currentPage - 1, currentPage + pageBtnSize - 1);
   };
 
   // handles btn click of navigation buttons - takes user to that page
@@ -81,19 +85,11 @@ const usePaginationMain = ({
 
   // handles arrow btn click - next or previous
   const handleArrowBtnClick = (isAdd: boolean) => {
-    let targetNum: number = 1;
-    isAdd
-      ? setCurrentPage((prev) => {
-          targetNum = prev + 1;
-          return targetNum;
-        })
-      : setCurrentPage((prev) => {
-          targetNum = prev - 1;
-          console.log(prev, targetNum);
-          return targetNum;
-        });
-    if (!enableParams) return;
+    // React state updates are async, so this logic can desync the URL.
+    let targetNum: number = isAdd ? currentPage + 1 : currentPage - 1;
+    setCurrentPage(targetNum);
     console.log(targetNum);
+    if (!enableParams) return;
     setSearchParams([[param, targetNum.toString()]], { replace: true });
   };
 
