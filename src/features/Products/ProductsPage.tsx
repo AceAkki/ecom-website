@@ -28,7 +28,7 @@ const ProductsPage = () => {
           className={getPageBtnClassName(pageNum)}
           onClick={() => handlePageBtnClick(pageNum)}
         >
-          Page {pageNum}
+          <Icon.FileIcon size={32} /> {pageNum}
         </button>
       );
     });
