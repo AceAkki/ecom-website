@@ -2,6 +2,7 @@ import { useLoaderData } from "react-router-dom";
 
 import Product from "./components/Product";
 import usePaginationMain from "../../hooks/usePaginationMain";
+import * as Icon from "@phosphor-icons/react";
 
 const ProductsPage = () => {
   const products = useLoaderData();
@@ -10,7 +11,10 @@ const ProductsPage = () => {
     getCurrentBtns,
     getPageBtnClassName,
     handlePageBtnClick,
-    ArrowBtn,
+    previousDisabled,
+    nextDisabled,
+    previousBtn,
+    nextBtn,
   } = usePaginationMain({
     mainDataArr: products,
     pageSize: 10,
@@ -38,10 +42,17 @@ const ProductsPage = () => {
           <Product key={product.id} data={product} />
         ))}
       </div>
+
       <div className="pagination-wrap">
-        <ArrowBtn type="Prev" isAdd={false} />
+        <button disabled={previousDisabled()} onClick={previousBtn}>
+          <Icon.CaretCircleLeftIcon size={32} />
+        </button>
+
         {renderBtns()}
-        <ArrowBtn type="Next" isAdd={true} />
+
+        <button disabled={nextDisabled()} onClick={nextBtn}>
+          <Icon.CaretCircleRightIcon size={32} />
+        </button>
       </div>
     </div>
   );

@@ -99,67 +99,8 @@ const usePaginationMain = ({
       : pageBtnClassName;
   };
 
-  {
-    /* 
-
-    // returns UI
-    const pageBtnArr = getCurrentBtns().map((pageNum) => {
-      return (
-        <button
-          key={pageNum + pageNum}
-          className={getPageBtnClassName(pageNum)}
-          onClick={() => handlePageBtnClick(pageNum)}
-        >
-          {pageNum}
-        </button>
-      );
-    });
-  pageBtnArr.unshift(
-    <button
-      key={`prev-${currentPage}`}
-      className={pageBtnClassName}
-      disabled={currentPage <= 1}
-      onClick={() => {
-        handleArrowBtnClick(false);
-        console.log(currentPage);
-      }}
-    >
-      Previous
-    </button>,
-  );
-
-  pageBtnArr.push(
-    <button
-      key={`next-${currentPage}`}
-      className={pageBtnClassName}
-      disabled={(getPageArr().at(-1) as number) <= currentPage}
-      onClick={() => {
-        handleArrowBtnClick(true);
-        console.log(currentPage);
-      }}
-    >
-      Next
-    </button>,
-  );
-  */
-  }
-
-  const ArrowBtn = ({ type, isAdd }: { type: string; isAdd: boolean }) => {
-    return (
-      <button
-        key={`${type}-${currentPage}`}
-        className={pageBtnClassName}
-        disabled={
-          isAdd ? getPageBtnLastIndex() <= currentPage : currentPage <= 1
-        }
-        onClick={() => {
-          handleArrowBtnClick(isAdd);
-          console.log(currentPage);
-        }}
-      >
-        {type}
-      </button>
-    );
+  const isDisabled = (isAdd: boolean) => {
+    return isAdd ? getPageBtnLastIndex() <= currentPage : currentPage <= 1;
   };
 
   return {
@@ -167,7 +108,10 @@ const usePaginationMain = ({
     getCurrentBtns,
     getPageBtnClassName,
     handlePageBtnClick,
-    ArrowBtn,
+    previousDisabled: () => isDisabled(false),
+    previousBtn: () => handleArrowBtnClick(false),
+    nextDisabled: () => isDisabled(true),
+    nextBtn: () => handleArrowBtnClick(true),
   };
 };
 
