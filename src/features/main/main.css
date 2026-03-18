@@ -26,3 +26,8 @@
 .stat-wrap {
   padding: 1rem 0;
 }
+
+.stat-wrap h5 {
+  font-size: 2rem;
+  font-weight: 700;
+}
