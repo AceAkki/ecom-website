@@ -11,7 +11,14 @@ const Header = () => {
         <div className="main-header">
           <div className="menu-main">
             <div className="menu-btn">
-              <button onClick={() => setIsOpen((prev) => !prev)}>
+              <button
+                onClick={() => {
+                  setIsOpen((prev) => !prev);
+                  setTimeout(() => {
+                    setIsOpen(false);
+                  }, 4000);
+                }}
+              >
                 <Icon.ListIcon size={32} />
               </button>
             </div>
@@ -19,7 +26,7 @@ const Header = () => {
               <NavLink to="/">Home</NavLink>
             </div>
           </div>
-          <nav className={isOpen ? "" : "hide"}>
+          <nav className={isOpen ? "" : "mobile-hide"}>
             <ul className="menu-options">
               <li>
                 <NavLink to="/products">Shop</NavLink>
