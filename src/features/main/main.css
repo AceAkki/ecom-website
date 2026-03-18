@@ -1,4 +1,10 @@
 .main-banner-wrap {
   display: flex;
   padding: 1rem 2rem;
+  height: 90vh;
+}
+
+.image-wrap {
+  display: flex;
+  justify-content: flex-end;
 }
