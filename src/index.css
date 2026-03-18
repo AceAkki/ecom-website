@@ -1,5 +1,12 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,100..900;1,100..900&display=swap");
 
+:root {
+  --dark-prime: #30364f;
+  --light-prime: #fff8f0;
+  --secondary: #87d68d;
+  --accent-clr: #dd7373;
+}
+
 * {
   padding: 0;
   margin: 0;
