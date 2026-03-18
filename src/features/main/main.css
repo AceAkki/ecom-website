@@ -8,3 +8,21 @@
   display: flex;
   justify-content: flex-end;
 }
+
+.txt-content {
+  margin: 2rem 0;
+}
+.home-title {
+  font-size: 4rem;
+  font-weight: 900;
+}
+
+.main-stats {
+  display: flex;
+  gap: 3rem;
+  margin: 2rem 0;
+}
+
+.stat-wrap {
+  padding: 1rem 0;
+}

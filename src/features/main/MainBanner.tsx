@@ -6,7 +6,7 @@ const MainBanner = () => {
     <div className="main-banner-wrap">
       <div className="left-content">
         <div className="txt-content">
-          <h1>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+          <h1 className="home-title">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
           <p>
             Browse through our diverse range of meticulously crafted garments,
             designed to bring out your individuality and cater to your sense of
