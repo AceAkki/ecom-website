@@ -1,3 +1,8 @@
+.header-main-wrapper {
+  position: fixed;
+  width: 100%;
+}
+
 .header-wrap {
   display: flex;
   flex-direction: column;
@@ -38,6 +43,18 @@
   background: var(--light-prime);
   padding: 1rem;
   border-radius: 10px;
+}
+
+.menu-options li a {
+  color: var(--light-prime);
+  text-decoration: none;
+  padding: 0.2rem 0.5rem;
+  transition: all var(--transition-base);
+}
+
+.menu-options li a:hover {
+  background-color: var(--accent-color);
+  text-decoration: none;
 }
 
 .user-wrap {
