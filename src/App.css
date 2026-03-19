@@ -1,2 +1,20 @@
-main {
+/* "Add to Cart" buttons, Login buttons, active navigation links.	It draws the eye to the most important action. */
+.primary-btn {
+  background-color: var(--primary-color);
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-hover);
+}
+
+/* "Wishlist" buttons, "Filter" buttons, or footer backgrounds.	It’s visible but doesn't compete with the main "Buy" button. */
+
+.secondary-btn {
+  background-color: var(--secondary-color);
+}
+
+/*"Sale" badges, "Limited Stock" labels, or star ratings.	High contrast to grab attention for urgency or highlights. */
+
+.accent-btn {
+  background-color: var(--accent-color);
 }
