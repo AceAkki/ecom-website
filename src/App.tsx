@@ -5,7 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import MainFrame from "./components/MainFrame";
-import MainPage from "./features/MainPage";
+import MainPage from "./features/main/MainPage";
 import AboutPage from "./features/AboutPage";
 import ProductsPage from "./features/Products/ProductsPage";
 import { fetchProductsData } from "./services/firebase";
