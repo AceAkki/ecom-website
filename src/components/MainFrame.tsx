@@ -6,7 +6,9 @@ const MainFrame = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <main className="main-outlet-wrap">
+        <Outlet />
+      </main>
     </>
   );
 };

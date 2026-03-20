@@ -1,3 +1,7 @@
+.main-outlet-wrap {
+  padding-top: var(--header-height);
+}
+
 .main-banner-wrap {
   display: flex;
   flex-direction: column;

@@ -1,13 +1,23 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 import * as Icon from "@phosphor-icons/react";
 import "./Header.css";
 const Header = () => {
+  let headerRef = useRef<HTMLHeadingElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const nav = headerRef.current;
+    if (!nav) return;
+    let headerHeight = Math.floor(nav.getBoundingClientRect().height) + 10;
+    let root = document.documentElement.style;
+    root.setProperty("--header-height", `${headerHeight}px`);
+  }, []);
+
   return (
     <header>
-      <div className="header-main-wrapper">
+      <div className="header-main-wrapper glass-morphed" ref={headerRef}>
         <div className="header-wrap">
           <div className="main-header">
             <div className="menu-main">

@@ -69,9 +69,13 @@
   box-sizing: border-box;
 }
 
+.search-wrap input {
+  padding: 0.5rem 1rem;
+}
+
 @media screen and (min-width: 1080px) {
   .header-wrap {
-    margin: 1.5rem 2rem;
+    margin: 0.5rem 2rem;
   }
   .menu-main .menu-btn {
     display: none;
