@@ -5,20 +5,31 @@ import * as Icon from "@phosphor-icons/react";
 import "./Header.css";
 const Header = () => {
   let headerRef = useRef<HTMLHeadingElement>(null);
+  let headerWrapRef = useRef<HTMLHeadingElement>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const nav = headerRef.current;
-    if (!nav) return;
+    const mainNav = headerWrapRef.current;
+    if (!nav || !mainNav) return;
     let headerHeight = Math.floor(nav.getBoundingClientRect().height) + 10;
     let root = document.documentElement.style;
     root.setProperty("--header-height", `${headerHeight}px`);
+
+    window.addEventListener("scroll", () => {
+      console.log(window.scrollY, window.scrollY > 20);
+      if (window.scrollY > 20) {
+        mainNav.classList.add("scrolled");
+      } else {
+        mainNav.classList.remove("scrolled");
+      }
+    });
   }, []);
 
   return (
     <header>
-      <div className="header-main-wrapper glass-morphed" ref={headerRef}>
-        <div className="header-wrap">
+      <div className="header-main-wrapper" ref={headerRef}>
+        <div className="header-wrap glass-morphed" ref={headerWrapRef}>
           <div className="main-header">
             <div className="menu-main">
               <div className="menu-btn">
@@ -70,6 +81,9 @@ const Header = () => {
                 <li>
                   <NavLink to="/products?type=new-arrivals">Vehicles</NavLink>
                 </li>
+                <li>
+                  <input type="text" placeholder="Search for Products..." />
+                </li>
               </ul>
             </nav>
             <div className="user-wrap">
@@ -81,7 +95,7 @@ const Header = () => {
               </div>
             </div>
           </div>
-          <div className="search-wrap">
+          <div className="search-wrap desktop-hide">
             <input type="text" placeholder="Search for Products..." />
           </div>
         </div>

@@ -1,12 +1,24 @@
 .header-main-wrapper {
   position: fixed;
   width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .header-wrap {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+  transition: all var(--transition-base);
+  width: 100%;
+  padding: 1rem;
+}
+
+.header-wrap.scrolled {
+  margin: 1rem 0;
+  width: 90%;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
 }
 
 .header-wrap input {
@@ -43,6 +55,7 @@
   background: var(--light-prime);
   padding: 1rem;
   border-radius: 10px;
+  align-items: center;
 }
 
 .menu-options li a {
@@ -75,7 +88,8 @@
 
 @media screen and (min-width: 1080px) {
   .header-wrap {
-    margin: 0.5rem 2rem;
+    padding: 0 2rem;
+    width: 100%;
   }
   .menu-main .menu-btn {
     display: none;

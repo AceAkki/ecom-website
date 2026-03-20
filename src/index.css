@@ -70,6 +70,10 @@ https://piktochart.com/tips/ecommerce-color-palette */
   display: none !important;
 }
 
+.desktop-hide {
+  display: block !important;
+}
+
 .show {
   display: block !important;
 }
@@ -77,5 +81,8 @@ https://piktochart.com/tips/ecommerce-color-palette */
 @media screen and (min-width: 1080px) {
   .mobile-hide {
     display: block !important;
+  }
+  .desktop-hide {
+    display: none !important;
   }
 }
