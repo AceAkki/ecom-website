@@ -54,32 +54,28 @@ const Header = () => {
                   <NavLink to="/products">All</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=new-arrivals">
-                    Personal Care
-                  </NavLink>
+                  <NavLink to="/products?type=Personal">Personal Care</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=new-arrivals">
+                  <NavLink to="/products?type=Men-Fashion">
                     Men's Fashion
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=new-arrivals">
+                  <NavLink to="/products?type=Women-Fashion">
                     Women's Fashion
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=new-arrivals">
-                    Electronics
-                  </NavLink>
+                  <NavLink to="/products?type=Electronics">Electronics</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=new-arrivals">
+                  <NavLink to="/products?type=Home-Living">
                     Home & Living
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=new-arrivals">Vehicles</NavLink>
+                  <NavLink to="/products?type=Vehicles">Vehicles</NavLink>
                 </li>
                 <li>
                   <input type="text" placeholder="Search for Products..." />
