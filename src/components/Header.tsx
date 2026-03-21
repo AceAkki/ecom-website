@@ -16,14 +16,16 @@ const Header = () => {
     let root = document.documentElement.style;
     root.setProperty("--header-height", `${headerHeight}px`);
 
-    window.addEventListener("scroll", () => {
-      console.log(window.scrollY, window.scrollY > 20);
-      if (window.scrollY > 20) {
-        mainNav.classList.add("scrolled");
-      } else {
-        mainNav.classList.remove("scrolled");
-      }
-    });
+    let scrollPosition = () => {
+      window.scrollY > 20
+        ? mainNav.classList.add("scrolled")
+        : mainNav.classList.remove("scrolled");
+    };
+    window.addEventListener("scroll", scrollPosition, { passive: true });
+
+    return function () {
+      window.removeEventListener("scroll", scrollPosition);
+    };
   }, []);
 
   return (
