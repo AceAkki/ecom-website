@@ -53,6 +53,26 @@
   font-weight: 700;
 }
 
+.category-wrap {
+  display: flex;
+  gap: 1rem;
+}
+
+.category-mini-wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.category-item {
+  width: 100px;
+  height: 100px;
+}
+
+.landscape {
+  grid-column: span 2;
+}
+
 @media screen and (min-width: 1080px) {
   .main-banner-wrap {
     flex-direction: row;
