@@ -1,3 +1,6 @@
+import personal from "../assets/1.jpg";
+import vehicles from "../assets/2.jpg";
+
 const CategorySection = () => {
   return (
     <section>
@@ -5,14 +8,18 @@ const CategorySection = () => {
 
       <div className="category-wrap">
         <div className="category-mini-wrapper">
-          <div className="category-item landscape">Personal</div>
+          <div className="category-item landscape">
+            <img src={personal} alt="" />
+          </div>
           <div className="category-item portrait">Fashion</div>
           <div className="category-item portrait">Fashion</div>
         </div>
         <div className="category-mini-wrapper">
           <div className="category-item portrait">Electronics</div>
           <div className="category-item portrait">Living</div>
-          <div className="category-item landscape">Vehicles</div>
+          <div className="category-item landscape">
+            <img src={vehicles} alt="" />
+          </div>
         </div>
       </div>
     </section>

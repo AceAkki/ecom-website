@@ -56,17 +56,17 @@
 .category-wrap {
   display: flex;
   gap: 1rem;
+  margin: 2rem 0;
 }
 
 .category-mini-wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
+  width: 100%;
 }
 
 .category-item {
-  width: 100px;
-  height: 100px;
 }
 
 .landscape {

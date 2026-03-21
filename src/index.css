@@ -65,6 +65,10 @@ https://piktochart.com/tips/ecommerce-color-palette */
   font-family: "Archivo", sans-serif;
 }
 
+section {
+  margin: 1rem 5rem;
+}
+
 .hide,
 .mobile-hide {
   display: none !important;
