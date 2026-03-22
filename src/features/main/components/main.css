@@ -71,6 +71,24 @@
 .category-item {
   height: 100%;
   display: flex;
+  position: relative;
+  transition: all var(--transition-base);
+}
+
+.category-item:hover::after {
+  content: "Shop";
+  background: rgba(37, 99, 235, 0.5);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 4rem;
+  color: var(--white);
+  z-index: 1;
 }
 
 .category-item img {
