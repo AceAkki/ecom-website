@@ -7,7 +7,7 @@ import womenFashion from "../assets/6.jpg";
 
 const CategorySection = () => {
   return (
-    <section>
+    <section className="category-section">
       <h1>Shop By Category</h1>
 
       <div className="category-wrap">
