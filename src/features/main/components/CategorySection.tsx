@@ -1,4 +1,6 @@
 import { useState } from "react";
+
+// image imports
 import personal from "../assets/1.jpg";
 import vehicles from "../assets/2.jpg";
 import electronics from "../assets/3.jpg";
@@ -55,7 +57,6 @@ const CategorySection = () => {
   return (
     <section className="category-section">
       <h1>Shop By Category</h1>
-
       <div className="category-wrap">{categoryElems}</div>
     </section>
   );
