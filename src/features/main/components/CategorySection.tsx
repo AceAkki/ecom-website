@@ -9,7 +9,9 @@ import womenFashion from "../assets/5.jpg";
 import menFashion from "../assets/6.jpg";
 
 const CategorySection = () => {
+  // tracks which category is active
   let [activeID, setActiveID] = useState<number | null>(null);
+  // object that store both src and string
   let categoryObj = [
     {
       name: "personal",
