@@ -7,6 +7,7 @@ import electronics from "../assets/3.jpg";
 import living from "../assets/4.jpg";
 import womenFashion from "../assets/5.jpg";
 import menFashion from "../assets/6.jpg";
+import { Link } from "react-router-dom";
 
 const CategorySection = () => {
   // tracks which category is active
@@ -48,7 +49,9 @@ const CategorySection = () => {
         className={`category-item ${imgType} `}
       >
         {activeID === i && (
-          <span className="category-item-overlay">{category.name}</span>
+          <Link to={`products?type=${category.name}`}>
+            <span className="category-item-overlay">{category.name}</span>
+          </Link>
         )}
 
         <img src={category.src} alt="" />
