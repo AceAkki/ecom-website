@@ -20,6 +20,7 @@ const router = createBrowserRouter(
         path="products"
         element={<ProductsPage />}
         loader={async () => {
+          // fetches all products
           let products = await fetchProductsData();
           return products;
         }}
