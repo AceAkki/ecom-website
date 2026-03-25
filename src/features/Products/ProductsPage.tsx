@@ -25,6 +25,7 @@ const ProductsPage = () => {
     return getCurrentBtns().map((pageNum) => {
       return (
         <button
+          key={pageNum}
           className={getPageBtnClassName(pageNum)}
           onClick={() => handlePageBtnClick(pageNum)}
         >
