@@ -10,6 +10,7 @@ import AboutPage from "./features/AboutPage";
 import ProductsPage from "./features/Products/ProductsPage";
 import { fetchProductsData } from "./services/firebase";
 import "./App.css";
+import { useQuery } from "@tanstack/react-query";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -30,5 +31,9 @@ const router = createBrowserRouter(
 );
 
 export default function App() {
+  const { data } = useQuery({
+    queryKey: ["allProducts"],
+    queryFn: fetchProductsData,
+  });
   return <RouterProvider router={router} />;
 }
