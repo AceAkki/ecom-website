@@ -7,6 +7,7 @@ import {
 import MainFrame from "./components/MainFrame";
 import MainPage from "./features/main/MainPage";
 import AboutPage from "./features/AboutPage";
+import ErrorPage from "./features/ErrorPage";
 import ProductsPage from "./features/Products/ProductsPage";
 
 import { fetchProductsData } from "./services/firebase";
@@ -20,7 +21,7 @@ const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/" element={<MainFrame />}>
+    <Route path="/" element={<MainFrame />} errorElement={<ErrorPage />}>
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutPage />} />
       <Route
@@ -28,7 +29,7 @@ const router = createBrowserRouter(
         element={<ProductsPage />}
         loader={() =>
           queryClient.ensureQueryData({
-            queryKey: ["allProducts"],
+            queryKey: ["allProduct"],
             queryFn: fetchProductsData,
           })
         }
