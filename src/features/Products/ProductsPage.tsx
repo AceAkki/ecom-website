@@ -7,7 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import * as Icon from "@phosphor-icons/react";
 
 const ProductsPage = () => {
-  const products = useLoaderData();
+  //const products = useLoaderData();
   const { data } = useQuery({
     queryKey: ["allProducts"],
     queryFn: fetchProductsData,
