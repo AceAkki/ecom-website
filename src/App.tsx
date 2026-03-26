@@ -8,9 +8,15 @@ import MainFrame from "./components/MainFrame";
 import MainPage from "./features/main/MainPage";
 import AboutPage from "./features/AboutPage";
 import ProductsPage from "./features/Products/ProductsPage";
+
 import { fetchProductsData } from "./services/firebase";
 import "./App.css";
-import { useQuery } from "@tanstack/react-query";
+
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
+
+// intialize query client
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -20,20 +26,21 @@ const router = createBrowserRouter(
       <Route
         path="products"
         element={<ProductsPage />}
-        loader={async () => {
-          // fetches all products
-          let products = await fetchProductsData();
-          return products;
-        }}
+        loader={() =>
+          queryClient.ensureQueryData({
+            queryKey: ["allProducts"],
+            queryFn: fetchProductsData,
+          })
+        }
       />
     </Route>,
   ),
 );
 
 export default function App() {
-  const { data } = useQuery({
-    queryKey: ["allProducts"],
-    queryFn: fetchProductsData,
-  });
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
+  );
 }

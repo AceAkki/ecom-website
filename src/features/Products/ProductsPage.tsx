@@ -2,10 +2,18 @@ import { useLoaderData } from "react-router-dom";
 
 import Product from "./components/Product";
 import usePaginationMain from "../../hooks/usePaginationMain";
+import { fetchProductsData } from "../../services/firebase";
+import { useQuery } from "@tanstack/react-query";
 import * as Icon from "@phosphor-icons/react";
 
 const ProductsPage = () => {
   const products = useLoaderData();
+  const { data } = useQuery({
+    queryKey: ["allProducts"],
+    queryFn: fetchProductsData,
+  });
+
+  console.log(data);
   const {
     getCurrentData,
     getCurrentBtns,
@@ -16,7 +24,7 @@ const ProductsPage = () => {
     previousBtn,
     nextBtn,
   } = usePaginationMain({
-    mainDataArr: products,
+    mainDataArr: data,
     pageSize: 10,
     enableParams: true,
   });
