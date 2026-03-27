@@ -8,6 +8,8 @@ import * as Icon from "@phosphor-icons/react";
 
 const ProductsPage = () => {
   //const products = useLoaderData();
+
+  // using tanstack query for fetching data over loaderData
   const { data, error } = useQuery({
     queryKey: ["allProducts"],
     queryFn: fetchProductsData,
