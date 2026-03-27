@@ -33,7 +33,7 @@ export async function fetchProductsData() {
   // } catch (error) {
   try {
     console.log("Fetching from dummyjson");
-    const res = await fetch("https://dummyjson.com/products?limit=0");
+    const res = await fetch("https://dummyjson.com/product?limit=0");
     const data = await res.json();
     dataArr = data.products;
   } catch (error) {

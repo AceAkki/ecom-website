@@ -29,7 +29,7 @@ const router = createBrowserRouter(
         element={<ProductsPage />}
         loader={() =>
           queryClient.ensureQueryData({
-            queryKey: ["allProduct"],
+            queryKey: ["allProducts"],
             queryFn: fetchProductsData,
           })
         }

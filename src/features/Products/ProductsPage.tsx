@@ -8,7 +8,7 @@ import * as Icon from "@phosphor-icons/react";
 
 const ProductsPage = () => {
   //const products = useLoaderData();
-  const { data } = useQuery({
+  const { data, error } = useQuery({
     queryKey: ["allProducts"],
     queryFn: fetchProductsData,
   });
@@ -46,23 +46,29 @@ const ProductsPage = () => {
   return (
     <div>
       <h1>Products Page</h1>
-      <div className="products-wrap">
-        {getCurrentData().map((product) => (
-          <Product key={product.id} data={product} />
-        ))}
-      </div>
+      {error ? (
+        <p>Error Fetching products data. Try Again Later </p>
+      ) : (
+        <>
+          <div className="products-wrap">
+            {getCurrentData().map((product) => (
+              <Product key={product.id} data={product} />
+            ))}
+          </div>
 
-      <div className="pagination-wrap">
-        <button disabled={previousDisabled()} onClick={previousBtn}>
-          <Icon.CaretCircleLeftIcon size={32} />
-        </button>
+          <div className="pagination-wrap">
+            <button disabled={previousDisabled()} onClick={previousBtn}>
+              <Icon.CaretCircleLeftIcon size={32} />
+            </button>
 
-        {renderBtns()}
+            {renderBtns()}
 
-        <button disabled={nextDisabled()} onClick={nextBtn}>
-          <Icon.CaretCircleRightIcon size={32} />
-        </button>
-      </div>
+            <button disabled={nextDisabled()} onClick={nextBtn}>
+              <Icon.CaretCircleRightIcon size={32} />
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
