@@ -14,6 +14,7 @@ import { fetchProductsData } from "./services/firebase";
 import "./App.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import FallBackLoader from "./components/FallbackLoader";
 // import { useQuery } from "@tanstack/react-query";
 
 // intialize query client
@@ -32,6 +33,11 @@ const router = createBrowserRouter(
             queryKey: ["allProducts"],
             queryFn: fetchProductsData,
           })
+        }
+        hydrateFallbackElement={
+          <section className="loader-section">
+            <FallBackLoader />
+          </section>
         }
       />
     </Route>,

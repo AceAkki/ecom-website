@@ -44,7 +44,7 @@ const ProductsPage = () => {
   };
 
   return (
-    <div>
+    <section>
       <h1>Products Page</h1>
       {error ? (
         <p>Error Fetching products data. Try Again Later </p>
@@ -69,7 +69,7 @@ const ProductsPage = () => {
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 };
 
