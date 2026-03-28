@@ -15,6 +15,7 @@ import "./App.css";
 
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import FallBackLoader from "./components/FallbackLoader";
+import NotFoundPage from "./features/NotFound";
 // import { useQuery } from "@tanstack/react-query";
 
 // intialize query client
@@ -42,6 +43,8 @@ const router = createBrowserRouter(
       >
         <Route path=":productCategory" element={<ProductsPage />} />
       </Route>
+
+      <Route path="*" element={<NotFoundPage />} />
     </Route>,
   ),
 );
