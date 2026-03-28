@@ -47,9 +47,10 @@ const CategorySection = () => {
         onMouseOver={() => setActiveID(i)}
         onMouseOut={() => setActiveID(null)}
         className={`category-item ${imgType} `}
+        key={category.name}
       >
         {activeID === i && (
-          <Link to={`products?type=${category.name}`}>
+          <Link to={`products/${category.name}`}>
             <span className="category-item-overlay">{category.name}</span>
           </Link>
         )}
