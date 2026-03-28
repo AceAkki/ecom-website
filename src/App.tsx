@@ -39,7 +39,9 @@ const router = createBrowserRouter(
             <FallBackLoader />
           </section>
         }
-      />
+      >
+        <Route path=":productCategory" element={<ProductsPage />} />
+      </Route>
     </Route>,
   ),
 );

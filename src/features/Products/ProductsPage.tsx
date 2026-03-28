@@ -1,4 +1,4 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 
 import Product from "./components/Product";
 import usePaginationMain from "../../hooks/usePaginationMain";
@@ -10,6 +10,9 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   // using tanstack query for fetching data over loaderData
+  const categoryParam = useParams();
+  console.log(categoryParam.productCategory);
+
   const { data, error } = useQuery({
     queryKey: ["allProducts"],
     queryFn: fetchProductsData,

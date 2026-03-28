@@ -56,7 +56,7 @@ const Header = () => {
                   <NavLink to="/products">All</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products?type=Personal">Personal Care</NavLink>
+                  <NavLink to="/products/Personal">Personal Care</NavLink>
                 </li>
                 <li>
                   <NavLink to="/products?type=Men-Fashion">
