@@ -33,6 +33,7 @@ export async function fetchProductsData(category: string | undefined) {
   // } catch (error) {
   try {
     console.log("Fetching from dummyjson");
+    // category based - needs to be corrected
     const res =
       category !== undefined
         ? await fetch(`https://dummyjson.com/products/category/${category}`)
