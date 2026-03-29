@@ -18,7 +18,10 @@ const ProductsPage = () => {
     queryFn: fetchProductsData,
   });
 
-  console.log(data);
+  console.log(data, error);
+
+  if (error) return;
+
   const {
     getCurrentData,
     getCurrentBtns,

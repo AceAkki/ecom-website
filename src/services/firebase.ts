@@ -36,9 +36,10 @@ export async function fetchProductsData() {
     const res = await fetch("https://dummyjson.com/product?limit=0");
     const data = await res.json();
     dataArr = data.products;
+    return dataArr;
   } catch (error) {
     console.log("Error fetching data", error);
+    return error;
   }
   // }
-  return dataArr;
 }
