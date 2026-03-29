@@ -24,16 +24,19 @@ const db = getFirestore(app);
 
 const productsCollectionRef = collection(db, "products");
 
-export async function fetchProductsData() {
+export async function fetchProductsData(category: string | undefined) {
   let dataArr = [];
   // try {
-  //   console.log("Fetching from firebase");
+  //   console.log("Fetching from firebase")
   //   const querySnapshot = await getDocs(productsCollectionRef);
   //   dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
   // } catch (error) {
   try {
     console.log("Fetching from dummyjson");
-    const res = await fetch("https://dummyjson.com/product?limit=0");
+    const res =
+      category !== undefined
+        ? await fetch(`https://dummyjson.com/products/category/${category}`)
+        : await fetch("https://dummyjson.com/product?limit=0");
     const data = await res.json();
     dataArr = data.products;
     return dataArr;

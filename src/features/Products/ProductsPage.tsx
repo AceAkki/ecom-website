@@ -11,11 +11,11 @@ const ProductsPage = () => {
 
   // using tanstack query for fetching data over loaderData
   const categoryParam = useParams();
-  console.log(categoryParam.productCategory);
+  const category = categoryParam.productCategory;
 
   const { data, error } = useQuery({
-    queryKey: ["allProducts"],
-    queryFn: fetchProductsData,
+    queryKey: ["allProducts", category],
+    queryFn: () => fetchProductsData(category),
   });
 
   console.log(data, error);

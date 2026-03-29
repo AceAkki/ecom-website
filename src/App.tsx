@@ -29,10 +29,10 @@ const router = createBrowserRouter(
       <Route
         path="products"
         element={<ProductsPage />}
-        loader={() =>
+        loader={({ params }) =>
           queryClient.ensureQueryData({
-            queryKey: ["allProducts"],
-            queryFn: fetchProductsData,
+            queryKey: ["allProducts", params.productCategory],
+            queryFn: () => fetchProductsData(params.productCategory),
           })
         }
         hydrateFallbackElement={
