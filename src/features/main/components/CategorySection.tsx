@@ -27,11 +27,11 @@ const CategorySection = () => {
       src: living,
     },
     {
-      name: "men-Fashion",
+      name: "mens-Fashion",
       src: menFashion,
     },
     {
-      name: "women-Fashion",
+      name: "womens-Fashion",
       src: womenFashion,
     },
     {
