@@ -27,7 +27,7 @@ const router = createBrowserRouter(
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutPage />} />
       <Route
-        path="products"
+        path="products/:productCategory?"
         element={<ProductsPage />}
         loader={({ params }) =>
           queryClient.ensureQueryData({
@@ -42,7 +42,7 @@ const router = createBrowserRouter(
           </section>
         }
       >
-        <Route path=":productCategory" element={<ProductsPage />} />
+        {/* <Route path=":productCategory" element={<ProductsPage />} /> */}
       </Route>
 
       <Route path="*" element={<NotFoundPage />} />
