@@ -26,6 +26,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<MainFrame />} errorElement={<ErrorPage />}>
       <Route index element={<MainPage />} />
       <Route path="about" element={<AboutPage />} />
+      {/*path="products/:productCategory?" path makes it optional allowing all products or just specific category  */}
       <Route
         path="products/:productCategory?"
         element={<ProductsPage />}
