@@ -15,7 +15,7 @@ const ProductsPage = () => {
 
   const { data, error } = useQuery({
     queryKey: ["allProducts", category],
-    queryFn: () => fetchProductsData(category),
+    queryFn: async () => await fetchProductsData(category),
   });
 
   console.log(data, error);

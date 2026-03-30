@@ -56,13 +56,16 @@ const Header = () => {
                   <NavLink to="/products">All</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Personal">Personal Care</NavLink>
+                  <NavLink to="/products/Personal-Care">Personal Care</NavLink>
+                  <ul>
+                    <li></li>
+                  </ul>
                 </li>
                 <li>
-                  <NavLink to="/products/Fashion">Men's Fashion</NavLink>
+                  <NavLink to="/products/Mens-Fashion">Men's Fashion</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Women-Fashion">
+                  <NavLink to="/products/Womens-Fashion">
                     Women's Fashion
                   </NavLink>
                 </li>
@@ -70,7 +73,7 @@ const Header = () => {
                   <NavLink to="/products/Electronics">Electronics</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Home-Living">Home & Living</NavLink>
+                  <NavLink to="/products/Home-&-Living">Home & Living</NavLink>
                 </li>
                 <li>
                   <NavLink to="/products/Vehicles">Vehicles</NavLink>

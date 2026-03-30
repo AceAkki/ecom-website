@@ -32,7 +32,8 @@ const router = createBrowserRouter(
         loader={({ params }) =>
           queryClient.ensureQueryData({
             queryKey: ["allProducts", params.productCategory],
-            queryFn: () => fetchProductsData(params.productCategory),
+            queryFn: async () =>
+              await fetchProductsData(params.productCategory),
           })
         }
         hydrateFallbackElement={
