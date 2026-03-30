@@ -15,7 +15,7 @@ const CategorySection = () => {
   // object that store both src and string
   let categoryObj = [
     {
-      name: "personal",
+      name: "personal-care",
       src: personal,
     },
     {
@@ -23,15 +23,15 @@ const CategorySection = () => {
       src: electronics,
     },
     {
-      name: "living",
+      name: "home-&-living",
       src: living,
     },
     {
-      name: "men Fashion",
+      name: "men-Fashion",
       src: menFashion,
     },
     {
-      name: "women Fashion",
+      name: "women-Fashion",
       src: womenFashion,
     },
     {
@@ -51,7 +51,9 @@ const CategorySection = () => {
       >
         {activeID === i && (
           <Link to={`products/${category.name}`}>
-            <span className="category-item-overlay">{category.name}</span>
+            <span className="category-item-overlay">
+              {category.name.replace(/-/gm, " ")}
+            </span>
           </Link>
         )}
 

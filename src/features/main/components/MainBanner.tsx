@@ -6,7 +6,10 @@ const MainBanner = () => {
     <div className="main-banner-wrap">
       <div className="left-content">
         <div className="txt-content">
-          <h1 className="home-title">Shop Smarter. Live Better. </h1>
+          <h1 className="home-title">
+            Shop Smarter. <br />
+            Live Better.
+          </h1>
           <p>
             Discover premium products, unbeatable deals, and fast delivery – all
             in one place.

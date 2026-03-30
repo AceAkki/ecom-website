@@ -20,8 +20,6 @@ const ProductsPage = () => {
 
   console.log(data, error);
 
-  if (error) return;
-
   const {
     getCurrentData,
     getCurrentBtns,
