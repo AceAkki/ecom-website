@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import * as Icon from "@phosphor-icons/react";
 import "./Header.css";
@@ -88,7 +88,9 @@ const Header = () => {
                 <Icon.ShoppingCartSimpleIcon size={32} />
               </div>
               <div>
-                <Icon.UserIcon size={32} />
+                <Link to="/login">
+                  <Icon.UserIcon size={32} />
+                </Link>
               </div>
             </div>
           </div>
