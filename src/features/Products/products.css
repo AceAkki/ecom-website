@@ -7,11 +7,11 @@
 
 .product-card {
   background: transparent;
-  border: 2px solid var(--primary-color);
+  border: 1px solid var(--primary-color);
   border-radius: 0.7rem;
   display: flex;
   flex-direction: column;
-  padding: 1rem;
+  padding: 1.5rem;
   position: relative;
   box-shadow: 0 5px 5px rgba(15, 23, 42, 0.1);
 }
@@ -39,7 +39,7 @@
 .btn-wrap {
   position: absolute;
   right: 0;
-  margin: 0.5rem;
+  margin: 0.1rem 0.8rem;
 }
 
 .add-cart {
@@ -47,11 +47,17 @@
   outline: none;
   border: 1px solid transparent;
   border-radius: 100%;
-  color: var(--white);
-  background-color: var(--primary-color);
   width: 2.7rem;
   height: 2.7rem;
-  box-shadow: 0 0 5px var(--primary-color);
+  color: var(--primary-color);
+  box-shadow: 0 0 1px rgba(15, 23, 42, 0.1);
+  transition: all 700ms ease-in-out;
+}
+
+.add-cart:hover {
+  color: var(--white);
+  background-color: var(--primary-color);
+  transform: rotate(5deg);
 }
 
 .add-cart svg {
