@@ -1,0 +1,10 @@
+.products-wrap {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media screen and (min-width: 1080px) {
+  .products-wrap {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

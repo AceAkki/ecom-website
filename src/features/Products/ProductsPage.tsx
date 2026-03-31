@@ -6,6 +6,8 @@ import { fetchProductsData } from "../../services/firebase";
 import { useQuery } from "@tanstack/react-query";
 import * as Icon from "@phosphor-icons/react";
 
+import "./products.css";
+
 const ProductsPage = () => {
   //const products = useLoaderData();
 

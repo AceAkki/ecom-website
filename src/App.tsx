@@ -47,7 +47,7 @@ const router = createBrowserRouter(
         {/* <Route path=":productCategory" element={<ProductsPage />} /> */}
       </Route>
 
-      <Route path="login" element={<Login />} action={LoginAction} />
+      <Route path="login" element={<Login />} action={() => LoginAction} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,
   ),
