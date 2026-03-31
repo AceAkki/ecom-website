@@ -6,8 +6,10 @@
 }
 
 .product-card {
-  background: transparent;
-  border: 1px solid var(--primary-color);
+  border: 2px solid transparent;
+  background:
+    linear-gradient(#ffffff, #ffffff) padding-box,
+    linear-gradient(258deg, var(--white), #ffffff, var(--white)) border-box;
   border-radius: 0.7rem;
   display: flex;
   flex-direction: column;
@@ -47,10 +49,10 @@
   outline: none;
   border: 1px solid transparent;
   border-radius: 100%;
-  width: 2.7rem;
-  height: 2.7rem;
+  width: 3rem;
+  height: 3rem;
   color: var(--primary-color);
-  box-shadow: 0 0 1px rgba(15, 23, 42, 0.1);
+  box-shadow: 0 0 2px rgba(15, 23, 42, 0.1);
   transition: all 700ms ease-in-out;
 }
 
@@ -61,8 +63,8 @@
 }
 
 .add-cart svg {
-  width: 1.7rem;
-  height: 1.7rem;
+  width: 2rem;
+  height: 2rem;
 }
 
 @media screen and (min-width: 1080px) {
