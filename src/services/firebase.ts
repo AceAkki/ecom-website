@@ -33,7 +33,7 @@ export async function fetchProductsData(category: string | undefined) {
   // } catch (error) {
   try {
     console.log("Fetching from dummyjson");
-    // category based - needs to be corrected
+    // since we are using main categories, which doesn't exist on dummyjson we have made arrays of actual categories corresponding to keys which will be the main category
     let mainCategories = {
       "personal-care": ["beauty", "fragrances", "skin-care"],
       "home-&-living": [
@@ -56,19 +56,26 @@ export async function fetchProductsData(category: string | undefined) {
       ],
     };
 
+    // in case category is undefined it will load all products
     if (category !== undefined) {
       let mainCategorykey =
         category.toLowerCase() as any as keyof typeof mainCategories;
-      console.log(mainCategories[mainCategorykey], mainCategories, category);
+      // console.log(mainCategories[mainCategorykey], mainCategories, category);
+
+      // we get all categories array from main categories
       let categories = mainCategories[mainCategorykey];
+      // array is converted to links array to fetch
       let categoriesArr = categories.map(
         (cat) => `https://dummyjson.com/products/category/${cat}`,
       );
+      // all responses are stored in an array
       let resArr = await Promise.all(categoriesArr.map((link) => fetch(link)));
+      // all responses are then turned to json
       let resDataArr = await Promise.all(
         resArr.map(async (response) => await response.json()),
       );
       let tempArr: any = [];
+      // push all data temp arr which is then flattened
       resDataArr.forEach((dtArr) => {
         tempArr.push(dtArr.products);
       });
