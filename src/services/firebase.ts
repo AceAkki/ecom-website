@@ -29,6 +29,7 @@ export async function fetchProductsData(category: string | undefined) {
   try {
     console.log("Fetching from firebase");
     if (category !== undefined) {
+      // loads specific category
       const q = query(
         productsCollectionRef,
         where("mainCategory", "==", category.toLowerCase()),
@@ -38,6 +39,7 @@ export async function fetchProductsData(category: string | undefined) {
       console.log(dataArr);
       return dataArr;
     } else {
+      // loads all data
       const querySnapshot = await getDocs(productsCollectionRef);
       dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
       console.log(dataArr);

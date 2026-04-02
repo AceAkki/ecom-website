@@ -4,6 +4,7 @@ import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const Product = ({ data }: { data: any }) => {
+  // used for skeleton load
   let [isImageLoaded, setIsImageLoaded] = useState(false);
   return (
     <div className="product-card">

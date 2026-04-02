@@ -41,6 +41,7 @@ const usePaginationMain = ({
       setCurrentPage(targetPage);
     }
 
+    // needs to be improved - created race condition right now
     if (!enableParams) return;
     const pageParam = searchParams.get(param);
     if (!pageParam) return;
@@ -78,6 +79,7 @@ const usePaginationMain = ({
 
   // returns slice of the current page btns
   const getCurrentBtns = () => {
+    // needs to be improved - not fine with the ux
     const start = Math.max(1, currentPage - Math.floor(pageBtnSize / 2));
     const end = Math.min(pageCount, start + pageBtnSize - 1);
     let btnArray: number[] = Array.from(

@@ -49,6 +49,7 @@ const ProductsPage = () => {
     });
   };
 
+  // fallback loader is data is not ready or isLoading
   if (isLoading || !data)
     return (
       <section className="loader-section">
