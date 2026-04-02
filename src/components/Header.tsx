@@ -7,6 +7,7 @@ const Header = () => {
   let headerRef = useRef<HTMLHeadingElement>(null);
   let headerWrapRef = useRef<HTMLHeadingElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  let defaultParam = "?page=1";
 
   useEffect(() => {
     const nav = headerRef.current;
@@ -56,27 +57,37 @@ const Header = () => {
                   <NavLink to="/products">All</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Personal-Care">Personal Care</NavLink>
+                  <NavLink to={`/products/Personal-Care${defaultParam}`}>
+                    Personal Care
+                  </NavLink>
                   <ul>
                     <li></li>
                   </ul>
                 </li>
                 <li>
-                  <NavLink to="/products/Mens-Fashion">Men's Fashion</NavLink>
+                  <NavLink to={`/products/Mens-Fashion${defaultParam}`}>
+                    Men's Fashion
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Womens-Fashion">
+                  <NavLink to={`/products/Womens-Fashion${defaultParam}`}>
                     Women's Fashion
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Electronics">Electronics</NavLink>
+                  <NavLink to={`/products/Electronics${defaultParam}`}>
+                    Electronics
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Home-&-Living">Home & Living</NavLink>
+                  <NavLink to={`/products/Home-&-Living${defaultParam}`}>
+                    Home & Living
+                  </NavLink>
                 </li>
                 <li>
-                  <NavLink to="/products/Vehicles">Vehicles</NavLink>
+                  <NavLink to={`/products/Vehicles${defaultParam}`}>
+                    Vehicles
+                  </NavLink>
                 </li>
                 <li>
                   <input type="text" placeholder="Search for Products..." />

@@ -1,10 +1,11 @@
 import { useLoaderData, useParams } from "react-router-dom";
-
 import Product from "./components/Product";
 import usePaginationMain from "../../hooks/usePaginationMain";
 import { fetchProductsData } from "../../services/firebase";
 import { useQuery } from "@tanstack/react-query";
 import * as Icon from "@phosphor-icons/react";
+
+import FallBackLoader from "../../components/FallbackLoader";
 
 import "./products.css";
 
@@ -12,15 +13,12 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   // using tanstack query for fetching data over loaderData
-  const categoryParam = useParams();
-  const category = categoryParam.productCategory;
+  const { productCategory: category } = useParams();
 
-  const { data, error } = useQuery({
+  const { data, error, isLoading } = useQuery({
     queryKey: ["allProducts", category],
-    queryFn: async () => await fetchProductsData(category),
+    queryFn: () => fetchProductsData(category),
   });
-
-  console.log(data, error);
 
   const {
     getCurrentData,
@@ -32,7 +30,7 @@ const ProductsPage = () => {
     previousBtn,
     nextBtn,
   } = usePaginationMain({
-    mainDataArr: data,
+    mainDataArr: data || [], // fallback to empty array
     pageSize: 10,
     enableParams: true,
   });
@@ -51,6 +49,13 @@ const ProductsPage = () => {
     });
   };
 
+  if (isLoading || !data)
+    return (
+      <section className="loader-section">
+        <FallBackLoader />
+      </section>
+    );
+
   return (
     <section>
       <h1>Products Page</h1>
@@ -65,13 +70,21 @@ const ProductsPage = () => {
           </div>
 
           <div className="pagination-wrap">
-            <button disabled={previousDisabled()} onClick={previousBtn}>
+            <button
+              disabled={previousDisabled()}
+              onClick={previousBtn}
+              className="nav-btn"
+            >
               <Icon.CaretCircleLeftIcon size={32} />
             </button>
 
             {renderBtns()}
 
-            <button disabled={nextDisabled()} onClick={nextBtn}>
+            <button
+              disabled={nextDisabled()}
+              onClick={nextBtn}
+              className="nav-btn"
+            >
               <Icon.CaretCircleRightIcon size={32} />
             </button>
           </div>

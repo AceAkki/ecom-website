@@ -31,6 +31,16 @@ const usePaginationMain = ({
   let pageCount = Math.ceil(mainDataArr.length / pageSize);
 
   useEffect(() => {
+    let targetPage = currentPage;
+    if (pageCount > 0 && targetPage > pageCount) {
+      targetPage = pageCount;
+    } else if (targetPage < 1) {
+      targetPage = 1;
+    }
+    if (targetPage !== currentPage) {
+      setCurrentPage(targetPage);
+    }
+
     if (!enableParams) return;
     const pageParam = searchParams.get(param);
     if (!pageParam) return;
@@ -70,14 +80,18 @@ const usePaginationMain = ({
   const getCurrentBtns = () => {
     const start = Math.max(1, currentPage - Math.floor(pageBtnSize / 2));
     const end = Math.min(pageCount, start + pageBtnSize - 1);
-
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    let btnArray: number[] = Array.from(
+      { length: end - start + 1 },
+      (_, i) => start + i,
+    );
+    return btnArray;
     // return getPageArr().slice(currentPage - 1, currentPage + pageBtnSize - 1);
   };
 
   // handles btn click of navigation buttons - takes user to that page
   const handlePageBtnClick = (pageNum: number) => {
     if (currentPage === pageNum) return;
+    returntoTop(100);
     setCurrentPage(pageNum);
     if (!enableParams) return;
     setSearchParams([[param, pageNum.toString()]], { replace: true });
@@ -87,6 +101,7 @@ const usePaginationMain = ({
   const handleArrowBtnClick = (isAdd: boolean) => {
     // React state updates are async, so this logic can desync the URL.
     let targetNum: number = isAdd ? currentPage + 1 : currentPage - 1;
+    returntoTop(100);
     setCurrentPage(targetNum);
     console.log(targetNum);
     if (!enableParams) return;
@@ -101,6 +116,12 @@ const usePaginationMain = ({
 
   const isDisabled = (isAdd: boolean) => {
     return isAdd ? getPageBtnLastIndex() <= currentPage : currentPage <= 1;
+  };
+
+  const returntoTop = (param: number) => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }, param);
   };
 
   return {
