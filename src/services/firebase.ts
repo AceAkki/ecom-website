@@ -28,23 +28,18 @@ export async function fetchProductsData(category: string | undefined) {
   let dataArr = [];
   try {
     console.log("Fetching from firebase");
-    if (category !== undefined) {
-      // loads specific category
-      const q = query(
-        productsCollectionRef,
-        where("mainCategory", "==", category.toLowerCase()),
-      );
-      const querySnapshot = await getDocs(q);
-      dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
-      console.log(dataArr);
-      return dataArr;
-    } else {
-      // loads all data
-      const querySnapshot = await getDocs(productsCollectionRef);
-      dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
-      console.log(dataArr);
-      return dataArr;
-    }
+    // loads specific category or  all data
+    let q =
+      category !== undefined
+        ? query(
+            productsCollectionRef,
+            where("mainCategory", "==", category.toLowerCase()),
+          )
+        : productsCollectionRef;
+    const querySnapshot = await getDocs(q);
+    dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
+    console.log(dataArr);
+    return dataArr;
   } catch (error) {
     try {
       console.log("Fetching from dummyjson");
