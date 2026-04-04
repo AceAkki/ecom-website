@@ -18,6 +18,10 @@ const ProductsPage = () => {
   const { data, error, isLoading } = useQuery({
     queryKey: ["allProducts", category],
     queryFn: () => fetchProductsData(category),
+    // During this time, no new network requests will be made
+    staleTime: Infinity,
+    // How long the data stays in memory after the component unmounts
+    gcTime: 10 * 60 * 1000,
   });
 
   const {
