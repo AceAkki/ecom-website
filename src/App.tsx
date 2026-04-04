@@ -29,7 +29,7 @@ const router = createBrowserRouter(
       <Route path="about" element={<AboutPage />} />
       {/*path="products/:productCategory?" path makes it optional allowing all products or just specific category  */}
       <Route
-        path="products/:productCategory?/:productID?"
+        path="products/:productCategory?"
         element={<ProductsPage />}
         loader={({ params }) =>
           queryClient.ensureQueryData({

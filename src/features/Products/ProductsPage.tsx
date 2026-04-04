@@ -24,7 +24,7 @@ const ProductsPage = () => {
     // How long the data stays in memory after the component unmounts
     gcTime: 10 * 60 * 1000,
   });
-
+  console.log(data);
   const {
     getCurrentData,
     getCurrentBtns,
