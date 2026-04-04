@@ -33,9 +33,12 @@ const router = createBrowserRouter(
         element={<ProductsPage />}
         loader={({ params }) =>
           queryClient.ensureQueryData({
-            queryKey: ["allProducts", params.productCategory],
+            queryKey: ["allProducts", params.productCategory, params.productID],
             queryFn: async () =>
-              await fetchProductsData(params.productCategory),
+              await fetchProductsData({
+                category: params.productCategory,
+                id: parseInt(params.productID as string),
+              }),
           })
         }
         hydrateFallbackElement={
@@ -46,7 +49,6 @@ const router = createBrowserRouter(
       >
         {/* <Route path=":productCategory" element={<ProductsPage />} /> */}
       </Route>
-
       <Route path="login" element={<Login />} action={() => LoginAction} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,

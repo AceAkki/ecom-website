@@ -13,11 +13,12 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   // using tanstack query for fetching data over loaderData
-  const { productCategory: category } = useParams();
+  const { productCategory: category, productID: id } = useParams();
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["allProducts", category],
-    queryFn: () => fetchProductsData(category),
+    queryKey: ["allProducts", category, id],
+    queryFn: () =>
+      fetchProductsData({ category: category, id: parseInt(id as string) }),
     // During this time, no new network requests will be made
     staleTime: Infinity,
     // How long the data stays in memory after the component unmounts

@@ -24,7 +24,13 @@ const db = getFirestore(app);
 
 const productsCollectionRef = collection(db, "products");
 
-export async function fetchProductsData(category: string | undefined) {
+export async function fetchProductsData({
+  category,
+  id,
+}: {
+  category: string | undefined;
+  id: number | undefined;
+}) {
   let dataArr = [];
   try {
     console.log("Fetching from firebase");
@@ -35,7 +41,9 @@ export async function fetchProductsData(category: string | undefined) {
             productsCollectionRef,
             where("mainCategory", "==", category.toLowerCase()),
           )
-        : productsCollectionRef;
+        : id !== undefined
+          ? query(productsCollectionRef, where("id", "==", id))
+          : productsCollectionRef;
     const querySnapshot = await getDocs(q);
     dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
     console.log(dataArr);
