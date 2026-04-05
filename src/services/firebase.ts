@@ -28,22 +28,33 @@ export async function fetchProductsData({
   category,
   id,
 }: {
-  category: string | undefined;
-  id: number | undefined;
+  category?: string | undefined;
+  id?: string | undefined;
 }) {
   let dataArr = [];
   try {
     console.log("Fetching from firebase");
     // loads specific category or  all data
+    console.log(typeof id);
+    if (id !== undefined) {
+      // let dataRef = doc(db, "products", id);
+      // console.log(id);
+      // let docSnapshot = await getDoc(dataRef);
+      // let data = docSnapshot.data();
+
+      let dataRef = query(productsCollectionRef, where("id", "==", Number(id)));
+      const querySnapshot = await getDocs(dataRef);
+      let data = querySnapshot.docs[0].data();
+      return data;
+    }
+
     let q =
       category !== undefined
         ? query(
             productsCollectionRef,
             where("mainCategory", "==", category.toLowerCase()),
           )
-        : id !== undefined
-          ? query(productsCollectionRef, where("id", "==", id))
-          : productsCollectionRef;
+        : productsCollectionRef;
     const querySnapshot = await getDocs(q);
     dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
     console.log(dataArr);

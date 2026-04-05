@@ -10,6 +10,7 @@ import AboutPage from "./features/AboutPage";
 import Login, { action as LoginAction } from "./features/user/LoginPage";
 import ErrorPage from "./features/ErrorPage";
 import ProductsPage from "./features/Products/ProductsPage";
+import ProductPage from "./features/Products/ProductPage";
 
 import { fetchProductsData } from "./services/firebase";
 import "./App.css";
@@ -33,12 +34,15 @@ const router = createBrowserRouter(
         element={<ProductsPage />}
         loader={({ params }) =>
           queryClient.ensureQueryData({
-            queryKey: ["allProducts", params.productCategory, params.productID],
+            queryKey: ["allProducts", params.productCategory],
             queryFn: async () =>
               await fetchProductsData({
                 category: params.productCategory,
-                id: parseInt(params.productID as string),
               }),
+            // During this time, no new network requests will be made
+            staleTime: Infinity,
+            // How long the data stays in memory after the component unmounts
+            gcTime: 10 * 60 * 1000,
           })
         }
         hydrateFallbackElement={
@@ -49,6 +53,28 @@ const router = createBrowserRouter(
       >
         {/* <Route path=":productCategory" element={<ProductsPage />} /> */}
       </Route>
+      <Route
+        path="product/:productID"
+        element={<ProductPage />}
+        loader={({ params }) =>
+          queryClient.ensureQueryData({
+            queryKey: [params.productID],
+            queryFn: async () =>
+              await fetchProductsData({
+                id: params.productID,
+              }),
+            // During this time, no new network requests will be made
+            staleTime: Infinity,
+            // How long the data stays in memory after the component unmounts
+            gcTime: 10 * 60 * 1000,
+          })
+        }
+        hydrateFallbackElement={
+          <section className="loader-section">
+            <FallBackLoader />
+          </section>
+        }
+      />
       <Route path="login" element={<Login />} action={() => LoginAction} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,
