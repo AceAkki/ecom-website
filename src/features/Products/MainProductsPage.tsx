@@ -1,4 +1,4 @@
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Product from "./components/Product";
 import usePaginationMain from "../../hooks/usePaginationMain";
 import { fetchProductsData } from "../../services/firebase";
@@ -7,7 +7,7 @@ import * as Icon from "@phosphor-icons/react";
 
 import FallBackLoader from "../../components/FallbackLoader";
 
-import "./products.css";
+import "./MainProductsPage.css";
 
 const ProductsPage = () => {
   //const products = useLoaderData();

@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import * as Icon from "@phosphor-icons/react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -12,16 +13,21 @@ const Product = ({ data }: { data: productType }) => {
     <div className="product-card">
       <div className="product-image">
         {!isImageLoaded && <Skeleton height="100%" />}
-        <img
-          src={data.thumbnail}
-          alt=""
-          onLoad={() => setIsImageLoaded(true)}
-          style={{ display: isImageLoaded ? "block" : "none" }}
-        />
+        <Link to={`/product/${data.id}`} className="product-link">
+          <img
+            src={data.thumbnail}
+            alt=""
+            onLoad={() => setIsImageLoaded(true)}
+            style={{ display: isImageLoaded ? "block" : "none" }}
+          />
+        </Link>
       </div>
       <div className="product-info">
         <h2 className="product-name">
-          {data.title || <Skeleton />} <br />
+          <Link to={`/product/${data.id}`} className="product-link">
+            {data.title || <Skeleton />}
+          </Link>
+          <br />
           <span className="product-brand"> {data.brand} </span>
         </h2>
         <p className="product-price">{data.price || <Skeleton />}</p>

@@ -117,6 +117,10 @@ export async function fetchProductsData({
         });
         dataArr = tempArr.flat();
         return dataArr;
+      } else if (id !== undefined) {
+        const res = await fetch(`https://dummyjson.com/products/${id}`);
+        const data = await res.json();
+        return data;
       } else {
         const res = await fetch("https://dummyjson.com/product?limit=0");
         const data = await res.json();

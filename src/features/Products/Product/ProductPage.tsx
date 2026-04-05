@@ -1,0 +1,118 @@
+import { useParams } from "react-router-dom";
+import { fetchProductsData } from "../../../services/firebase";
+import { useQuery } from "@tanstack/react-query";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+
+import "./productpage.css";
+import { useState } from "react";
+
+const ProductPage = () => {
+  let [activeSec, setActiveSec] = useState<Number | null>(null);
+  // using tanstack query for fetching data over loaderData
+  const { productID: id } = useParams();
+
+  const { data, error, isLoading } = useQuery({
+    queryKey: [id],
+    queryFn: () => fetchProductsData({ id: id }),
+    // During this time, no new network requests will be made
+    staleTime: Infinity,
+    // How long the data stays in memory after the component unmounts
+    gcTime: 10,
+  });
+  console.log(data, error, isLoading);
+
+  const currentActiveSec = (secParam: number) => {
+    setActiveSec((prev) => {
+      return prev !== secParam ? secParam : null;
+    });
+  };
+
+  let swiperSlides = data.images.map((imgLink: string) => {
+    return (
+      <SwiperSlide>
+        <div className="product-images-wrap">
+          <img src={imgLink} className="product-img" key={imgLink} />
+        </div>
+      </SwiperSlide>
+    );
+  });
+
+  return (
+    <section>
+      <h1 className="product-title">{data.title}</h1>
+      <div className="product-content-wrap">
+        <div className="product-img-wrapper">
+          <Swiper
+            spaceBetween={20}
+            slidesPerView={1}
+            // breakpoints={{
+            //   // when window width is >= 640px
+            //   240: {
+            //     slidesPerView: 1,
+            //     spaceBetween: 20,
+            //   },
+            //   1024: {
+            //     slidesPerView: 1,
+            //     spaceBetween: 10,
+            //   },
+            // }}
+          >
+            {swiperSlides}
+          </Swiper>
+        </div>
+        <div className="product-info-wrap">
+          <div className="main-product-wrap">
+            <p className="product-desc">{data.description}</p>
+            <h2 className="product-brand">{data.brand}</h2>
+            <p className="product-category">{data.category}</p>
+            <h2 className="product-price">{data.price}</h2>
+            <div className="product-rating">{data.rating}</div>
+            <p>Stock : {data.stock}</p>
+            <p className="status">{data.availabilityStatus}</p>
+          </div>
+
+          <div className="tag-wrap">
+            {data.tags.map((tag: string) => {
+              return <p className="tag">#{tag}</p>;
+            })}
+          </div>
+
+          <div className="other-product-wrap">
+            <h3 className="section-title" onClick={() => currentActiveSec(0)}>
+              Service & Support
+            </h3>
+            {activeSec === 0 ? (
+              <div className="other-product-info">
+                <strong>Warranty Information</strong>
+                <p>{data.warrantyInformation}</p>
+                <strong>Shipping Information</strong>
+                <p>{data.shippingInformation}</p>
+                <strong>Return Policy</strong>
+                <p>{data.returnPolicy}</p>
+              </div>
+            ) : null}
+          </div>
+
+          <div className="other-product-wrap">
+            <h3 className="section-title" onClick={() => currentActiveSec(1)}>
+              Physical Specifications
+            </h3>
+            {activeSec === 1 ? (
+              <div className="other-product-info">
+                <p>Weight : {data.weight}</p>
+
+                <p>Width: {data.dimensions.width}</p>
+                <p>Height: {data.dimensions.height}</p>
+                <p>Depth: {data.dimensions.depth}</p>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default ProductPage;

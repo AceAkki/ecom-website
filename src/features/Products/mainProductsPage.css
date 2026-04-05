@@ -5,6 +5,11 @@
   margin: 2rem 0;
 }
 
+.product-link {
+  text-decoration: none;
+  color: unset;
+}
+
 .product-card {
   border: 2px solid transparent;
   background:
@@ -27,36 +32,36 @@
   height: auto;
 }
 
-.product-info {
+.product-card .product-info {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   flex-grow: 1;
 }
 
-.product-name {
+.product-card .product-name {
   font-size: 1.2rem;
   font-weight: 300;
   flex-grow: 1;
 }
 
-.product-brand {
+.product-card .product-brand {
   font-size: 1.1rem;
   font-weight: 200;
 }
 
-.product-price {
+.product-card .product-price {
   font-size: 1.2rem;
   font-weight: 500;
 }
 
-.btn-wrap {
+.product-card .btn-wrap {
   position: absolute;
   right: 0;
   margin: 0.1rem 0.8rem;
 }
 
-.add-cart {
+.product-card .add-cart {
   background: transparent;
   outline: none;
   border: 1px solid transparent;

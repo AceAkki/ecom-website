@@ -66,12 +66,12 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink to={`/products/Mens-Fashion${defaultParam}`}>
-                    Men's Fashion
+                    Men
                   </NavLink>
                 </li>
                 <li>
                   <NavLink to={`/products/Womens-Fashion${defaultParam}`}>
-                    Women's Fashion
+                    Women
                   </NavLink>
                 </li>
                 <li>

@@ -9,8 +9,8 @@ import MainPage from "./features/main/MainPage";
 import AboutPage from "./features/AboutPage";
 import Login, { action as LoginAction } from "./features/user/LoginPage";
 import ErrorPage from "./features/ErrorPage";
-import ProductsPage from "./features/Products/ProductsPage";
-import ProductPage from "./features/Products/ProductPage";
+import ProductsPage from "./features/Products/MainProductsPage";
+import ProductPage from "./features/Products/Product/ProductPage";
 
 import { fetchProductsData } from "./services/firebase";
 import "./App.css";
