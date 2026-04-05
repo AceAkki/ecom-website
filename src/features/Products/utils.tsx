@@ -1,5 +1,5 @@
 // to generate rating
-const generateRating = (rating: number) => {
+export const generateRating = (rating: number) => {
   // hashmaps maps rating with conditions
   const map = new Map([
     [5, rating >= 4.5],
@@ -23,7 +23,7 @@ const generateRating = (rating: number) => {
 };
 
 // to create star and add
-const createStars = (num: number) => {
+export const createStars = (num: number) => {
   let maxStar = 5;
   let fillStarArr;
   let emptyStarArr;

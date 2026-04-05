@@ -7,6 +7,7 @@ import "swiper/css";
 
 import "./productpage.css";
 import { useState } from "react";
+import { generateRating, createStars } from "../utils";
 
 const ProductPage = () => {
   let [activeSec, setActiveSec] = useState<Number | null>(null);
