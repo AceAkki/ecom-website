@@ -1,3 +1,5 @@
+import * as Icon from "@phosphor-icons/react";
+
 // to generate rating
 export const generateRating = (rating: number) => {
   // hashmaps maps rating with conditions
@@ -39,16 +41,15 @@ export const createStars = (num: number) => {
     : (emptyStarNum = maxStar - num);
   // fill star num is added
   fillStarArr = [...Array(fillStarNum).keys()].map(() => {
-    return <i className="ph-fill ph-star"></i>;
+    return <Icon.StarIcon weight="fill" />;
   });
 
   // on truthy value half star is added
-  if (!Number.isInteger(num))
-    halfStar = <i className="ph-fill ph-star-half"></i>;
+  if (!Number.isInteger(num)) halfStar = <Icon.StarHalfIcon weight="fill" />;
   // empty stars are added if num is bigger
   if (emptyStarNum > 0) {
     emptyStarArr = [...Array(emptyStarNum).keys()].map(() => {
-      return <i className="ph ph-star"></i>;
+      return <Icon.StarHalfIcon />;
     });
   }
   starArr = [fillStarArr, halfStar, emptyStarArr];

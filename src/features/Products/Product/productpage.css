@@ -53,6 +53,12 @@ img.product-img {
   font-weight: 300;
 }
 
+.other-product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .other-product-wrap .section-title {
   border: 2px solid transparent;
   border-radius: 7px;

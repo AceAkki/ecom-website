@@ -69,14 +69,20 @@ const ProductPage = () => {
             <h2 className="product-brand">{data.brand}</h2>
             <p className="product-category">{data.category}</p>
             <h2 className="product-price">{data.price}</h2>
-            <div className="product-rating">{data.rating}</div>
+            <div className="product-rating">
+              {createStars(generateRating(data.rating))}
+            </div>
             <p>Stock : {data.stock}</p>
             <p className="status">{data.availabilityStatus}</p>
           </div>
 
           <div className="tag-wrap">
             {data.tags.map((tag: string) => {
-              return <p className="tag">#{tag}</p>;
+              return (
+                <p className="tag" key={tag}>
+                  #{tag}
+                </p>
+              );
             })}
           </div>
 
