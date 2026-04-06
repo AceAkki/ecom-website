@@ -8,6 +8,7 @@ import "swiper/css";
 import "./productpage.css";
 import { useState } from "react";
 import { generateRating, createStars } from "../utils";
+import type { reviewType } from "../productTypes";
 
 const ProductPage = () => {
   let [activeSec, setActiveSec] = useState<Number | null>(null);
@@ -124,6 +125,26 @@ const ProductPage = () => {
                 <p> {data.dimensions.depth}</p>
               </div>
             ) : null}
+          </div>
+          <div className="other-product-wrap">
+            <h3
+              className={`section-title ${activeSec === 2 ? "active" : ""}`}
+              onClick={() => currentActiveSec(2)}
+            >
+              Reviews
+            </h3>
+            {activeSec === 2
+              ? data.reviews.map((rev: reviewType) => {
+                  return (
+                    <div className="review-card">
+                      <p className="review-name">{rev.reviewerName}</p>
+                      <p className="review-rating">{rev.rating}/5</p>
+                      <p className="review-comment">"{rev.comment}"</p>
+                      <p className="review-date">{rev.date}</p>
+                    </div>
+                  );
+                })
+              : null}
           </div>
         </div>
       </div>

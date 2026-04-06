@@ -96,6 +96,29 @@ img.product-img {
   padding: 0 0.8rem;
 }
 
+.review-card {
+  padding: 1rem;
+  margin: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+.review-name {
+  font-weight: 600;
+}
+.review-rating {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 1.5rem;
+  font-weight: 100;
+  margin: 1rem;
+}
+.review-comment {
+  font-weight: 200;
+}
 @media screen and (min-width: 1080px) {
   .product-content-wrap {
     display: grid;

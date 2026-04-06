@@ -33,7 +33,7 @@ export type productType = {
   mainCategory: string;
 };
 
-type reviewType = {
+export type reviewType = {
   rating: number;
   comment: string;
   date: string;
