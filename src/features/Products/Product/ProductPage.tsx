@@ -72,7 +72,7 @@ const ProductPage = () => {
             <div className="product-rating">
               {createStars(generateRating(data.rating))}
             </div>
-            <p>Stock : {data.stock}</p>
+            {/* <p>Stock : {data.stock}</p> */}
             <p className="status">{data.availabilityStatus}</p>
           </div>
 
@@ -87,7 +87,10 @@ const ProductPage = () => {
           </div>
 
           <div className="other-product-wrap">
-            <h3 className="section-title" onClick={() => currentActiveSec(0)}>
+            <h3
+              className={`section-title ${activeSec === 0 ? "active" : ""}`}
+              onClick={() => currentActiveSec(0)}
+            >
               Service & Support
             </h3>
             {activeSec === 0 ? (
@@ -103,16 +106,22 @@ const ProductPage = () => {
           </div>
 
           <div className="other-product-wrap">
-            <h3 className="section-title" onClick={() => currentActiveSec(1)}>
+            <h3
+              className={`section-title ${activeSec === 1 ? "active" : ""}`}
+              onClick={() => currentActiveSec(1)}
+            >
               Physical Specifications
             </h3>
             {activeSec === 1 ? (
               <div className="other-product-info">
-                <p>Weight : {data.weight}</p>
-
-                <p>Width: {data.dimensions.width}</p>
-                <p>Height: {data.dimensions.height}</p>
-                <p>Depth: {data.dimensions.depth}</p>
+                <strong>Weight :</strong>
+                <p> {data.weight}</p>
+                <strong>Width:</strong>
+                <p> {data.dimensions.width}</p>
+                <strong>Height:</strong>
+                <p> {data.dimensions.height}</p>
+                <strong>Depth:</strong>
+                <p> {data.dimensions.depth}</p>
               </div>
             ) : null}
           </div>

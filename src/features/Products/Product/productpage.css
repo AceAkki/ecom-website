@@ -10,6 +10,15 @@ img.product-img {
   width: 100%;
 }
 
+.product-info-wrap {
+  background: rgba(248, 250, 252, 0.6);
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  border: 1px solid var(--accent-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
 .product-info-wrap,
 .main-product-wrap {
   display: flex;
@@ -27,6 +36,12 @@ img.product-img {
   font-weight: 500;
 }
 
+.product-rating svg {
+  color: #ffd700;
+  width: 2rem;
+  height: 2rem;
+}
+
 .product-category {
   font-size: 1rem;
   font-weight: 600;
@@ -34,7 +49,12 @@ img.product-img {
   color: var(--gray-900);
   background-color: var(--accent-color);
   width: fit-content;
-  padding: 0.1rem;
+  padding: 0.5rem;
+  transition: all 800ms ease-in-out;
+}
+.product-category:hover {
+  color: var(--accent-color);
+  background-color: var(--gray-900);
 }
 
 .product-price {
@@ -60,22 +80,20 @@ img.product-img {
 }
 
 .other-product-wrap .section-title {
-  border: 2px solid transparent;
+  border: 1px solid var(--accent-color);
   border-radius: 7px;
-  background:
-    linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(
-        258deg,
-        rgba(37, 99, 235, 0.5),
-        #ffffff,
-        rgba(37, 99, 235, 0.8)
-      )
-      border-box;
   padding: 0.4rem;
+}
+.other-product-wrap .section-title.active {
+  background-color: var(--accent-color);
 }
 
 .other-product-info {
   padding: 0.8rem 0.4rem;
+}
+
+.other-product-info p {
+  padding: 0 0.8rem;
 }
 
 @media screen and (min-width: 1080px) {

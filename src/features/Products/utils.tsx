@@ -49,7 +49,7 @@ export const createStars = (num: number) => {
   // empty stars are added if num is bigger
   if (emptyStarNum > 0) {
     emptyStarArr = [...Array(emptyStarNum).keys()].map(() => {
-      return <Icon.StarHalfIcon />;
+      return <Icon.StarIcon />;
     });
   }
   starArr = [fillStarArr, halfStar, emptyStarArr];
