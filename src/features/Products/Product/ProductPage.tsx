@@ -140,7 +140,9 @@ const ProductPage = () => {
                       <p className="review-name">{rev.reviewerName}</p>
                       <p className="review-rating">{rev.rating}/5</p>
                       <p className="review-comment">"{rev.comment}"</p>
-                      <p className="review-date">{rev.date}</p>
+                      <p className="review-date">
+                        {new Date(rev.date).getDate()}
+                      </p>
                     </div>
                   );
                 })
