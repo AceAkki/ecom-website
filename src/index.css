@@ -20,10 +20,11 @@ https://piktochart.com/tips/ecommerce-color-palette */
 
   --gray-50: #f8fafc; /* Backgrounds */
   --gray-100: #f1f5f9; /* Secondary Backgrounds */
+
   --gray-300: #cbd5e1; /* Borders/Dividers */
 
-  --gray-600: #475569; /* Secondary Text */
   --gray-900: #0f172a; /* Primary Text/Headings */
+  --gray-600: #475569; /* Secondary Text */
 
   /* --- Typography --- */
   --font-main: "Inter", system-ui, -apple-system, sans-serif;
@@ -53,7 +54,7 @@ https://piktochart.com/tips/ecommerce-color-palette */
 
   /* --- Transitions --- */
   --transition-fast: 150ms ease-in-out;
-  --transition-base: 300ms ease;
+  --transition-base: 800ms ease;
 
   --header-height: 0;
 }

@@ -24,6 +24,11 @@
   backdrop-filter: blur(20px);
 }
 
+.glass-morphed-primary {
+  background-color: rgba(37, 99, 235, 0.9);
+  backdrop-filter: blur(20px);
+}
+
 .loader-section {
   display: flex;
   align-items: center;

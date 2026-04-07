@@ -59,7 +59,7 @@
 }
 
 .menu-options li a {
-  color: var(--gray-900);
+  color: var(--white);
   text-decoration: none;
   padding: 0.2rem 0.5rem;
   transition: all var(--transition-base);
@@ -67,7 +67,7 @@
 
 .menu-options li a:hover {
   background-color: var(--accent-color);
-  text-decoration: none;
+  color: var(--gray-900);
 }
 
 .user-wrap {
@@ -75,18 +75,26 @@
   gap: 1rem;
 }
 
-.user-wrap div {
-  color: var(--gray-900);
+.user-wrap a {
+  text-decoration: none;
+  color: unset;
+}
+
+.user-wrap .user-btn {
+  color: var(--gray-100);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
-  border-radius: 100%;
+  border: 1px solid var(--white);
+  border-radius: 10px;
   transition: all var(--transition-base);
 }
 
-.user-wrap div:hover {
+.user-wrap .user-btn:hover {
+  background-color: var(--white);
   color: var(--primary-color);
+  border-radius: 100%;
 }
 
 .search-wrap {

@@ -32,7 +32,7 @@ const Header = () => {
   return (
     <header>
       <div className="header-main-wrapper" ref={headerRef}>
-        <div className="header-wrap glass-morphed" ref={headerWrapRef}>
+        <div className="header-wrap glass-morphed-primary" ref={headerWrapRef}>
           <div className="main-header">
             <div className="menu-main">
               <div className="menu-btn">
@@ -95,10 +95,10 @@ const Header = () => {
               </ul>
             </nav>
             <div className="user-wrap">
-              <div>
+              <div className="user-btn">
                 <Icon.ShoppingCartSimpleIcon size={32} />
               </div>
-              <div>
+              <div className="user-btn">
                 <Link to="/login">
                   <Icon.UserIcon size={32} />
                 </Link>
