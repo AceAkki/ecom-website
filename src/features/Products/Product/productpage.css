@@ -14,9 +14,9 @@ img.product-img {
   background: rgba(248, 250, 252, 0.6);
   backdrop-filter: blur(20px);
   padding: 1.5rem;
-  border: 1px solid var(--accent-color);
+  /* border: 1px solid var(--accent-color); */
   border-radius: 0.5rem;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.1);
 }
 
 .product-info-wrap,
@@ -82,7 +82,7 @@ img.product-img {
 .other-product-wrap .section-title {
   border: 1px solid var(--accent-color);
   border-radius: 7px;
-  padding: 0.4rem;
+  padding: 0.4rem 0.8rem;
 }
 .other-product-wrap .section-title.active {
   background-color: var(--accent-color);
@@ -96,6 +96,13 @@ img.product-img {
   padding: 0 0.8rem;
 }
 
+.reviews-cards-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1rem 0;
+}
+
 .review-card {
   padding: 1rem;
   margin: 0.5rem;
@@ -104,6 +111,8 @@ img.product-img {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 .review-name {
   font-weight: 600;

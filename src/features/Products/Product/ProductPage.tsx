@@ -133,8 +133,9 @@ const ProductPage = () => {
             >
               Reviews
             </h3>
-            {activeSec === 2
-              ? data.reviews.map((rev: reviewType) => {
+            {activeSec === 2 ? (
+              <div className="reviews-cards-wrap">
+                {data.reviews.map((rev: reviewType) => {
                   return (
                     <div className="review-card">
                       <p className="review-name">{rev.reviewerName}</p>
@@ -145,8 +146,9 @@ const ProductPage = () => {
                       </p>
                     </div>
                   );
-                })
-              : null}
+                })}
+              </div>
+            ) : null}
           </div>
         </div>
       </div>
