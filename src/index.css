@@ -53,8 +53,8 @@ https://piktochart.com/tips/ecommerce-color-palette */
   --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
 
   /* --- Transitions --- */
-  --transition-fast: 150ms ease-in-out;
-  --transition-base: 800ms ease;
+  --transition-fast: 450ms ease-in-out;
+  --transition-base: 990ms ease;
 
   --header-height: 0;
 }
