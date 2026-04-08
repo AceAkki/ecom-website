@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
 
 import * as Icon from "@phosphor-icons/react";
-import "./Header.css";
+import "./css/header.css";
 const Header = () => {
   let headerRef = useRef<HTMLHeadingElement>(null);
   let headerWrapRef = useRef<HTMLHeadingElement>(null);
@@ -89,7 +89,11 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <input type="text" placeholder="Search for Products..." />
+                  <input
+                    type="text"
+                    placeholder="Search for Products..."
+                    className="header-input"
+                  />
                 </li>
               </ul>
             </nav>

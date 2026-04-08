@@ -1,5 +1,5 @@
 import BGImage from "/src/assets/banner.png";
-import "./main.css";
+import "../css/main.css";
 
 const MainBanner = () => {
   return (
