@@ -48,7 +48,9 @@ const Header = () => {
                 </button>
               </div>
               <div>
-                <NavLink to="/">Home</NavLink>
+                <NavLink to="/" className="logo-txt">
+                  ShopSphere
+                </NavLink>
               </div>
             </div>
             <nav className={isOpen ? "" : "mobile-hide"}>
@@ -58,11 +60,8 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink to={`/products/Personal-Care${defaultParam}`}>
-                    Personal Care
+                    Essentials
                   </NavLink>
-                  <ul>
-                    <li></li>
-                  </ul>
                 </li>
                 <li>
                   <NavLink to={`/products/Mens-Fashion${defaultParam}`}>
@@ -81,7 +80,7 @@ const Header = () => {
                 </li>
                 <li>
                   <NavLink to={`/products/Home-&-Living${defaultParam}`}>
-                    Home & Living
+                    Living
                   </NavLink>
                 </li>
                 <li>
