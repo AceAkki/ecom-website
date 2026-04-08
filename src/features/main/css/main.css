@@ -30,6 +30,7 @@
 .home-title {
   font-size: 3rem;
   font-weight: 900;
+  font-family: var(--font-heading);
 }
 
 .home-page-btn {
@@ -52,6 +53,7 @@
 
 .stat-wrap {
   padding: 1rem 0;
+  font-family: var(--font-heading);
 }
 
 .stat-wrap h5 {
