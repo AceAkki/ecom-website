@@ -64,7 +64,7 @@ const CategorySection = () => {
 
   return (
     <section className="category-section">
-      <h1>Shop By Category</h1>
+      <h2 className="sec-title">Shop By Category</h2>
       <div className="category-wrap">{categoryElems}</div>
     </section>
   );
