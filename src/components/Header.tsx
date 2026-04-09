@@ -56,7 +56,7 @@ const Header = () => {
             <nav className={isOpen ? "" : "mobile-hide"}>
               <ul className="menu-options">
                 <li>
-                  <NavLink to="/products">All</NavLink>
+                  <NavLink to="/products">All Categories</NavLink>
                 </li>
                 <li>
                   <NavLink to={`/products/Personal-Care${defaultParam}`}>
@@ -64,15 +64,21 @@ const Header = () => {
                   </NavLink>
                 </li>
                 <li>
-                  <NavLink to={`/products/Mens-Fashion${defaultParam}`}>
-                    Men
-                  </NavLink>
+                  Fashion
+                  <ul>
+                    <li>
+                      <NavLink to={`/products/Mens-Fashion${defaultParam}`}>
+                        Men
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to={`/products/Womens-Fashion${defaultParam}`}>
+                        Women
+                      </NavLink>
+                    </li>
+                  </ul>
                 </li>
-                <li>
-                  <NavLink to={`/products/Womens-Fashion${defaultParam}`}>
-                    Women
-                  </NavLink>
-                </li>
+
                 <li>
                   <NavLink to={`/products/Electronics${defaultParam}`}>
                     Electronics

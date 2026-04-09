@@ -30,7 +30,7 @@
 .home-title {
   font-size: 3rem;
   font-weight: 900;
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
 }
 
 .home-page-btn {
@@ -56,13 +56,15 @@
 }
 
 .stat-wrap h5 {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
   font-size: 2rem;
-  font-weight: 700;
+  font-weight: 800;
 }
 
 .sec-title {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
+  font-size: 2rem;
+  font-weight: 200;
 }
 
 /* category */
@@ -95,9 +97,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
-  font-family: var(--font-heading);
-  font-weight: 300;
+  font-size: 1.5rem;
+  font-family: var(--font-main);
+  font-weight: 200;
   text-transform: uppercase;
   color: var(--white);
 }
