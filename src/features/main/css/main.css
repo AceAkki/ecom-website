@@ -96,6 +96,7 @@
   justify-content: center;
   align-items: center;
   font-size: 2rem;
+  font-family: var(--font-heading);
   font-weight: 300;
   text-transform: uppercase;
   color: var(--white);
