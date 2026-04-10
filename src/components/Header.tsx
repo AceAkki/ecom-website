@@ -22,7 +22,7 @@ const Header = () => {
     })),
   );
 
-  const handleCurrencyChange = (e) => {
+  const handleCurrencyChange = (e: any) => {
     console.log(e.target.value);
     selectCurrency(e.target.value);
   };
@@ -33,8 +33,8 @@ const Header = () => {
       return prev !== numParam ? numParam : null;
     });
   };
-  const handleMouseLeave = (e) => {
-    console.log(openSubList, "list", e);
+  const handleMouseLeave = () => {
+    console.log(openSubList, "list");
     setOpenSubList(null);
   };
 
@@ -73,7 +73,7 @@ const Header = () => {
   };
 
   let mainLists = Object.keys(mainCategories).map((key) => {
-    let subCategories = mainCategories[key].map((sub) => {
+    let subCategories = mainCategories[key as any].map((sub: string) => {
       return (
         <li key={sub} className="menu-sub-category">
           <NavLink to={`/products/${sub}${defaultParam}`}>
