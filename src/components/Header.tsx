@@ -1,13 +1,90 @@
 import { useState, useRef, useEffect } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useShallow } from "zustand/react/shallow";
+import useCurrencyStore from "../store/currencyStore.ts";
 
 import * as Icon from "@phosphor-icons/react";
 import "./css/header.css";
+
 const Header = () => {
   let headerRef = useRef<HTMLHeadingElement>(null);
   let headerWrapRef = useRef<HTMLHeadingElement>(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [openSubList, setOpenSubList] = useState<number | null>(null);
   let defaultParam = "?page=1";
+  console.log(openSubList);
+
+  const { currentCurrency, currencies, selectCurrency } = useCurrencyStore(
+    useShallow((state) => ({
+      currentCurrency: state.currentCurrency,
+      currencies: state.currencies,
+      selectCurrency: state.selectCurrency,
+    })),
+  );
+
+  const handleCurrencyChange = (e) => {
+    console.log(e.target.value);
+    selectCurrency(e.target.value);
+  };
+
+  const handleMouseOver = (numParam: number) => {
+    console.log(numParam);
+    setOpenSubList((prev) => {
+      return prev !== numParam ? numParam : null;
+    });
+  };
+  const handleMouseLeave = (e) => {
+    console.log(openSubList, "list", e);
+    setOpenSubList(null);
+  };
+
+  const classUpdate = ({
+    numParam,
+    mainState,
+  }: {
+    numParam: number;
+    mainState: number | null;
+  }) => {
+    return numParam === mainState && mainState !== null
+      ? `menu-dropdown glass-morphed`
+      : `menu-dropdown hide`;
+  };
+
+  let mainCategories = {
+    "personal-care": ["beauty", "fragrances", "skin-care"],
+    "home-&-living": [
+      "furniture",
+      "groceries",
+      "home-decoration",
+      "kitchen-accessories",
+    ],
+    electronics: ["laptops", "mobile-accessories", "smartphones", "tablets"],
+    vehicles: ["motorcycle", "vehicle"],
+    accessories: ["sports-accessories", "sunglasses"],
+    "mens-fashion": ["mens-shirts", "mens-shoes", "mens-watches"],
+    "womens-fashion": [
+      "tops",
+      "womens-bags",
+      "womens-dresses",
+      "womens-jewellery",
+      "womens-shoes",
+      "womens-watches",
+    ],
+  };
+
+  let mainLists = Object.keys(mainCategories).map((key) => {
+    let subCategories = mainCategories[key].map((sub) => {
+      return (
+        <li key={sub} className="menu-sub-category">
+          <NavLink to={`/products/${sub}${defaultParam}`}>
+            {sub.replace(/^(mens)-|(womens)-/gm, "")}
+          </NavLink>
+        </li>
+      );
+    });
+
+    return [<li className="menu-sub-header">{key}</li>, subCategories].flat();
+  });
 
   useEffect(() => {
     const nav = headerRef.current;
@@ -56,16 +133,72 @@ const Header = () => {
             <nav className={isOpen ? "" : "mobile-hide"}>
               <ul className="menu-options">
                 <li>
-                  <NavLink to="/products">All Categories</NavLink>
+                  <span
+                    className="menu-dropdown-btn"
+                    onMouseOver={() => handleMouseOver(0)}
+                  >
+                    All
+                  </span>
+                  <ul
+                    className={classUpdate({
+                      numParam: 0,
+                      mainState: openSubList,
+                    })}
+                    onMouseLeave={(e) => handleMouseLeave(e)}
+                  >
+                    <li>
+                      <NavLink to="/products">All Products</NavLink>
+                    </li>
+                    {mainLists}
+                  </ul>
                 </li>
                 <li>
-                  <NavLink to={`/products/Personal-Care${defaultParam}`}>
+                  <span
+                    className="menu-dropdown-btn"
+                    onMouseOver={() => handleMouseOver(1)}
+                  >
                     Essentials
-                  </NavLink>
+                  </span>
+                  <ul
+                    className={classUpdate({
+                      numParam: 1,
+                      mainState: openSubList,
+                    })}
+                    onMouseLeave={(e) => handleMouseLeave(e)}
+                  >
+                    <li>
+                      <NavLink to={`/products/Personal-Care${defaultParam}`}>
+                        Personal Care
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to={`/products/Electronics${defaultParam}`}>
+                        Electronics
+                      </NavLink>
+                    </li>
+                    <li>
+                      <NavLink to={`/products/Home-&-Living${defaultParam}`}>
+                        Living
+                      </NavLink>
+                    </li>
+                  </ul>
                 </li>
+
                 <li>
-                  Fashion
-                  <ul>
+                  <span
+                    className="menu-dropdown-btn"
+                    onMouseOver={() => handleMouseOver(2)}
+                  >
+                    Fashion
+                  </span>
+
+                  <ul
+                    className={classUpdate({
+                      numParam: 2,
+                      mainState: openSubList,
+                    })}
+                    onMouseLeave={(e) => handleMouseLeave(e)}
+                  >
                     <li>
                       <NavLink to={`/products/Mens-Fashion${defaultParam}`}>
                         Men
@@ -79,16 +212,6 @@ const Header = () => {
                   </ul>
                 </li>
 
-                <li>
-                  <NavLink to={`/products/Electronics${defaultParam}`}>
-                    Electronics
-                  </NavLink>
-                </li>
-                <li>
-                  <NavLink to={`/products/Home-&-Living${defaultParam}`}>
-                    Living
-                  </NavLink>
-                </li>
                 <li>
                   <NavLink to={`/products/Vehicles${defaultParam}`}>
                     Vehicles
@@ -104,6 +227,23 @@ const Header = () => {
               </ul>
             </nav>
             <div className="user-wrap">
+              <div className="currency-wrap">
+                <Icon.SwapIcon size={32} />
+                <select onChange={handleCurrencyChange}>
+                  {currencies.map((currency) => {
+                    return (
+                      <option
+                        key={currency.code}
+                        selected={
+                          currentCurrency === currency.code ? true : false
+                        }
+                      >
+                        {currency.code}
+                      </option>
+                    );
+                  })}
+                </select>
+              </div>
               <div className="user-btn">
                 <Icon.ShoppingCartSimpleIcon size={32} />
               </div>

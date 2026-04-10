@@ -1,5 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+
+import { useShallow } from "zustand/react/shallow";
+import useCurrencyStore from "../../../store/currencyStore.ts";
+
 import * as Icon from "@phosphor-icons/react";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
@@ -9,6 +13,14 @@ import type { productType } from "../productTypes";
 const Product = ({ data }: { data: productType }) => {
   // used for skeleton load
   let [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const { currentCurrency, currentCurrencySymbol } = useCurrencyStore(
+    useShallow((state) => ({
+      currentCurrency: state.currentCurrency,
+      currentCurrencySymbol: state.currentCurrencySymbol,
+    })),
+  );
+
   return (
     <div className="product-card">
       <div className="product-image">
@@ -30,7 +42,9 @@ const Product = ({ data }: { data: productType }) => {
           <br />
           <span className="product-brand"> {data.brand} </span>
         </h2>
-        <p className="product-price">{data.price || <Skeleton />}</p>
+        <p className="product-price">
+          {currentCurrencySymbol} {data.price || <Skeleton />}
+        </p>
       </div>
       <div className="btn-wrap">
         <button className="add-cart">
