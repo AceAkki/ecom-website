@@ -166,6 +166,31 @@
   border-radius: 100%;
 }
 
+.currency-wrap {
+  display: flex;
+  background-color: var(--white);
+  color: var(--primary-color);
+  padding: 0.3rem 1rem;
+  border-radius: 10px;
+  border: 1px solid black;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.currency-wrap select,
+.currency-wrap option {
+  background-color: var(--white);
+  font-family: var(--font-heading);
+  width: 100%;
+  border: none;
+  font-size: 1rem;
+  color: var(--primary-color);
+}
+.currency-wrap option {
+  color: var(--primary-color);
+}
+
 .search-wrap {
   width: 100%;
   padding: 1rem 0;

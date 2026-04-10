@@ -228,7 +228,9 @@ const Header = () => {
             </nav>
             <div className="user-wrap">
               <div className="currency-wrap">
-                <Icon.SwapIcon size={32} />
+                <div>
+                  <Icon.SwapIcon size={32} />
+                </div>
                 <select onChange={handleCurrencyChange}>
                   {currencies.map((currency) => {
                     return (
