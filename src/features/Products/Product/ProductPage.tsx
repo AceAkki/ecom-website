@@ -5,6 +5,9 @@ import { useQuery } from "@tanstack/react-query";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 
+import useCurrencyStore from "../../../store/currencyStore";
+import { useShallow } from "zustand/shallow";
+
 import "./productpage.css";
 import { useState } from "react";
 import { generateRating, createStars } from "../utils";
@@ -24,6 +27,13 @@ const ProductPage = () => {
     gcTime: 10,
   });
   console.log(data, error, isLoading);
+
+  const { currentCurrencySymbol, currentMultipler } = useCurrencyStore(
+    useShallow((state) => ({
+      currentCurrencySymbol: state.currentCurrencySymbol,
+      currentMultipler: state.currentMultipler,
+    })),
+  );
 
   const currentActiveSec = (secParam: number) => {
     setActiveSec((prev) => {
@@ -69,7 +79,10 @@ const ProductPage = () => {
             <p className="product-desc">{data.description}</p>
             <h2 className="product-brand">{data.brand}</h2>
             <p className="product-category">{data.category}</p>
-            <h2 className="product-price">{data.price}</h2>
+            <h2 className="product-price">
+              {currentCurrencySymbol}
+              {(data.price * currentMultipler).toFixed(2)}
+            </h2>
             <div className="product-rating">
               {createStars(generateRating(data.rating))}
             </div>

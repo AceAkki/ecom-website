@@ -22,13 +22,6 @@
   box-shadow: var(--shadow-md);
 }
 
-.header-wrap input {
-  width: 100%;
-  padding: 0.4rem 1rem;
-  border-radius: 10px;
-  border: 1px solid black;
-}
-
 .main-header {
   display: flex;
   align-items: center;
@@ -66,10 +59,9 @@
 }
 
 .menu-options li a,
-.menu-options li span {
+.menu-options li span.menu-dropdown-btn {
   display: inline-block;
   font-family: var(--font-heading);
-  color: var(--white);
   font-size: 0.9rem;
   text-transform: uppercase;
   border: 1px solid var(--white);
@@ -80,16 +72,29 @@
   width: 100%;
 }
 
+span.menu-dropdown-btn {
+  color: var(--white);
+  cursor: pointer;
+}
+
+span.menu-dropdown-btn:hover {
+  color: var(--gray-900);
+  background-color: var(--accent-color);
+}
+
 .menu-options .menu-sub-header {
   font-family: var(--font-heading);
-  color: var(--white);
   text-transform: uppercase;
+  color: var(--white);
   background: var(--primary-color);
   border-radius: 5px;
   padding: 0.2rem 0.5rem;
   scroll-snap-align: start;
 }
 
+.menu-options .menu-sub-header:nth-last-child {
+  scroll-snap-align: none;
+}
 .menu-dropdown {
   position: absolute;
   display: flex;
@@ -111,7 +116,6 @@
   position: fixed;
   inset: 0;
   z-index: -1;
-  min-height: 100vh;
   background: rgba(255, 255, 255, 0.4);
   backdrop-filter: blur(20px);
 }
@@ -137,6 +141,10 @@
 
 .header-input {
   font-family: var(--font-heading);
+  width: 100%;
+  padding: 0.4rem 1rem;
+  border-radius: 10px;
+  border: 1px solid var(--white);
 }
 
 .user-wrap {
@@ -170,12 +178,13 @@
   display: flex;
   background-color: var(--white);
   color: var(--primary-color);
-  padding: 0.3rem 1rem;
+  padding: 0.3rem 0.5rem;
   border-radius: 10px;
-  border: 1px solid black;
+  border: 1px solid var(--white);
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+  transition: all var(--transition-base);
 }
 
 .currency-wrap select,
@@ -189,6 +198,17 @@
 }
 .currency-wrap option {
   color: var(--primary-color);
+}
+
+.currency-wrap:hover,
+.currency-wrap:hover select {
+  background-color: transparent;
+  color: var(--white);
+}
+
+.currency-icon svg {
+  width: 20px;
+  height: 20px;
 }
 
 .search-wrap {

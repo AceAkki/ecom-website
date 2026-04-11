@@ -7,7 +7,7 @@ import * as Icon from "@phosphor-icons/react";
 
 import FallBackLoader from "../../components/FallbackLoader";
 
-import "./MainProductsPage.css";
+import "./mainProductsPage.css";
 
 const ProductsPage = () => {
   //const products = useLoaderData();
@@ -16,7 +16,7 @@ const ProductsPage = () => {
   const { productCategory: category, productID: id } = useParams();
 
   const { data, error, isLoading } = useQuery({
-    queryKey: ["allProducts", category, id],
+    queryKey: ["allProducts", category],
     queryFn: () => fetchProductsData({ category: category }),
     // During this time, no new network requests will be made
     staleTime: Infinity,
@@ -60,11 +60,13 @@ const ProductsPage = () => {
         <FallBackLoader />
       </section>
     );
-
+  console.log(getCurrentData().length);
   return (
     <section>
       {error ? (
         <p>Error Fetching products data. Try Again Later ! </p>
+      ) : getCurrentData().length <= 0 ? (
+        <p>Failed to load products</p>
       ) : (
         <>
           <div className="products-wrap">

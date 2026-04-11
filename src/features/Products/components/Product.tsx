@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import { useShallow } from "zustand/react/shallow";
-import useCurrencyStore from "../../../store/currencyStore.ts";
+import useCurrencyStore from "../../../store/currencyStore";
 
 import * as Icon from "@phosphor-icons/react";
 import Skeleton from "react-loading-skeleton";
@@ -14,13 +14,14 @@ const Product = ({ data }: { data: productType }) => {
   // used for skeleton load
   let [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  const { currentCurrency, currentCurrencySymbol } = useCurrencyStore(
-    useShallow((state) => ({
-      currentCurrency: state.currentCurrency,
-      currentCurrencySymbol: state.currentCurrencySymbol,
-    })),
-  );
-
+  const { currentCurrency, currentMultipler, currentCurrencySymbol } =
+    useCurrencyStore(
+      useShallow((state) => ({
+        currentCurrency: state.currentCurrency,
+        currentMultipler: state.currentMultipler,
+        currentCurrencySymbol: state.currentCurrencySymbol,
+      })),
+    );
   return (
     <div className="product-card">
       <div className="product-image">
@@ -43,7 +44,8 @@ const Product = ({ data }: { data: productType }) => {
           <span className="product-brand"> {data.brand} </span>
         </h2>
         <p className="product-price">
-          {currentCurrencySymbol} {data.price || <Skeleton />}
+          {currentCurrencySymbol}{" "}
+          {(data.price * currentMultipler).toFixed(2) || <Skeleton />}
         </p>
       </div>
       <div className="btn-wrap">

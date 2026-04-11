@@ -32,6 +32,28 @@ export async function fetchProductsData({
   id?: string | undefined;
 }) {
   let dataArr = [];
+  let mainCategories = {
+    "personal-care": ["beauty", "fragrances", "skin-care"],
+    "home-&-living": [
+      "furniture",
+      "groceries",
+      "home-decoration",
+      "kitchen-accessories",
+    ],
+    electronics: ["laptops", "mobile-accessories", "smartphones", "tablets"],
+    vehicles: ["motorcycle", "vehicle"],
+    accessories: ["sports-accessories", "sunglasses"],
+    "mens-fashion": ["mens-shirts", "mens-shoes", "mens-watches"],
+    "womens-fashion": [
+      "tops",
+      "womens-bags",
+      "womens-dresses",
+      "womens-jewellery",
+      "womens-shoes",
+      "womens-watches",
+    ],
+  };
+
   try {
     console.log("Fetching from firebase");
     // loads specific category or  all data
@@ -47,13 +69,17 @@ export async function fetchProductsData({
       let data = querySnapshot.docs[0].data();
       return data;
     }
-
     let q =
       category !== undefined
-        ? query(
-            productsCollectionRef,
-            where("mainCategory", "==", category.toLowerCase()),
-          )
+        ? Object.keys(mainCategories).includes(category.toLowerCase())
+          ? query(
+              productsCollectionRef,
+              where("mainCategory", "==", category.toLowerCase()),
+            )
+          : query(
+              productsCollectionRef,
+              where("category", "==", category.toLowerCase()),
+            )
         : productsCollectionRef;
     const querySnapshot = await getDocs(q);
     dataArr = querySnapshot.docs.map((doc) => ({ ...doc.data() }));
@@ -63,60 +89,43 @@ export async function fetchProductsData({
     try {
       console.log("Fetching from dummyjson");
       // since we are using main categories, which doesn't exist on dummyjson we have made arrays of actual categories corresponding to keys which will be the main category
-      let mainCategories = {
-        "personal-care": ["beauty", "fragrances", "skin-care"],
-        "home-&-living": [
-          "furniture",
-          "groceries",
-          "home-decoration",
-          "kitchen-accessories",
-        ],
-        electronics: [
-          "laptops",
-          "mobile-accessories",
-          "smartphones",
-          "tablets",
-        ],
-        vehicles: ["motorcycle", "vehicle"],
-        accessories: ["sports-accessories", "sunglasses"],
-        "mens-fashion": ["mens-shirts", "mens-shoes", "mens-watches"],
-        "womens-fashion": [
-          "tops",
-          "womens-bags",
-          "womens-dresses",
-          "womens-jewellery",
-          "womens-shoes",
-          "womens-watches",
-        ],
-      };
 
       // in case category is undefined it will load all products
       if (category !== undefined) {
-        let mainCategorykey =
-          category.toLowerCase() as any as keyof typeof mainCategories;
-        // console.log(mainCategories[mainCategorykey], mainCategories, category);
+        if (Object.keys(mainCategories).includes(category.toLowerCase())) {
+          let mainCategorykey =
+            category.toLowerCase() as any as keyof typeof mainCategories;
+          // console.log(mainCategories[mainCategorykey], mainCategories, category);
 
-        // we get all categories array from main categories
-        let categories = mainCategories[mainCategorykey];
-        // array is converted to links array to fetch
-        let categoriesArr = categories.map(
-          (cat) => `https://dummyjson.com/products/category/${cat}`,
-        );
-        // all responses are stored in an array
-        let resArr = await Promise.all(
-          categoriesArr.map((link) => fetch(link)),
-        );
-        // all responses are then turned to json
-        let resDataArr = await Promise.all(
-          resArr.map(async (response) => await response.json()),
-        );
-        let tempArr: any = [];
-        // push all data temp arr which is then flattened
-        resDataArr.forEach((dtArr) => {
-          tempArr.push(dtArr.products);
-        });
-        dataArr = tempArr.flat();
-        return dataArr;
+          // we get all categories array from main categories
+          let categories = mainCategories[mainCategorykey];
+          // array is converted to links array to fetch
+          let categoriesArr = categories.map(
+            (cat) => `https://dummyjson.com/products/category/${cat}`,
+          );
+          // all responses are stored in an array
+          let resArr = await Promise.all(
+            categoriesArr.map((link) => fetch(link)),
+          );
+          // all responses are then turned to json
+          let resDataArr = await Promise.all(
+            resArr.map(async (response) => await response.json()),
+          );
+          let tempArr: any = [];
+          // push all data temp arr which is then flattened
+          resDataArr.forEach((dtArr) => {
+            tempArr.push(dtArr.products);
+          });
+          dataArr = tempArr.flat();
+          return dataArr;
+        } else {
+          const res = await fetch(
+            `https://dummyjson.com/products/category/${category}`,
+          );
+          const data = await res.json();
+          dataArr = data.products;
+          return dataArr;
+        }
       } else if (id !== undefined) {
         const res = await fetch(`https://dummyjson.com/products/${id}`);
         const data = await res.json();
@@ -133,3 +142,8 @@ export async function fetchProductsData({
     }
   }
 }
+
+export const queryProducts = () => {
+  try {
+  } catch (error) {}
+};
