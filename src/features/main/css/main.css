@@ -41,6 +41,15 @@
   color: var(--white);
   padding: 1rem 2rem;
   max-width: fit-content;
+  transition: all var(--transition-base);
+}
+
+.home-page-btn a {
+  color: unset;
+  text-decoration: none;
+}
+
+.home-page-btn:hover {
 }
 
 .main-stats {

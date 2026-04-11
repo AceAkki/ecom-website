@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import BGImage from "/src/assets/banner.png";
 import "../css/main.css";
 
@@ -15,7 +16,9 @@ const MainBanner = () => {
             in one place.
           </p>
         </div>
-        <div className="home-page-btn primary-btn">Shop Now</div>
+        <div className="home-page-btn primary-btn">
+          <Link to="/products">Shop Now</Link>
+        </div>
         <div className="main-stats">
           <div className="stat-wrap">
             <h5>200+</h5>
