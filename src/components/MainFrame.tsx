@@ -5,6 +5,7 @@ import { useShallow } from "zustand/react/shallow";
 import useCurrencyStore from "../store/currencyStore";
 // components imports
 import Header from "../components/Header";
+import { useEffect } from "react";
 
 const MainFrame = () => {
   const { data, isLoading } = useQuery({
@@ -22,9 +23,12 @@ const MainFrame = () => {
     })),
   );
   console.log(data, isLoading);
-  if (!isLoading) {
-    updateCurrencyMultiplers(data?.rates);
-  }
+
+  useEffect(() => {
+    if (!isLoading) {
+      updateCurrencyMultiplers(data?.rates);
+    }
+  }, [isLoading, data]);
 
   return (
     <>

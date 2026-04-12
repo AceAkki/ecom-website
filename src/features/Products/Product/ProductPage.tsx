@@ -164,7 +164,11 @@ const ProductPage = () => {
                       <p className="review-rating">{rev.rating}/5</p>
                       <p className="review-comment">"{rev.comment}"</p>
                       <p className="review-date">
-                        {new Date(rev.date).getDate()}
+                        {new Date(rev.date).toLocaleDateString(undefined, {
+                          year: "numeric",
+                          month: "long",
+                          day: "numeric",
+                        })}
                       </p>
                     </div>
                   );

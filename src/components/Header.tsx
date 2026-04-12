@@ -183,14 +183,14 @@ const Header = () => {
             </nav>
             <div className="user-wrap">
               <div className="currency-wrap">
-                <select onChange={handleCurrencyChange}>
+                <select value={currentCurrency} onChange={handleCurrencyChange}>
                   {currencies.map((currency) => {
                     return (
                       <option
                         key={currency.code}
-                        selected={
-                          currentCurrency === currency.code ? true : false
-                        }
+                        // selected={
+                        //   currentCurrency === currency.code ? true : false
+                        // }
                       >
                         {currency.code}
                       </option>
