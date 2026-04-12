@@ -42,7 +42,7 @@ const useHeader = () => {
     mainState: number | null;
   }) => {
     return numParam === mainState && mainState !== null
-      ? `menu-dropdown glass-morphed`
+      ? `menu-dropdown`
       : `menu-dropdown hide`;
   };
 
