@@ -16,7 +16,7 @@ const MainBanner = () => {
             in one place.
           </p>
         </div>
-        <div className="home-page-btn primary-btn">
+        <div className="home-page-btn">
           <Link to="/products">Shop Now</Link>
         </div>
         <div className="main-stats">

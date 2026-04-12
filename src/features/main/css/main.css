@@ -34,13 +34,14 @@
 }
 
 .home-page-btn {
-  border-radius: var(--radius-md);
-  transition: all var(--transition-base);
   font-size: var(--text-lg);
   font-weight: 600;
   color: var(--white);
   padding: 1rem 2rem;
+  color: var(--primary-color);
+  border: 1px solid var(--primary-color);
   max-width: fit-content;
+  border-radius: var(--radius-md);
   transition: all var(--transition-base);
 }
 
@@ -50,6 +51,9 @@
 }
 
 .home-page-btn:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: 1px solid var(--primary-color);
 }
 
 .main-stats {
