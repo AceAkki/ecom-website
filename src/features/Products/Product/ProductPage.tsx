@@ -3,6 +3,7 @@ import { fetchProductsData } from "../../../services/firebase";
 import { useQuery } from "@tanstack/react-query";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
 import useCurrencyStore from "../../../store/currencyStore";
@@ -44,7 +45,7 @@ const ProductPage = () => {
   let swiperSlides = data.images.map((imgLink: string) => {
     return (
       <SwiperSlide>
-        <div className="product-images-wrap">
+        <div className="product-images-wrap" key={imgLink}>
           <img src={imgLink} className="product-img" key={imgLink} />
         </div>
       </SwiperSlide>
@@ -59,6 +60,11 @@ const ProductPage = () => {
           <Swiper
             spaceBetween={20}
             slidesPerView={1}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[Autoplay]}
             // breakpoints={{
             //   // when window width is >= 640px
             //   240: {
@@ -150,7 +156,10 @@ const ProductPage = () => {
               <div className="reviews-cards-wrap">
                 {data.reviews.map((rev: reviewType) => {
                   return (
-                    <div className="review-card">
+                    <div
+                      className="review-card"
+                      key={rev.comment + rev.reviewerEmail}
+                    >
                       <p className="review-name">{rev.reviewerName}</p>
                       <p className="review-rating">{rev.rating}/5</p>
                       <p className="review-comment">"{rev.comment}"</p>

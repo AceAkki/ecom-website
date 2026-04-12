@@ -53,7 +53,12 @@ const Header = () => {
       );
     });
 
-    return [<li className="menu-sub-header">{key}</li>, subCategories].flat();
+    return [
+      <li className="menu-sub-header" key={key}>
+        {key}
+      </li>,
+      subCategories,
+    ].flat();
   });
 
   return (

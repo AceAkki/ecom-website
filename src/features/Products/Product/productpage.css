@@ -136,6 +136,10 @@ img.product-img {
   .product-img-wrapper {
     width: 50vw;
   }
+  .product-img-wrapper > div {
+    position: sticky;
+    top: var(--header-height);
+  }
   .product-img-wrapper .swiper-slide {
     display: flex;
     align-items: center;

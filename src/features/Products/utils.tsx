@@ -40,8 +40,8 @@ export const createStars = (num: number) => {
     ? ((emptyStarNum = maxStar - Math.ceil(num)), (fillStarNum = num - 0.5))
     : (emptyStarNum = maxStar - num);
   // fill star num is added
-  fillStarArr = [...Array(fillStarNum).keys()].map(() => {
-    return <Icon.StarIcon weight="fill" />;
+  fillStarArr = [...Array(fillStarNum).keys()].map((i) => {
+    return <Icon.StarIcon weight="fill" key={i} />;
   });
 
   // on truthy value half star is added
