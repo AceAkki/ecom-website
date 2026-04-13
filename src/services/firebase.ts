@@ -24,6 +24,28 @@ const db = getFirestore(app);
 
 const productsCollectionRef = collection(db, "products");
 
+export let mainCategories = {
+  "personal-care": ["beauty", "fragrances", "skin-care"],
+  "home-&-living": [
+    "furniture",
+    "groceries",
+    "home-decoration",
+    "kitchen-accessories",
+  ],
+  electronics: ["laptops", "mobile-accessories", "smartphones", "tablets"],
+  vehicles: ["motorcycle", "vehicle"],
+  accessories: ["sports-accessories", "sunglasses"],
+  "mens-fashion": ["mens-shirts", "mens-shoes", "mens-watches"],
+  "womens-fashion": [
+    "tops",
+    "womens-bags",
+    "womens-dresses",
+    "womens-jewellery",
+    "womens-shoes",
+    "womens-watches",
+  ],
+};
+
 export async function fetchProductsData({
   category,
   id,

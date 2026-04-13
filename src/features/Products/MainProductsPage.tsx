@@ -1,29 +1,45 @@
 import { useParams } from "react-router-dom";
+import { useShallow } from "zustand/shallow";
+
 import Product from "./components/Product";
 import usePaginationMain from "../../hooks/usePaginationMain";
-import { fetchProductsData } from "../../services/firebase";
+import useproductsStore from "../../store/productsStore";
 import { useQuery } from "@tanstack/react-query";
+import { productQueries } from "../../services/queries";
+import { mainCategories } from "../../services/firebase";
 import * as Icon from "@phosphor-icons/react";
 
 import FallBackLoader from "../../components/FallbackLoader";
 
 import "./mainProductsPage.css";
+import { useEffect } from "react";
 
 const ProductsPage = () => {
   //const products = useLoaderData();
 
   // using tanstack query for fetching data over loaderData
-  const { productCategory: category, productID: id } = useParams();
+  const { productCategory: category } = useParams();
+  let { productsData, updateProductsData } = useproductsStore(
+    useShallow((state) => ({
+      productsData: state.productsData,
+      updateProductsData: state.updateProductsData,
+    })),
+  );
+  const hasLocalData = !!productsData;
 
-  const { data, error, isLoading } = useQuery({
-    queryKey: ["allProducts", category],
-    queryFn: () => fetchProductsData({ category: category }),
-    // During this time, no new network requests will be made
-    staleTime: Infinity,
-    // How long the data stays in memory after the component unmounts
-    gcTime: 10 * 60 * 1000,
+  const { data, isLoading } = useQuery({
+    ...productQueries.categoryData(category),
+    enabled: !hasLocalData,
   });
-  console.log(data);
+
+  const finalData = hasLocalData ? productsData : data;
+
+  useEffect(() => {
+    if (data && !hasLocalData) {
+      updateProductsData(data);
+    }
+  }, [data, hasLocalData]);
+
   const {
     getCurrentData,
     getCurrentBtns,
@@ -61,11 +77,10 @@ const ProductsPage = () => {
       </section>
     );
   console.log(getCurrentData().length);
+
   return (
     <section>
-      {error ? (
-        <p>Error Fetching products data. Try Again Later ! </p>
-      ) : getCurrentData().length <= 0 ? (
+      {getCurrentData().length <= 0 ? (
         <p>Failed to load products</p>
       ) : (
         <>

@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
-import { fetchProductsData } from "../../../services/firebase";
 import { useQuery } from "@tanstack/react-query";
+import { productQueries } from "../../../services/queries.ts";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
@@ -18,16 +18,7 @@ const ProductPage = () => {
   let [activeSec, setActiveSec] = useState<Number | null>(null);
   // using tanstack query for fetching data over loaderData
   const { productID: id } = useParams();
-
-  const { data, error, isLoading } = useQuery({
-    queryKey: [id],
-    queryFn: () => fetchProductsData({ id: id }),
-    // During this time, no new network requests will be made
-    staleTime: Infinity,
-    // How long the data stays in memory after the component unmounts
-    gcTime: 10,
-  });
-  console.log(data, error, isLoading);
+  const { data } = useQuery(productQueries.idData(id));
 
   const { currentCurrencySymbol, currentMultipler } = useCurrencyStore(
     useShallow((state) => ({
