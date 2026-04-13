@@ -165,7 +165,7 @@ export async function fetchProductsData({
   }
 }
 
-export const queryProducts = () => {
-  try {
-  } catch (error) {}
-};
+// export const queryProducts = () => {
+//   try {
+//   } catch (error) {}
+// };
