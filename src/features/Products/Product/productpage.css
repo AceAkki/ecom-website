@@ -62,6 +62,12 @@ img.product-img {
   font-weight: 700;
 }
 
+.original-price {
+  font-size: 1.6rem;
+  color: var(--gray-600);
+  text-decoration: line-through;
+}
+
 .tag-wrap {
   display: flex;
   gap: 0.8rem;

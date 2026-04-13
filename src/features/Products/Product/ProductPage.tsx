@@ -43,6 +43,12 @@ const ProductPage = () => {
     );
   });
 
+  let currentPrice = (data.price * currentMultipler).toFixed(2);
+  let originalPrice = (
+    (data.price * currentMultipler) /
+    (1 - data.discountPercentage / 100)
+  ).toFixed(2);
+
   return (
     <section>
       <h1 className="product-title">{data.title}</h1>
@@ -77,8 +83,9 @@ const ProductPage = () => {
             <h2 className="product-brand">{data.brand}</h2>
             <p className="product-category">{data.category}</p>
             <h2 className="product-price">
+              <span className="original-price">{originalPrice}</span> &nbsp;
               {currentCurrencySymbol}
-              {(data.price * currentMultipler).toFixed(2)}
+              {currentPrice}
             </h2>
             <div className="product-rating">
               {createStars(generateRating(data.rating))}
