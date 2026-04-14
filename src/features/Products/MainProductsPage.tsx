@@ -25,14 +25,42 @@ const ProductsPage = () => {
       updateProductsData: state.updateProductsData,
     })),
   );
-  const hasLocalData = !!productsData;
+  const hasLocalData = productsData.length > 0;
 
   const { data, isLoading } = useQuery({
     ...productQueries.categoryData(category),
     enabled: !hasLocalData,
   });
 
-  const finalData = hasLocalData ? productsData : data;
+  type mainCategoryKey = keyof typeof mainCategories;
+
+  function getFinalData() {
+    let customCategory = category?.toLowerCase() as mainCategoryKey;
+    if (!hasLocalData) return data;
+    if (
+      hasLocalData &&
+      customCategory !== undefined &&
+      Object.keys(mainCategories).includes(customCategory as string)
+    ) {
+      return productsData.filter((product) =>
+        mainCategories[customCategory].includes(product.category),
+      );
+    } else if (
+      customCategory !== undefined &&
+      !Object.keys(mainCategories).includes(customCategory as string)
+    ) {
+      return productsData.filter(
+        (product) => product.category === customCategory,
+      );
+    } else {
+      productsData;
+    }
+  }
+
+  //const finalData = hasLocalData ? productsData : data;
+
+  const finalData = getFinalData();
+  console.log(finalData);
 
   useEffect(() => {
     if (data && !hasLocalData) {
@@ -50,7 +78,7 @@ const ProductsPage = () => {
     previousBtn,
     nextBtn,
   } = usePaginationMain({
-    mainDataArr: data || [], // fallback to empty array
+    mainDataArr: finalData || [], // fallback to empty array
     pageSize: 10,
     enableParams: true,
   });
