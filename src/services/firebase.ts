@@ -46,6 +46,7 @@ export let mainCategories = {
   ],
 };
 
+// need to shorten this long function- its handling too much right now
 export async function fetchProductsData({
   category,
   id,
