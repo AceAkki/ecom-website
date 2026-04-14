@@ -34,6 +34,8 @@ const ProductsPage = () => {
 
   type mainCategoryKey = keyof typeof mainCategories;
 
+  // either from local or fetch data
+  // needs to be fixed
   function getFinalData() {
     let customCategory = category?.toLowerCase() as mainCategoryKey;
     if (!hasLocalData) return data;
