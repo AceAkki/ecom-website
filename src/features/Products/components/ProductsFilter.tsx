@@ -1,5 +1,4 @@
 import type { productType } from "../productTypes";
-import Product from "./Product";
 
 const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
   let brands = [...new Set(currentData.map((product) => product.brand))];
