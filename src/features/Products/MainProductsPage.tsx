@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
 
 import Product from "./components/Product";
+import ProductsFilter from "./components/ProductsFilter";
 import usePaginationMain from "../../hooks/usePaginationMain";
 import useproductsStore from "../../store/productsStore";
 import { useQuery } from "@tanstack/react-query";
@@ -55,7 +56,7 @@ const ProductsPage = () => {
         (product) => product.category === customCategory,
       );
     } else {
-      productsData;
+      return productsData;
     }
   }
 
@@ -65,7 +66,7 @@ const ProductsPage = () => {
   console.log(finalData);
 
   useEffect(() => {
-    if (data && !hasLocalData) {
+    if (data && !hasLocalData && category === undefined) {
       updateProductsData(data);
     }
   }, [data, hasLocalData]);
@@ -109,35 +110,38 @@ const ProductsPage = () => {
   console.log(getCurrentData().length);
 
   return (
-    <section>
+    <section className="products-main-wrapper">
       {getCurrentData().length <= 0 ? (
         <p>Failed to load products</p>
       ) : (
         <>
-          <div className="products-wrap">
-            {getCurrentData().map((product) => (
-              <Product key={product.id} data={product} />
-            ))}
-          </div>
+          <ProductsFilter currentData={finalData} />
+          <div>
+            <div className="products-wrap">
+              {getCurrentData().map((product) => (
+                <Product key={product.id} data={product} />
+              ))}
+            </div>
 
-          <div className="pagination-wrap">
-            <button
-              disabled={previousDisabled()}
-              onClick={previousBtn}
-              className="nav-btn"
-            >
-              <Icon.CaretCircleLeftIcon size={32} />
-            </button>
+            <div className="pagination-wrap">
+              <button
+                disabled={previousDisabled()}
+                onClick={previousBtn}
+                className="nav-btn"
+              >
+                <Icon.CaretCircleLeftIcon size={32} />
+              </button>
 
-            {renderBtns()}
+              {renderBtns()}
 
-            <button
-              disabled={nextDisabled()}
-              onClick={nextBtn}
-              className="nav-btn"
-            >
-              <Icon.CaretCircleRightIcon size={32} />
-            </button>
+              <button
+                disabled={nextDisabled()}
+                onClick={nextBtn}
+                className="nav-btn"
+              >
+                <Icon.CaretCircleRightIcon size={32} />
+              </button>
+            </div>
           </div>
         </>
       )}
