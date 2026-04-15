@@ -3,17 +3,18 @@ import Product from "./Product";
 
 const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
   let brands = [...new Set(currentData.map((product) => product.brand))];
-
+  let priceRange = currentData.map((product) => product.price).sort();
+  console.log(priceRange);
   return (
     <div className="product-filter-wrap">
       <div className="price-wrap">
         <label htmlFor="min">
           Min
-          <input type="range" name="min" />
+          <input type="range" name="min" min={priceRange[0]} />
         </label>
         <label htmlFor="max">
           Max
-          <input type="range" name="max" />
+          <input type="range" name="max" max={priceRange.at(-1)} />
         </label>
       </div>
       <div className="rating-wrap">
@@ -32,7 +33,11 @@ const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
       <div className="brand-wrap">
         <select name="brands">
           {brands.map((brand) => {
-            return <option value="brand">{brand}</option>;
+            return (
+              <option key={brand} value="brand">
+                {brand}
+              </option>
+            );
           })}
         </select>
       </div>
