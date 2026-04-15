@@ -1,3 +1,8 @@
+.products-main-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
 .products-wrap {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -119,8 +124,11 @@
 }
 
 @media screen and (min-width: 1080px) {
+  .products-main-wrapper {
+    flex-direction: row;
+  }
   .products-wrap {
     grid-template-columns: repeat(5, 1fr);
-    margin: 2rem 8rem;
+    margin: 2rem 3rem;
   }
 }
