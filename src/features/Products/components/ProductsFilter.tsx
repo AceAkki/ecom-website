@@ -1,6 +1,9 @@
 import type { productType } from "../productTypes";
+import Product from "./Product";
 
-const ProductsFilter = ({ currentData }: { currentData: productType }) => {
+const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
+  let brands = [...new Set(currentData.map((product) => product.brand))];
+
   return (
     <div className="product-filter-wrap">
       <div className="price-wrap">
@@ -27,7 +30,11 @@ const ProductsFilter = ({ currentData }: { currentData: productType }) => {
         </label>
       </div>
       <div className="brand-wrap">
-        <select name="brands"></select>
+        <select name="brands">
+          {brands.map((brand) => {
+            return <option value="brand">{brand}</option>;
+          })}
+        </select>
       </div>
     </div>
   );
