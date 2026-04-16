@@ -1,24 +1,24 @@
-import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { productQueries } from "../../../services/queries.ts";
-
+import { useState } from "react";
+import { useShallow } from "zustand/shallow";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
 import "swiper/css";
 
-import useCurrencyStore from "../../../store/currencyStore";
-import { useShallow } from "zustand/shallow";
+// components imports start
+import { StarsRatings, createStars } from "../components/StarsRatings.tsx";
+import FallBackLoader from "../../../components/FallbackLoader";
+// components imports end
 
-import "./productpage.css";
-import { useState } from "react";
-import { generateRating, createStars } from "../utils";
+import useCurrencyStore from "../../../store/currencyStore";
+import useProductsData from "../useProductsData";
+
 import type { reviewType } from "../productTypes";
+import "./productpage.css";
 
 const ProductPage = () => {
   let [activeSec, setActiveSec] = useState<Number | null>(null);
   // using tanstack query for fetching data over loaderData
-  const { productID: id } = useParams();
-  const { data } = useQuery(productQueries.idData(id));
+  const { finalData, isLoading } = useProductsData();
 
   const { currentCurrencySymbol, currentMultipler } = useCurrencyStore(
     useShallow((state) => ({
@@ -33,7 +33,7 @@ const ProductPage = () => {
     });
   };
 
-  let swiperSlides = data.images.map((imgLink: string) => {
+  let swiperSlides = finalData.images.map((imgLink: string) => {
     return (
       <SwiperSlide>
         <div className="product-images-wrap" key={imgLink}>
@@ -43,15 +43,23 @@ const ProductPage = () => {
     );
   });
 
-  let currentPrice = (data.price * currentMultipler).toFixed(2);
+  let currentPrice = (finalData.price * currentMultipler).toFixed(2);
   let originalPrice = (
-    (data.price * currentMultipler) /
-    (1 - data.discountPercentage / 100)
+    (finalData.price * currentMultipler) /
+    (1 - finalData.discountPercentage / 100)
   ).toFixed(2);
+
+  // fallback loader is data is not ready or isLoading
+  if (isLoading || !finalData)
+    return (
+      <section className="loader-section">
+        <FallBackLoader />
+      </section>
+    );
 
   return (
     <section>
-      <h1 className="product-title">{data.title}</h1>
+      <h1 className="product-title">{finalData.title}</h1>
       <div className="product-content-wrap">
         <div className="product-img-wrapper">
           <Swiper
@@ -79,23 +87,23 @@ const ProductPage = () => {
         </div>
         <div className="product-info-wrap">
           <div className="main-product-wrap">
-            <p className="product-desc">{data.description}</p>
-            <h2 className="product-brand">{data.brand}</h2>
-            <p className="product-category">{data.category}</p>
+            <p className="product-desc">{finalData.description}</p>
+            <h2 className="product-brand">{finalData.brand}</h2>
+            <p className="product-category">{finalData.category}</p>
             <h2 className="product-price">
               <span className="original-price">{originalPrice}</span> &nbsp;
               {currentCurrencySymbol}
               {currentPrice}
             </h2>
             <div className="product-rating">
-              {createStars(generateRating(data.rating))}
+              {createStars(StarsRatings(finalData.rating))}
             </div>
-            {/* <p>Stock : {data.stock}</p> */}
-            <p className="status">{data.availabilityStatus}</p>
+            {/* <p>Stock : {finalData.stock}</p> */}
+            <p className="status">{finalData.availabilityStatus}</p>
           </div>
 
           <div className="tag-wrap">
-            {data.tags.map((tag: string) => {
+            {finalData.tags.map((tag: string) => {
               return (
                 <p className="tag" key={tag}>
                   #{tag}
@@ -114,11 +122,11 @@ const ProductPage = () => {
             {activeSec === 0 ? (
               <div className="other-product-info">
                 <strong>Warranty Information</strong>
-                <p>{data.warrantyInformation}</p>
+                <p>{finalData.warrantyInformation}</p>
                 <strong>Shipping Information</strong>
-                <p>{data.shippingInformation}</p>
+                <p>{finalData.shippingInformation}</p>
                 <strong>Return Policy</strong>
-                <p>{data.returnPolicy}</p>
+                <p>{finalData.returnPolicy}</p>
               </div>
             ) : null}
           </div>
@@ -133,13 +141,13 @@ const ProductPage = () => {
             {activeSec === 1 ? (
               <div className="other-product-info">
                 <strong>Weight :</strong>
-                <p> {data.weight}</p>
+                <p> {finalData.weight}</p>
                 <strong>Width:</strong>
-                <p> {data.dimensions.width}</p>
+                <p> {finalData.dimensions.width}</p>
                 <strong>Height:</strong>
-                <p> {data.dimensions.height}</p>
+                <p> {finalData.dimensions.height}</p>
                 <strong>Depth:</strong>
-                <p> {data.dimensions.depth}</p>
+                <p> {finalData.dimensions.depth}</p>
               </div>
             ) : null}
           </div>
@@ -152,7 +160,7 @@ const ProductPage = () => {
             </h3>
             {activeSec === 2 ? (
               <div className="reviews-cards-wrap">
-                {data.reviews.map((rev: reviewType) => {
+                {finalData.reviews.map((rev: reviewType) => {
                   return (
                     <div
                       className="review-card"

@@ -1,7 +1,7 @@
 import * as Icon from "@phosphor-icons/react";
 
 // to generate rating
-export const generateRating = (rating: number) => {
+export const StarsRatings = (rating: number) => {
   // hashmaps maps rating with conditions
   const map = new Map([
     [5, rating >= 4.5],
