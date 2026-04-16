@@ -9,8 +9,10 @@ import { StarsRatings, createStars } from "../components/StarsRatings.tsx";
 import FallBackLoader from "../../../components/FallbackLoader";
 // components imports end
 
+// custom hooks start
 import useCurrencyStore from "../../../store/currencyStore";
 import useProductsData from "../useProductsData";
+// custom hooks end
 
 import type { reviewType } from "../productTypes";
 import "./productpage.css";

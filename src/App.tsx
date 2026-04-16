@@ -3,6 +3,7 @@ import {
   createRoutesFromElements,
   RouterProvider,
   Route,
+  type Params,
 } from "react-router-dom";
 import MainFrame from "./components/MainFrame";
 import MainPage from "./features/main/MainPage";
@@ -23,10 +24,44 @@ import NotFoundPage from "./features/NotFound";
 // intialize query client
 const queryClient = new QueryClient();
 
+const queryLoader = (params: Params) => {
+  return queryClient.ensureQueryData({
+    queryKey: ["allProducts", params.productCategory, params.id],
+    queryFn: async () => {
+      if (params.productCategory) {
+        return await fetchProductsData({
+          category: params.productCategory,
+        });
+      }
+      if (params.productID) {
+        return await fetchProductsData({
+          category: params.productId,
+        });
+      }
+      if (params === undefined) {
+        return await fetchProductsData({});
+      }
+    },
+    // During this time, no new network requests will be made
+    staleTime: Infinity,
+    // How long the data stays in memory after the component unmounts
+    gcTime: 10 * 60 * 1000,
+  });
+};
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainFrame />} errorElement={<ErrorPage />}>
-      <Route index element={<MainPage />} />
+      <Route
+        index
+        element={<MainPage />}
+        loader={() => queryLoader(undefined)}
+        hydrateFallbackElement={
+          <section className="loader-section">
+            <FallBackLoader />
+          </section>
+        }
+      />
       <Route path="about" element={<AboutPage />} />
       {/*path="products/:productCategory?" path makes it optional allowing all products or just specific category  */}
       <Route
