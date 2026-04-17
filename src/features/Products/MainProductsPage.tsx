@@ -36,10 +36,7 @@ const ProductsPage = () => {
     ) {
       return product;
     }
-    if (
-      (filters.brand !== "All" && filters.brand === product.brand) ||
-      filters.brand === "All"
-    ) {
+    if (filters.brand === product.brand) {
       return product;
     }
   });

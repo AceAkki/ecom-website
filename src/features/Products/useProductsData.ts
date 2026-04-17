@@ -1,27 +1,23 @@
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useShallow } from "zustand/shallow";
+import { useQuery } from "@tanstack/react-query";
 
 import useproductsStore from "../../store/productsStore";
-import { useQuery } from "@tanstack/react-query";
 import { productQueries } from "../../services/queries";
 import { mainCategories } from "../../services/firebase";
-import type { productType } from "./productTypes";
 type mainCategoryKey = keyof typeof mainCategories;
 
 const useProductsData = () => {
   // params
   const { productCategory: category, productID: id } = useParams();
 
-  let { productsData, updateProductsData, filters, resetFilters } =
-    useproductsStore(
-      useShallow((state) => ({
-        productsData: state.productsData,
-        updateProductsData: state.updateProductsData,
-        filters: state.filters,
-        resetFilters: state.resetFilters,
-      })),
-    );
+  let { productsData, updateProductsData } = useproductsStore(
+    useShallow((state) => ({
+      productsData: state.productsData,
+      updateProductsData: state.updateProductsData,
+    })),
+  );
   const hasLocalData = productsData.length > 0;
 
   // using tanstack query for fetching data over loaderData
@@ -70,12 +66,7 @@ const useProductsData = () => {
     if (data && !hasLocalData && category === undefined) {
       updateProductsData(data);
     }
-    if (finalData.length <= 0) {
-      setTimeout(() => {
-        resetFilters();
-      }, 10000);
-    }
-  }, [data, hasLocalData, finalData]);
+  }, [data, hasLocalData]);
 
   return {
     finalData,
