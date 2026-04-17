@@ -44,13 +44,17 @@ const useProductsData = () => {
       return productsData.filter((product) =>
         mainCategories[customCategory].includes(product.category),
       );
-    } else if (
+    }
+    if (
+      hasLocalData &&
       customCategory !== undefined &&
-      !Object.keys(mainCategories).includes(customCategory as string)
+      Object.keys(mainCategories).includes(customCategory as string)
     ) {
-      return productsData.filter(
-        (product) => product.category === customCategory,
+      return productsData.filter((product) =>
+        mainCategories[customCategory].includes(product.category),
       );
+    } else if (id !== undefined) {
+      return productsData.find((product) => product.id === parseInt(id));
     } else {
       return productsData;
     }
