@@ -12,15 +12,12 @@ const useProductsData = () => {
   // params
   const { productCategory: category, productID: id } = useParams();
 
-  let { productsData, updateProductsData, currentData, updateCurrentData } =
-    useproductsStore(
-      useShallow((state) => ({
-        productsData: state.productsData,
-        updateProductsData: state.updateProductsData,
-        currentData: state.currentData,
-        updateCurrentData: state.updateCurrentData,
-      })),
-    );
+  let { productsData, updateProductsData } = useproductsStore(
+    useShallow((state) => ({
+      productsData: state.productsData,
+      updateProductsData: state.updateProductsData,
+    })),
+  );
   const hasLocalData = productsData.length > 0;
 
   // using tanstack query for fetching data over loaderData
