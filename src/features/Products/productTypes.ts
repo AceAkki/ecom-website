@@ -8,7 +8,7 @@ export type productType = {
   rating: number;
   stock: number;
   tags: string[];
-  brand: number;
+  brand: string;
   sku: string;
   weight: number;
   dimensions: {

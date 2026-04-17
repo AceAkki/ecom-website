@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+import { useShallow } from "zustand/shallow";
 // components imports start
 import Product from "./components/Product";
 import ProductsFilter from "./components/ProductsFilter";
@@ -7,8 +9,10 @@ import FallBackLoader from "../../components/FallbackLoader";
 // custom hooks start
 import usePaginationMain from "../../hooks/usePaginationMain";
 import useProductsData from "./useProductsData";
+import useproductsStore from "../../store/productsStore";
 // custom hooks end
 
+import type { productType } from "./productTypes";
 import * as Icon from "@phosphor-icons/react";
 import "./mainProductsPage.css";
 
@@ -16,6 +20,37 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   const { finalData, isLoading } = useProductsData();
+  let { productsData, filters, resetFilters } = useproductsStore(
+    useShallow((state) => ({
+      productsData: state.productsData,
+      filters: state.filters,
+      resetFilters: state.resetFilters,
+    })),
+  );
+  let filteredData = finalData.filter((product: productType) => {
+    if (
+      filters.priceRange[0] < product.price &&
+      filters.priceRange[1] > product.price &&
+      filters.rating > product.rating &&
+      filters.inStockOnly
+    ) {
+      return product;
+    }
+    if (
+      (filters.brand !== "All" && filters.brand === product.brand) ||
+      filters.brand === "All"
+    ) {
+      return product;
+    }
+  });
+
+  useEffect(() => {
+    if (finalData.length <= 0) {
+      setTimeout(() => {
+        resetFilters();
+      }, 10000);
+    }
+  }, [finalData]);
   const {
     getCurrentData,
     getCurrentBtns,
@@ -26,24 +61,10 @@ const ProductsPage = () => {
     previousBtn,
     nextBtn,
   } = usePaginationMain({
-    mainDataArr: (finalData as any[]) || [], // fallback to empty array
+    mainDataArr: (filteredData as any[]) || [], // fallback to empty array
     pageSize: 10,
     enableParams: true,
   });
-
-  const renderBtns = () => {
-    return getCurrentBtns().map((pageNum) => {
-      return (
-        <button
-          key={pageNum}
-          className={getPageBtnClassName(pageNum)}
-          onClick={() => handlePageBtnClick(pageNum)}
-        >
-          <Icon.FileIcon size={32} /> {pageNum}
-        </button>
-      );
-    });
-  };
 
   // fallback loader is data is not ready or isLoading
   if (isLoading || !finalData)
@@ -60,7 +81,7 @@ const ProductsPage = () => {
       ) : (
         <>
           <div>
-            <ProductsFilter currentData={finalData} />
+            <ProductsFilter />
           </div>
           <div>
             <div className="products-wrap">
@@ -78,7 +99,17 @@ const ProductsPage = () => {
                 <Icon.CaretCircleLeftIcon size={32} />
               </button>
 
-              {renderBtns()}
+              {getCurrentBtns().map((pageNum) => {
+                return (
+                  <button
+                    key={pageNum}
+                    className={getPageBtnClassName(pageNum)}
+                    onClick={() => handlePageBtnClick(pageNum)}
+                  >
+                    <Icon.FileIcon size={32} /> {pageNum}
+                  </button>
+                );
+              })}
 
               <button
                 disabled={nextDisabled()}

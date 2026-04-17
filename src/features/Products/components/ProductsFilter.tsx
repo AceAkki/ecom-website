@@ -1,23 +1,29 @@
-import type { productType } from "../productTypes";
-import { useState } from "react";
-import * as Icon from "@phosphor-icons/react";
+import useproductsStore from "../../../store/productsStore";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
+import * as Icon from "@phosphor-icons/react";
 import "./productsFilter.css";
+import { useShallow } from "zustand/shallow";
 
-const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
-  const [value, setValue] = useState<[number, number]>([30, 60]);
-  const [currentRating, setCurrentRating] = useState<number | null>(null);
-
-  let brands = [...new Set(currentData.map((product) => product.brand))];
-  let priceRange = currentData
+const ProductsFilter = () => {
+  const { productsData, filters, updateFilters } = useproductsStore(
+    useShallow((state) => ({
+      productsData: state.productsData,
+      filters: state.filters,
+      updateFilters: state.updateFilters,
+    })),
+  );
+  let brands = [
+    "All",
+    ...new Set(productsData.map((product) => product.brand)),
+  ];
+  let priceRange = productsData
     .map((product) => product.price)
     .sort((a, b) => a - b);
   let lastPrice = priceRange.at(-1);
-  let minPrice = priceRange[0];
+  let minPrice = priceRange[0] || 0;
   let maxPrice = lastPrice ? priceRange[0] + lastPrice : 0;
   // let middle = maxPrice / 2;
-  console.log(value);
 
   return (
     <div className="product-filter-wrap">
@@ -30,10 +36,12 @@ const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
             <input type="range" name="max" min={middle} max={maxPrice} />
             */}
             <RangeSlider
-              value={value}
+              value={filters.priceRange}
               min={minPrice}
               max={maxPrice}
-              onInput={setValue}
+              onInput={(val: [number, number]) =>
+                updateFilters({ priceRange: val })
+              }
             />
           </div>
         </label>
@@ -50,12 +58,12 @@ const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
                 <button
                   className="rating-btn"
                   key={el}
-                  onClick={() => setCurrentRating(el)}
+                  onClick={() => updateFilters({ rating: el })}
                 >
                   <input
                     type="checkbox"
-                    name={`${el}`}
-                    checked={currentRating === el ? true : false}
+                    checked={filters.rating === el}
+                    readOnly
                   />
                   <Icon.StarIcon weight="fill" size={32} /> {el} & Up
                 </button>
@@ -67,14 +75,24 @@ const ProductsFilter = ({ currentData }: { currentData: productType[] }) => {
       <div className="filter-wrap">
         <h5 className="filter-title"> Availability</h5>
         <label htmlFor="status" className="status-wrap">
-          <input type="checkbox" name="status" />
+          <input
+            type="checkbox"
+            name="status"
+            onChange={() =>
+              updateFilters({ inStockOnly: !filters.inStockOnly })
+            }
+          />
           <p>Stock Availability Status</p>
         </label>
       </div>
       <hr className="filter-divider" />
       <div className="filter-wrap">
         <h5 className="filter-title"> Brands</h5>
-        <select name="brands">
+        <select
+          name="brands"
+          value={filters.brand}
+          onChange={(e) => updateFilters({ brand: e.target.value })}
+        >
           {brands.map((brand) => {
             return (
               <option key={brand} value="brand">
