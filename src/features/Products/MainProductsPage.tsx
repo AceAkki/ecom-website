@@ -59,7 +59,9 @@ const ProductsPage = () => {
         <p>Failed to load products</p>
       ) : (
         <>
-          <ProductsFilter currentData={finalData} />
+          <div>
+            <ProductsFilter currentData={finalData} />
+          </div>
           <div>
             <div className="products-wrap">
               {getCurrentData().map((product) => (
