@@ -20,9 +20,8 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   const { finalData, isLoading } = useProductsData();
-  let { productsData, filters, resetFilters } = useproductsStore(
+  let { filters, resetFilters } = useproductsStore(
     useShallow((state) => ({
-      productsData: state.productsData,
       filters: state.filters,
       resetFilters: state.resetFilters,
     })),
