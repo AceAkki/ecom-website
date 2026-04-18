@@ -20,33 +20,33 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   const { finalData, isLoading } = useProductsData();
-  let { filters, resetFilters } = useproductsStore(
-    useShallow((state) => ({
-      filters: state.filters,
-      resetFilters: state.resetFilters,
-    })),
-  );
-  let filteredData = finalData.filter((product: productType) => {
-    if (
-      filters.priceRange[0] < product.price &&
-      filters.priceRange[1] > product.price &&
-      filters.rating > product.rating &&
-      filters.inStockOnly
-    ) {
-      return product;
-    }
-    if (filters.brand === product.brand) {
-      return product;
-    }
-  });
+  // let { filters, resetFilters } = useproductsStore(
+  //   useShallow((state) => ({
+  //     filters: state.filters,
+  //     resetFilters: state.resetFilters,
+  //   })),
+  // );
+  // let filteredData = finalData.filter((product: productType) => {
+  //   if (
+  //     filters.priceRange[0] < product.price &&
+  //     filters.priceRange[1] > product.price &&
+  //     filters.rating > product.rating &&
+  //     filters.inStockOnly
+  //   ) {
+  //     return product;
+  //   }
+  //   if (filters.brand === product.brand) {
+  //     return product;
+  //   }
+  // });
 
-  useEffect(() => {
-    if (finalData.length <= 0) {
-      setTimeout(() => {
-        resetFilters();
-      }, 10000);
-    }
-  }, [finalData]);
+  // useEffect(() => {
+  //   if (finalData.length <= 0) {
+  //     setTimeout(() => {
+  //       resetFilters();
+  //     }, 10000);
+  //   }
+  // }, [finalData]);
   const {
     getCurrentData,
     getCurrentBtns,
@@ -57,7 +57,7 @@ const ProductsPage = () => {
     previousBtn,
     nextBtn,
   } = usePaginationMain({
-    mainDataArr: (filteredData as any[]) || [], // fallback to empty array
+    mainDataArr: (finalData as any[]) || [], // fallback to empty array
     pageSize: 10,
     enableParams: true,
   });
