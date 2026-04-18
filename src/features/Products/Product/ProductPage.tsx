@@ -35,22 +35,6 @@ const ProductPage = () => {
     });
   };
 
-  let swiperSlides = finalData.images.map((imgLink: string) => {
-    return (
-      <SwiperSlide>
-        <div className="product-images-wrap" key={imgLink}>
-          <img src={imgLink} className="product-img" key={imgLink} />
-        </div>
-      </SwiperSlide>
-    );
-  });
-
-  let currentPrice = (finalData.price * currentMultipler).toFixed(2);
-  let originalPrice = (
-    (finalData.price * currentMultipler) /
-    (1 - finalData.discountPercentage / 100)
-  ).toFixed(2);
-
   // fallback loader is data is not ready or isLoading
   if (isLoading || !finalData)
     return (
@@ -84,7 +68,15 @@ const ProductPage = () => {
             //   },
             // }}
           >
-            {swiperSlides}
+            {finalData.images.map((imgLink: string) => {
+              return (
+                <SwiperSlide>
+                  <div className="product-images-wrap" key={imgLink}>
+                    <img src={imgLink} className="product-img" key={imgLink} />
+                  </div>
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
         </div>
         <div className="product-info-wrap">
@@ -93,9 +85,15 @@ const ProductPage = () => {
             <h2 className="product-brand">{finalData.brand}</h2>
             <p className="product-category">{finalData.category}</p>
             <h2 className="product-price">
-              <span className="original-price">{originalPrice}</span> &nbsp;
+              <span className="original-price">
+                {(
+                  (finalData.price * currentMultipler) /
+                  (1 - finalData.discountPercentage / 100)
+                ).toFixed(2)}
+              </span>{" "}
+              &nbsp;
               {currentCurrencySymbol}
-              {currentPrice}
+              {(finalData.price * currentMultipler).toFixed(2)}
             </h2>
             <div className="product-rating">
               {createStars(StarsRatings(finalData.rating))}

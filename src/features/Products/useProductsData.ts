@@ -20,50 +20,44 @@ const useProductsData = () => {
   );
   const hasLocalData = productsData.length > 0;
 
+  const queryConfig = category
+    ? productQueries.categoryData(category)
+    : id
+      ? productQueries.idData(id)
+      : productQueries.allData();
+
   // using tanstack query for fetching data over loaderData
-  const { data, isLoading } = useQuery(
-    category !== undefined
-      ? {
-          ...productQueries.categoryData(category),
-          enabled: !hasLocalData,
-        }
-      : id !== undefined
-        ? { ...productQueries.idData(id), enabled: !hasLocalData }
-        : { ...productQueries.allData(), enabled: !hasLocalData },
-  );
+  const { data, isLoading } = useQuery({
+    ...queryConfig,
+    enabled: !hasLocalData,
+  });
 
   // either from local or fetch data
   function getFinalData() {
-    let customCategory = category?.toLowerCase() as mainCategoryKey;
     if (!hasLocalData) return data;
-    if (
-      hasLocalData &&
-      customCategory !== undefined &&
-      Object.keys(mainCategories).includes(customCategory as string)
-    ) {
-      return productsData.filter((product) =>
-        mainCategories[customCategory].includes(product.category),
-      );
-    }
-    if (
-      hasLocalData &&
-      customCategory !== undefined &&
-      Object.keys(mainCategories).includes(customCategory as string)
-    ) {
-      return productsData.filter((product) =>
-        mainCategories[customCategory].includes(product.category),
-      );
-    } else if (id !== undefined) {
+    if (id !== undefined) {
       return productsData.find((product) => product.id === parseInt(id));
-    } else {
-      return productsData;
     }
+    if (category) {
+      let customCategory = category.toLowerCase() as mainCategoryKey;
+      if (Object.keys(mainCategories).includes(customCategory as string)) {
+        return productsData.filter((product) =>
+          mainCategories[customCategory].includes(product.category),
+        );
+      }
+      if (productsData.find((product) => product.category === customCategory)) {
+        return productsData.filter(
+          (product) => product.category === customCategory,
+        );
+      }
+    }
+    return productsData;
   }
 
   const finalData = getFinalData();
 
   useEffect(() => {
-    if (data && !hasLocalData && category === undefined) {
+    if (data && !hasLocalData && category === undefined && id === undefined) {
       updateProductsData(data);
     }
   }, [data, hasLocalData]);
