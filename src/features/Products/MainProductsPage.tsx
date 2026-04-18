@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useShallow } from "zustand/shallow";
 // components imports start
 import Product from "./components/Product";
@@ -20,33 +20,30 @@ const ProductsPage = () => {
   //const products = useLoaderData();
 
   const { finalData, isLoading } = useProductsData();
-  // let { filters, resetFilters } = useproductsStore(
-  //   useShallow((state) => ({
-  //     filters: state.filters,
-  //     resetFilters: state.resetFilters,
-  //   })),
-  // );
-  // let filteredData = finalData.filter((product: productType) => {
-  //   if (
-  //     filters.priceRange[0] < product.price &&
-  //     filters.priceRange[1] > product.price &&
-  //     filters.rating > product.rating &&
-  //     filters.inStockOnly
-  //   ) {
-  //     return product;
-  //   }
-  //   if (filters.brand === product.brand) {
-  //     return product;
-  //   }
-  // });
+  let { filters, resetFilters } = useproductsStore(
+    useShallow((state) => ({
+      filters: state.filters,
+      resetFilters: state.resetFilters,
+    })),
+  );
+  let filteredData = useMemo(() => {
+    if (!finalData) return [];
+    return finalData.filter((product: productType) => {
+      const matchesPrice =
+        product.price >= filters.priceRange[0] &&
+        product.price <= filters.priceRange[1];
 
-  // useEffect(() => {
-  //   if (finalData.length <= 0) {
-  //     setTimeout(() => {
-  //       resetFilters();
-  //     }, 10000);
-  //   }
-  // }, [finalData]);
+      const matchesRating = product.rating >= filters.rating;
+      const matchesStock = filters.inStockOnly
+        ? product.availabilityStatus
+        : true;
+      const matchesBrand = filters.brand ? "All" === filters.brand : true;
+      console.log(matchesPrice, matchesRating, matchesStock, matchesBrand);
+      return matchesPrice && matchesRating && matchesStock && matchesBrand;
+    });
+  }, [finalData, filters]);
+  console.log(filteredData);
+
   const {
     getCurrentData,
     getCurrentBtns,
@@ -57,10 +54,17 @@ const ProductsPage = () => {
     previousBtn,
     nextBtn,
   } = usePaginationMain({
-    mainDataArr: (finalData as any[]) || [], // fallback to empty array
+    mainDataArr: (filteredData as any[]) || [], // fallback to empty array
     pageSize: 10,
     enableParams: true,
   });
+
+  useEffect(() => {
+    if (finalData && finalData.length === 0 && !isLoading) {
+      const timer = setTimeout(() => resetFilters(), 10000);
+      return () => clearTimeout(timer);
+    }
+  }, [finalData, isLoading, resetFilters]);
 
   // fallback loader is data is not ready or isLoading
   if (isLoading || !finalData)
@@ -72,8 +76,11 @@ const ProductsPage = () => {
 
   return (
     <section className="products-main-wrapper">
-      {getCurrentData().length <= 0 ? (
-        <p>Failed to load products</p>
+      {filteredData.length <= 0 ? (
+        <div className="no-results">
+          <p>No products match your filters.</p>
+          <button onClick={resetFilters}>Clear All Filters</button>
+        </div>
       ) : (
         <>
           <div>
