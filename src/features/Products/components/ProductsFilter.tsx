@@ -1,29 +1,24 @@
 import useproductsStore from "../../../store/productsStore";
+import { useShallow } from "zustand/shallow";
 import RangeSlider from "react-range-slider-input";
 import "react-range-slider-input/dist/style.css";
 import * as Icon from "@phosphor-icons/react";
 import "./productsFilter.css";
-import { useShallow } from "zustand/shallow";
+import type { productType } from "../productTypes";
 
-const ProductsFilter = () => {
-  const { productsData, filters, updateFilters } = useproductsStore(
+const ProductsFilter = ({ finalData }: { finalData: productType[] }) => {
+  const { filters, updateFilters } = useproductsStore(
     useShallow((state) => ({
-      productsData: state.productsData,
       filters: state.filters,
       updateFilters: state.updateFilters,
     })),
   );
-  let brands = [
-    "All",
-    ...new Set(productsData.map((product) => product.brand)),
-  ];
-  let priceRange = productsData
+  let brands = ["All", ...new Set(finalData.map((product) => product.brand))];
+  let priceRange = finalData
     .map((product) => product.price)
     .sort((a, b) => a - b);
-  let lastPrice = priceRange.at(-1);
   let minPrice = priceRange[0] || 0;
-  let maxPrice = lastPrice ? priceRange[0] + lastPrice : 0;
-  // let middle = maxPrice / 2;
+  let maxPrice = priceRange.at(-1) || 0;
 
   return (
     <div className="product-filter-wrap">

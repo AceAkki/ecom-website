@@ -79,7 +79,7 @@ const ProductsPage = () => {
     <section className="products-main-wrapper">
       <>
         <div>
-          <ProductsFilter />
+          <ProductsFilter finalData={finalData} />
         </div>
         {filteredData.length <= 0 ? (
           <div className="no-results">
