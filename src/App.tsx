@@ -23,7 +23,6 @@ import NotFoundPage from "./features/NotFound";
 // import { useQuery } from "@tanstack/react-query";
 // import { fetchProductsData } from "./services/firebase";
 // import FallBackLoader from "./components/FallbackLoader";
-
 import "./App.css";
 
 // intialize query client
