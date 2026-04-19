@@ -37,7 +37,8 @@ const ProductsPage = () => {
       const matchesStock = filters.inStockOnly
         ? product.availabilityStatus
         : true;
-      const matchesBrand = filters.brand ? "All" === filters.brand : true;
+      const matchesBrand =
+        filters.brand === product.brand || filters.brand === "All";
       console.log(matchesPrice, matchesRating, matchesStock, matchesBrand);
       return matchesPrice && matchesRating && matchesStock && matchesBrand;
     });
@@ -76,16 +77,16 @@ const ProductsPage = () => {
 
   return (
     <section className="products-main-wrapper">
-      {filteredData.length <= 0 ? (
-        <div className="no-results">
-          <p>No products match your filters.</p>
-          <button onClick={resetFilters}>Clear All Filters</button>
+      <>
+        <div>
+          <ProductsFilter />
         </div>
-      ) : (
-        <>
-          <div>
-            <ProductsFilter />
+        {filteredData.length <= 0 ? (
+          <div className="no-results">
+            <p>No products match your filters.</p>
+            <button onClick={resetFilters}>Clear All Filters</button>
           </div>
+        ) : (
           <div>
             <div className="products-wrap">
               {getCurrentData().map((product) => (
@@ -123,8 +124,8 @@ const ProductsPage = () => {
               </button>
             </div>
           </div>
-        </>
-      )}
+        )}
+      </>
     </section>
   );
 };

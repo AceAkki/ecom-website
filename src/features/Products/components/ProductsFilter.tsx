@@ -91,11 +91,13 @@ const ProductsFilter = () => {
         <select
           name="brands"
           value={filters.brand}
-          onChange={(e) => updateFilters({ brand: e.target.value })}
+          onChange={(e) => {
+            updateFilters({ brand: e.target.value });
+          }}
         >
           {brands.map((brand) => {
             return (
-              <option key={brand} value="brand">
+              <option key={brand} value={brand}>
                 {brand}
               </option>
             );
