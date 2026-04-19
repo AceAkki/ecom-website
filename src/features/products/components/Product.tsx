@@ -14,14 +14,12 @@ const Product = ({ data }: { data: productType }) => {
   // used for skeleton load
   let [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  const { currentCurrency, currentMultipler, currentCurrencySymbol } =
-    useCurrencyStore(
-      useShallow((state) => ({
-        currentCurrency: state.currentCurrency,
-        currentMultipler: state.currentMultipler,
-        currentCurrencySymbol: state.currentCurrencySymbol,
-      })),
-    );
+  const { currentMultipler, currentCurrencySymbol } = useCurrencyStore(
+    useShallow((state) => ({
+      currentMultipler: state.currentMultipler,
+      currentCurrencySymbol: state.currentCurrencySymbol,
+    })),
+  );
   return (
     <div className="product-card">
       <div className="product-image">
