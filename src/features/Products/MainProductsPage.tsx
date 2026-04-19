@@ -39,7 +39,6 @@ const ProductsPage = () => {
         : true;
       const matchesBrand =
         filters.brand === product.brand || filters.brand === "All";
-      console.log(matchesPrice, matchesRating, matchesStock, matchesBrand);
       return matchesPrice && matchesRating && matchesStock && matchesBrand;
     });
   }, [finalData, filters]);
@@ -62,7 +61,7 @@ const ProductsPage = () => {
 
   useEffect(() => {
     if (finalData && finalData.length === 0 && !isLoading) {
-      const timer = setTimeout(() => resetFilters(), 10000);
+      const timer = setTimeout(() => resetFilters(), 5000);
       return () => clearTimeout(timer);
     }
   }, [finalData, isLoading, resetFilters]);

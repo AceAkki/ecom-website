@@ -26,10 +26,6 @@ const ProductsFilter = ({ finalData }: { finalData: productType[] }) => {
         <h5 className="filter-title"> Price Range</h5>
         <label htmlFor="min">
           <div className="price-input-wrap">
-            {/*
-            <input type="range" name="min" min={minPrice} max={middle} />
-            <input type="range" name="max" min={middle} max={maxPrice} />
-            */}
             <RangeSlider
               value={filters.priceRange}
               min={minPrice}
