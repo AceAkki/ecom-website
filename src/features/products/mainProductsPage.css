@@ -113,6 +113,11 @@
   background: var(--primary-hover);
   color: var(--gray-50);
 }
+
+.page-btn {
+  padding: 1rem 1.5rem;
+  font-size: 1.2rem;
+}
 .page-btn.active {
   background: var(--primary-color);
   color: var(--gray-100);
