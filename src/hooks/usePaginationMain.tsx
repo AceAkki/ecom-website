@@ -1,6 +1,12 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 
+/*
+Only basic dependecies
+resusable and clean
+
+*/
+
 interface usePaginationMainProps {
   mainDataArr: any[];
   pageSize?: number;
