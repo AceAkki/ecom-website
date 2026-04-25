@@ -131,10 +131,11 @@
 @media screen and (min-width: 1080px) {
   .products-main-wrapper {
     display: grid;
-    grid-template-columns: 25% auto;
+    grid-template-columns: 20% auto;
+    margin: 1rem 1.5rem;
   }
   .products-wrap {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
     margin: 2rem 1rem;
   }
 }

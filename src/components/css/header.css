@@ -127,7 +127,7 @@ span.menu-dropdown-btn:hover {
 }
 
 .menu-sub-category {
-  scroll-snap-align: none;
+  scroll-snap-align: start;
 }
 
 .menu-dropdown li a {
