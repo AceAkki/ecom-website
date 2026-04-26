@@ -55,7 +55,7 @@ const ProductsPage = () => {
     nextBtn,
   } = usePaginationMain({
     mainDataArr: (filteredData as any[]) || [], // fallback to empty array
-    pageSize: 12,
+    pageSize: 15,
     enableParams: true,
   });
 
