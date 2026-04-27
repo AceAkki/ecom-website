@@ -4,7 +4,7 @@ import "../css/main.css";
 
 const MainBanner = () => {
   return (
-    <div className="main-banner-wrap">
+    <section className="main-banner-wrap">
       <div className="left-content">
         <div className="txt-content">
           <h1 className="home-title">
@@ -37,7 +37,7 @@ const MainBanner = () => {
       <div className="image-wrap">
         <img src={BGImage} alt="" />
       </div>
-    </div>
+    </section>
   );
 };
 

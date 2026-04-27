@@ -64,7 +64,7 @@ const Header = () => {
   return (
     <header>
       <div className="header-main-wrapper" ref={headerRef}>
-        <div className="header-wrap glass-morphed-primary" ref={headerWrapRef}>
+        <div className="header-wrap" ref={headerWrapRef}>
           <div className="main-header">
             <div className="menu-main">
               <div className="menu-btn">

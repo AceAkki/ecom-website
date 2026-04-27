@@ -10,16 +10,14 @@
 .header-wrap {
   display: flex;
   flex-direction: column;
+  background: var(--gray-100);
   transition: all var(--transition-base);
   width: 100%;
   padding: 1rem;
 }
 
 .header-wrap.scrolled {
-  margin: 1rem 0;
-  width: 90%;
-  border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-md);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
 }
 
 .main-header {
@@ -64,7 +62,7 @@
   font-family: var(--font-heading);
   font-size: 0.9rem;
   text-transform: uppercase;
-  border: 1px solid var(--white);
+  border: 1px solid var(--primary-color);
   border-radius: 5px;
   text-decoration: none;
   padding: 0.2rem 0.5rem;
@@ -73,7 +71,7 @@
 }
 
 span.menu-dropdown-btn {
-  color: var(--white);
+  color: var(--primary-color);
   cursor: pointer;
 }
 
@@ -160,19 +158,19 @@ span.menu-dropdown-btn:hover {
 }
 
 .user-wrap .user-btn {
-  color: var(--gray-100);
+  color: var(--primary-color);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
-  border: 1px solid var(--white);
+  border: 1px solid var(--primary-color);
   border-radius: 10px;
   transition: all var(--transition-base);
 }
 
 .user-wrap .user-btn:hover {
-  background-color: var(--white);
-  color: var(--primary-color);
+  background-color: var(--primary-color);
+  color: var(--white);
   border-radius: 100%;
 }
 
@@ -198,7 +196,7 @@ span.menu-dropdown-btn:hover {
   border: none;
   border-radius: 10px;
   font-size: 1rem;
-  color: var(--primary-color);
+  color: var(--gray-900);
 }
 .currency-wrap option {
   color: var(--primary-color);
@@ -228,7 +226,7 @@ span.menu-dropdown-btn:hover {
 
 @media screen and (min-width: 1080px) {
   .header-wrap {
-    padding: 0 2rem;
+    padding: 0 7rem;
     width: 100%;
   }
   .menu-main .menu-btn {
