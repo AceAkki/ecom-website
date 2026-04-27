@@ -35,7 +35,7 @@
 .logo-txt {
   font-family: var(--font-heading);
   text-decoration: none;
-  color: var(--gray-100);
+  color: var(--gray-600);
   font-size: 2rem;
 }
 
@@ -62,7 +62,7 @@
   font-family: var(--font-heading);
   font-size: 0.9rem;
   text-transform: uppercase;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--gray-600);
   border-radius: 5px;
   text-decoration: none;
   padding: 0.2rem 0.5rem;
@@ -71,13 +71,13 @@
 }
 
 span.menu-dropdown-btn {
-  color: var(--primary-color);
+  color: var(--gray-600);
   cursor: pointer;
 }
 
 span.menu-dropdown-btn:hover {
   color: var(--gray-900);
-  background-color: var(--accent-color);
+  background-color: var(--gray-100);
 }
 
 .menu-options .menu-sub-header {
@@ -100,7 +100,7 @@ span.menu-dropdown-btn:hover {
   z-index: 10;
 
   background: var(--white);
-  border: 1px solid rgba(37, 99, 235, 0.5);
+  border: var(--gray-600);
   padding: 0.9rem;
   margin: 0.5rem 0;
   border-radius: 10px;
@@ -129,13 +129,13 @@ span.menu-dropdown-btn:hover {
 }
 
 .menu-dropdown li a {
-  border: 1px solid var(--primary-color);
-  color: var(--primary-color);
+  border: 1px solid var(--gray-600);
+  color: var(--gray-600);
   text-transform: uppercase;
 }
 
 .menu-options li a:hover {
-  background-color: var(--accent-color);
+  background-color: var(--gray-100);
   color: var(--gray-900);
 }
 
@@ -158,12 +158,12 @@ span.menu-dropdown-btn:hover {
 }
 
 .user-wrap .user-btn {
-  color: var(--primary-color);
+  color: var(--gray-600);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--gray-600);
   border-radius: 10px;
   transition: all var(--transition-base);
 }
@@ -186,8 +186,7 @@ span.menu-dropdown-btn:hover {
   transition: all var(--transition-base);
 }
 
-.currency-wrap select,
-.currency-wrap option {
+.currency-wrap select {
   background-color: var(--white);
   font-family: var(--font-heading);
   width: 100%;
@@ -196,7 +195,7 @@ span.menu-dropdown-btn:hover {
   border: none;
   border-radius: 10px;
   font-size: 1rem;
-  color: var(--gray-900);
+  color: var(--gray-600);
 }
 .currency-wrap option {
   color: var(--primary-color);
@@ -204,8 +203,7 @@ span.menu-dropdown-btn:hover {
 
 .currency-wrap:hover,
 .currency-wrap:hover select {
-  background-color: transparent;
-  color: var(--white);
+  color: var(--gray-900);
 }
 
 .currency-icon svg {
