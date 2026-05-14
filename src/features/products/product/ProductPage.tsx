@@ -45,7 +45,6 @@ const ProductPage = () => {
 
   return (
     <section>
-      <h1 className="product-title">{finalData.title}</h1>
       <div className="product-content-wrap">
         <div className="product-img-wrapper">
           <Swiper
@@ -81,6 +80,7 @@ const ProductPage = () => {
         </div>
         <div className="product-info-wrap">
           <div className="main-product-wrap">
+            <h1 className="product-title">{finalData.title}</h1>
             <p className="product-desc">{finalData.description}</p>
             <h2 className="product-brand">{finalData.brand}</h2>
             <p className="product-category">{finalData.category}</p>
@@ -121,12 +121,20 @@ const ProductPage = () => {
             </h3>
             {activeSec === 0 ? (
               <div className="other-product-info">
-                <strong>Warranty Information</strong>
-                <p>{finalData.warrantyInformation}</p>
-                <strong>Shipping Information</strong>
-                <p>{finalData.shippingInformation}</p>
-                <strong>Return Policy</strong>
-                <p>{finalData.returnPolicy}</p>
+                <p>
+                  <strong>Warranty Information : </strong>
+                  {finalData.warrantyInformation}
+                </p>
+
+                <p>
+                  <strong>Shipping Information : </strong>
+                  {finalData.shippingInformation}
+                </p>
+
+                <p>
+                  <strong>Return Policy : </strong>
+                  {finalData.returnPolicy}
+                </p>
               </div>
             ) : null}
           </div>
@@ -140,14 +148,22 @@ const ProductPage = () => {
             </h3>
             {activeSec === 1 ? (
               <div className="other-product-info">
-                <strong>Weight :</strong>
-                <p> {finalData.weight}</p>
-                <strong>Width:</strong>
-                <p> {finalData.dimensions.width}</p>
-                <strong>Height:</strong>
-                <p> {finalData.dimensions.height}</p>
-                <strong>Depth:</strong>
-                <p> {finalData.dimensions.depth}</p>
+                <p>
+                  <strong>Weight : </strong> {finalData.weight}
+                </p>
+
+                <p>
+                  <strong>Width : </strong> {finalData.dimensions.width}
+                </p>
+
+                <p>
+                  <strong>Height : </strong> {finalData.dimensions.height}
+                </p>
+
+                <p>
+                  <strong>Depth : </strong>
+                  {finalData.dimensions.depth}
+                </p>
               </div>
             ) : null}
           </div>
