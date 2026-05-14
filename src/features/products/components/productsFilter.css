@@ -8,6 +8,30 @@
   border-radius: 10px;
 }
 
+.filter-head-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.filter-title {
+  font-size: 1.5rem;
+  font-weight: 100;
+  font-family: var(--font-heading);
+}
+
+.filter-toggle {
+  outline: none;
+  border: 1px solid var(--gray-600);
+  border-radius: var(--radius-md);
+  padding: 0.3rem 0.4rem;
+}
+
+.filter-toggle svg {
+  width: 25px;
+  height: 25px;
+}
+
 .filter-wrap {
   display: flex;
   flex-direction: column;
