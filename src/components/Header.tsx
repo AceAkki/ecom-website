@@ -199,11 +199,11 @@ const Header = () => {
                 </select>
               </div>
               <div className="user-btn">
-                <Icon.ShoppingCartSimpleIcon size={32} />
+                <Icon.ShoppingCartSimpleIcon />
               </div>
               <div className="user-btn">
                 <Link to="/login">
-                  <Icon.UserIcon size={32} />
+                  <Icon.UserIcon />
                 </Link>
               </div>
             </div>

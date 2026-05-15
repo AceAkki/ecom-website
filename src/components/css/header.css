@@ -10,7 +10,9 @@
 .header-wrap {
   display: flex;
   flex-direction: column;
-  background: var(--gray-100);
+  /* background: var(--gray-100); */
+  background: transparent;
+  backdrop-filter: blur(50px);
   transition: all var(--transition-base);
   width: 100%;
   padding: 1rem;
@@ -35,7 +37,7 @@
 .logo-txt {
   font-family: var(--font-heading);
   text-decoration: none;
-  color: var(--gray-600);
+  color: var(--gray-900);
   font-size: 2rem;
 }
 
@@ -59,10 +61,11 @@
 .menu-options li a,
 .menu-options li span.menu-dropdown-btn {
   display: inline-block;
-  font-family: var(--font-heading);
-  font-size: 0.9rem;
+  /* font-family: var(--font-heading); */
+  font-size: 1.1rem;
+  font-weight: 700;
   text-transform: uppercase;
-  border: 1px solid var(--gray-600);
+  border: 1px solid var(--gray-900);
   border-radius: 5px;
   text-decoration: none;
   padding: 0.2rem 0.5rem;
@@ -71,13 +74,14 @@
 }
 
 span.menu-dropdown-btn {
-  color: var(--gray-600);
+  background-color: var(--gray-900);
+  color: var(--gray-100);
   cursor: pointer;
 }
 
 span.menu-dropdown-btn:hover {
   color: var(--gray-900);
-  background-color: var(--gray-100);
+  background-color: var(--accent-color);
 }
 
 .menu-options .menu-sub-header {
@@ -100,7 +104,7 @@ span.menu-dropdown-btn:hover {
   z-index: 10;
 
   background: var(--white);
-  border: var(--gray-600);
+  border: 1px solid var(--gray-600);
   padding: 0.9rem;
   margin: 0.5rem 0;
   border-radius: 10px;
@@ -135,16 +139,18 @@ span.menu-dropdown-btn:hover {
 }
 
 .menu-options li a:hover {
-  background-color: var(--gray-100);
-  color: var(--gray-900);
+  /* background-color: var(--gray-100); */
+  border-color: var(--accent-color);
+  color: var(--accent-color);
 }
 
 .header-input {
-  font-family: var(--font-heading);
+  font-family: var(--font-main);
+  font-size: 1.1rem;
   width: 100%;
   padding: 0.4rem 1rem;
   border-radius: 10px;
-  border: 1px solid var(--white);
+  border: 1px solid var(--gray-900);
 }
 
 .user-wrap {
@@ -163,9 +169,16 @@ span.menu-dropdown-btn:hover {
   align-items: center;
   justify-content: center;
   padding: 0.5rem;
+  background: var(--gray-900);
   border: 1px solid var(--gray-600);
   border-radius: 10px;
   transition: all var(--transition-base);
+}
+
+.user-wrap .user-btn svg {
+  color: var(--gray-100);
+  width: 25px;
+  height: 25px;
 }
 
 .user-wrap .user-btn:hover {
@@ -179,7 +192,7 @@ span.menu-dropdown-btn:hover {
   background-color: var(--white);
   color: var(--primary-color);
   border-radius: 10px;
-  border: 1px solid var(--white);
+  border: 1px solid var(--gray-900);
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
@@ -195,7 +208,7 @@ span.menu-dropdown-btn:hover {
   border: none;
   border-radius: 10px;
   font-size: 1rem;
-  color: var(--gray-600);
+  color: var(--gray-900);
 }
 .currency-wrap option {
   color: var(--primary-color);
