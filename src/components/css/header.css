@@ -19,7 +19,7 @@
 }
 
 .header-wrap.scrolled {
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 4px 5px -1px rgba(0, 0, 0, 0.2);
 }
 
 .main-header {
@@ -85,10 +85,10 @@ span.menu-dropdown-btn:hover {
 }
 
 .menu-options .menu-sub-header {
-  font-family: var(--font-heading);
+  /* font-family: var(--font-heading); */
   text-transform: uppercase;
   color: var(--white);
-  background: var(--primary-color);
+  background: var(--gray-900);
   border-radius: 5px;
   padding: 0.2rem 0.5rem;
   scroll-snap-align: start;
@@ -134,14 +134,14 @@ span.menu-dropdown-btn:hover {
 
 .menu-dropdown li a {
   border: 1px solid var(--gray-600);
-  color: var(--gray-600);
-  text-transform: uppercase;
+  color: var(--gray-900);
+  text-transform: capitalize;
 }
 
 .menu-options li a:hover {
-  /* background-color: var(--gray-100); */
+  background-color: var(--accent-color);
   border-color: var(--accent-color);
-  color: var(--accent-color);
+  color: var(--gray-900);
 }
 
 .header-input {
