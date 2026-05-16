@@ -55,7 +55,7 @@ https://piktochart.com/tips/ecommerce-color-palette */
 
   /* --- Transitions --- */
   --transition-fast: 450ms ease-in-out;
-  --transition-base: 990ms ease;
+  --transition-base: 900ms ease-in-out;
 
   --header-height: 0;
 }
