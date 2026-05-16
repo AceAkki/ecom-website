@@ -16,10 +16,10 @@
 }
 
 .product-card {
-  border: 2px solid transparent;
-  background:
+  border: 2px solid var(--gray-300);
+  /* background:
     linear-gradient(#ffffff, #ffffff) padding-box,
-    linear-gradient(258deg, var(--white), #ffffff, var(--white)) border-box;
+    linear-gradient(258deg, var(--white), #ffffff, var(--white)) border-box; */
   border-radius: 0.7rem;
   display: flex;
   flex-direction: column;

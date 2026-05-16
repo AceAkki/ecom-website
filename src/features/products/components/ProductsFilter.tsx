@@ -26,7 +26,7 @@ const ProductsFilter = ({ finalData }: { finalData: productType[] }) => {
   return (
     <div className="product-filter-wrap">
       <div className="filter-head-wrap">
-        <h5 className="filter-title"> Filters</h5>
+        <h5 className="filter-main-title"> Filters</h5>
         <button className="filter-toggle" onClick={() => setIsShown(!isShown)}>
           <Icon.FadersIcon />
         </button>
