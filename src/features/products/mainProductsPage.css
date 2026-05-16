@@ -72,26 +72,49 @@
 .product-card .add-cart {
   background: transparent;
   outline: none;
-  border: 1px solid #2563eb;
+  border: 1px solid var(--gray-900);
   border-radius: 10px;
   width: 3rem;
   height: 3rem;
-  color: var(--primary-color);
+  color: var(--gray-900);
   box-shadow: 0 0 2px rgba(15, 23, 42, 0.1);
   transition: all var(--transition-base);
 }
 
 .add-cart:hover {
   color: var(--white);
-  background-color: var(--primary-color);
+  background-color: var(--gray-900);
   border-radius: 100%;
-  transform: rotate(5deg);
 }
 
 .add-cart svg {
   width: 2rem;
   height: 2rem;
+  transition: all var(--transition-base);
 }
+.add-cart:hover svg {
+  animation: wiggle 1s forwards;
+  transform: rotate(10deg);
+}
+
+@keyframes wiggle {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(5deg);
+  }
+  50% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 .pagination-wrap {
   display: flex;
   flex-wrap: wrap;
