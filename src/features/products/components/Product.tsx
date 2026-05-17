@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { motion } from "motion/react";
 import { useShallow } from "zustand/react/shallow";
 import useCurrencyStore from "../../../store/currencyStore";
 
@@ -21,7 +22,17 @@ const Product = ({ data }: { data: productType }) => {
     })),
   );
   return (
-    <div className="product-card">
+    <motion.div
+      className="product-card"
+      whileHover={{
+        scale: 1.03,
+        boxShadow: "0px 20px 25px -5px rgba(0, 0, 0, 0.1)",
+        // Will be used when gesture starts
+        transition: { duration: 0.8 },
+      }}
+      // Will be used when gesture ends
+      transition={{ duration: 0.5 }}
+    >
       <div className="product-image">
         {!isImageLoaded && <Skeleton height="100%" />}
         <Link to={`/product/${data.id}`} className="product-link">
@@ -51,7 +62,7 @@ const Product = ({ data }: { data: productType }) => {
           <Icon.ShoppingCartSimpleIcon />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
