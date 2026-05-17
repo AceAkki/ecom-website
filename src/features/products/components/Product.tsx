@@ -25,13 +25,14 @@ const Product = ({ data }: { data: productType }) => {
     <motion.div
       className="product-card"
       whileHover={{
-        scale: 1.03,
-        boxShadow: "0px 20px 25px -5px rgba(0, 0, 0, 0.1)",
+        scale: [1, 1.1, 1],
+        rotateZ: [0, -1, 1, 0],
         // Will be used when gesture starts
         transition: { duration: 0.8 },
+        transitionEnd: { scale: 1, rotateZ: 0 },
       }}
       // Will be used when gesture ends
-      transition={{ duration: 0.5 }}
+      transition={{ type: "spring", stiffness: 300, damping: 20 }}
     >
       <div className="product-image">
         {!isImageLoaded && <Skeleton height="100%" />}
