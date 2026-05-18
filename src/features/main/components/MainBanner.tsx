@@ -11,8 +11,8 @@ const MainBanner = () => {
         <div className="txt-content">
           <motion.h1
             className="home-title"
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, scale: 0.8, y: 50 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ amount: 1 }}
           >
