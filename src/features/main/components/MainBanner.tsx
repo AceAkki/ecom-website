@@ -11,10 +11,10 @@ const MainBanner = () => {
         <div className="txt-content">
           <motion.h1
             className="home-title"
-            initial={{ backgroundColor: "rgb(0,0,0)", opacity: 0 }}
-            whileInView={{ backgroundColor: "rgba(0,0,0,0)", opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            viewport={{ once: true, amount: 0.5 }}
+            viewport={{ amount: 1 }}
           >
             Shop Smarter. <br />
             Live Better.
