@@ -27,8 +27,7 @@ const Product = ({ data }: { data: productType }) => {
       whileHover={{
         scale: [1, 1.1, 1],
         rotateZ: [0, -1, 1, 0],
-        // Will be used when gesture starts
-        transition: { duration: 0.8 },
+        transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] },
         transitionEnd: { scale: 1, rotateZ: 0 },
       }}
       // Will be used when gesture ends
