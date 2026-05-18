@@ -83,7 +83,9 @@ const ProductsPage = () => {
         {filteredData.length <= 0 ? (
           <div className="no-results">
             <p>No products match your filters.</p>
-            <button onClick={resetFilters}>Clear All Filters</button>
+            <button onClick={resetFilters} className="no-results-btn">
+              Clear All Filters
+            </button>
           </div>
         ) : (
           <div>
