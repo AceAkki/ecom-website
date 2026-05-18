@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { motion } from "motion/react";
+
 import BGImage from "/src/assets/banner.png";
 import "../css/main.css";
 
@@ -7,10 +9,16 @@ const MainBanner = () => {
     <section className="main-banner-wrap">
       <div className="left-content">
         <div className="txt-content">
-          <h1 className="home-title">
+          <motion.h1
+            className="home-title"
+            initial={{ backgroundColor: "rgb(0,0,0)", opacity: 0 }}
+            whileInView={{ backgroundColor: "rgba(0,0,0,0)", opacity: 1 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ once: true, amount: 0.5 }}
+          >
             Shop Smarter. <br />
             Live Better.
-          </h1>
+          </motion.h1>
           <p>
             Discover premium products, unbeatable deals, and fast delivery – all
             in one place.
