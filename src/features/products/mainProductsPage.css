@@ -162,7 +162,7 @@
 }
 .nav-btn:hover,
 .page-btn:hover {
-  background: var(--primary-hover);
+  background: var(--gray-600);
   color: var(--gray-50);
 }
 
