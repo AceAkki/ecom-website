@@ -145,6 +145,7 @@
   flex-wrap: wrap;
   gap: 0.6rem;
 }
+
 .nav-btn,
 .page-btn {
   border: 2px solid var(--gray-900);
@@ -160,6 +161,7 @@
   cursor: pointer;
   transition: all 800ms ease-in-out;
 }
+
 .nav-btn:hover,
 .page-btn:hover {
   background: var(--gray-600);
