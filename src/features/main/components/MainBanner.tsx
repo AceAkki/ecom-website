@@ -17,7 +17,7 @@ const MainBanner = () => {
             viewport={{ amount: 1 }}
           >
             Shop Smarter. <br />
-            Live Better.
+            Live Better Life.
           </motion.h1>
           <p>
             Discover premium products, unbeatable deals, and fast delivery – all
