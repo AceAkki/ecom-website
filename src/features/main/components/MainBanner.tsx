@@ -19,10 +19,15 @@ const MainBanner = () => {
             Shop Smarter. <br />
             Live Better !
           </motion.h1>
-          <p>
+          <motion.p
+            initial={{ opacity: 0, scale: 0.8, y: -50 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            viewport={{ amount: 1 }}
+          >
             Discover premium products, unbeatable deals, and fast delivery – all
             in one place.
-          </p>
+          </motion.p>
         </div>
         <div className="home-page-btn">
           <Link to="/products">Shop Now</Link>
