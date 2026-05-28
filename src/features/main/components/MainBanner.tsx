@@ -32,7 +32,13 @@ const MainBanner = () => {
         <div className="home-page-btn">
           <Link to="/products">Shop Now</Link>
         </div>
-        <div className="main-stats">
+        <motion.div
+          className="main-stats"
+          initial={{ opacity: 0, y: 100 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          viewport={{ amount: 1 }}
+        >
           <div className="stat-wrap">
             <h5>200+</h5>
             <p>International Brands</p>
@@ -45,7 +51,7 @@ const MainBanner = () => {
             <h5>20000+</h5>
             <p>Happy Customers</p>
           </div>
-        </div>
+        </motion.div>
       </div>
       <div className="image-wrap">
         <img src={BGImage} alt="" />
