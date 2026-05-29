@@ -59,9 +59,16 @@ const MainBanner = () => {
           </div>
         </motion.div>
       </div>
-      <div className="image-wrap">
+      <motion.div
+        className="image-wrap"
+        className="main-stats"
+        initial={{ opacity: 0, y: 100 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        viewport={{ amount: 1 }}
+      >
         <img src={BGImage} alt="" />
-      </div>
+      </motion.div>
     </section>
   );
 };
