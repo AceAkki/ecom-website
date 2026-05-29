@@ -59,9 +59,9 @@ const MainBanner = () => {
           </div>
         </motion.div>
       </div>
-      <motion.div className="image-wrap">
+      <div className="image-wrap">
         <img src={BGImage} alt="" />
-      </motion.div>
+      </div>
     </section>
   );
 };
