@@ -14,6 +14,7 @@ import type { productType } from "../productTypes";
 const Product = ({ data }: { data: productType }) => {
   // used for skeleton load
   let [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isHovering, setIsHovering] = useState(false);
 
   const { currentMultipler, currentCurrencySymbol } = useCurrencyStore(
     useShallow((state) => ({
@@ -24,14 +25,29 @@ const Product = ({ data }: { data: productType }) => {
   return (
     <motion.div
       className="product-card"
-      whileHover={{
-        scale: [1, 1.1, 1],
-        rotateZ: [0, -1, 1, 0],
-        transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
-        transitionEnd: { scale: 1, rotateZ: 0 },
+      // whileHover={{
+      //   scale: [1, 1.1, 1],
+      //   rotateZ: [0, -1, 1, 0],
+      //   transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+      //   transitionEnd: { scale: 1, rotateZ: 0 },
+      // }}
+      // // Will be used when gesture ends
+      // transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      animate={isHovering ? "hover" : "rest"}
+      variants={{
+        rest: {
+          scale: 1,
+          rotateZ: 0,
+          transition: { duration: 0.3 },
+        },
+        hover: {
+          scale: 1.1,
+          rotateZ: [-1, 1],
+          transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
+        },
       }}
-      // Will be used when gesture ends
-      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+      onHoverStart={() => setIsHovering(true)}
+      onHoverEnd={() => setIsHovering(false)}
     >
       <div className="product-image">
         {!isImageLoaded && <Skeleton height="100%" />}
