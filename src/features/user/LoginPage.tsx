@@ -1,4 +1,5 @@
 import { Form } from "react-router-dom";
+import "./loginPage.css";
 
 export const action = ({ formData }: { formData: any }) => {
   console.log(formData);
@@ -7,8 +8,8 @@ export const action = ({ formData }: { formData: any }) => {
 
 const Login = () => {
   return (
-    <section>
-      <h1>Login</h1>
+    <section className="login-section">
+      <h2 className="sec-title">Login</h2>
       <Form action="post">
         <input type="text" name="username" placeholder="Username" />
         <input type="password" name="password" placeholder="Password" />

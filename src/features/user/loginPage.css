@@ -1,0 +1,24 @@
+.login-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.login-section input {
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+  border: 1px solid #000;
+}
+
+.login-section input:active,
+.login-section input:focus-visible {
+  border: 1px solid #3f3d3d;
+}
