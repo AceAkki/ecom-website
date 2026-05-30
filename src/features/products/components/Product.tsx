@@ -42,7 +42,7 @@ const Product = ({ data }: { data: productType }) => {
         },
         hover: {
           scale: 1.1,
-          rotateZ: [-1, 1],
+          rotateZ: 1,
           transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] },
         },
       }}
