@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
+import { motion } from "motion/react";
 
 // image imports
 import personal from "../assets/1.jpg";
@@ -7,7 +9,6 @@ import electronics from "../assets/3.jpg";
 import living from "../assets/4.jpg";
 import womenFashion from "../assets/5.jpg";
 import menFashion from "../assets/6.jpg";
-import { Link } from "react-router-dom";
 
 const CategorySection = () => {
   // tracks which category is active
@@ -51,9 +52,14 @@ const CategorySection = () => {
       >
         {activeID === i && (
           <Link to={`products/${category.name}`}>
-            <span className="category-item-overlay">
+            <motion.span
+              className="category-item-overlay"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.5, ease: "easeOut" }}
+            >
               {category.name.replace(/-/gm, " ")}
-            </span>
+            </motion.span>
           </Link>
         )}
 
