@@ -14,7 +14,7 @@
 }
 
 .login-section input {
-  padding: 0.4rem;
+  padding: 0.8rem;
   border-radius: 0.5rem;
   border: 1px solid #000;
 }
@@ -22,4 +22,9 @@
 .login-section input:active,
 .login-section input:focus-visible {
   border: 1px solid #3f3d3d;
+}
+
+.login-section button {
+  padding: 0.5rem;
+  background: transparent;
 }
