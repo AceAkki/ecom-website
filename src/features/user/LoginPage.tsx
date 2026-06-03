@@ -13,7 +13,7 @@ const Login = () => {
       <Form action="post">
         <input type="text" name="username" placeholder="Username" />
         <input type="password" name="password" placeholder="Password" />
-        <button> Login </button>
+        <button className="home-page-btn"> Login </button>
       </Form>
     </section>
   );
