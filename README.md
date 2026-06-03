@@ -1,4 +1,9 @@
-# TO Do
+# E-Com Website
+
+Using DummyJson to populate products
+Using Store
+
+TO Do
 
 - Needs Unified Consistent UI
 - Beautify UI
