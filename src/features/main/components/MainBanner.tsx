@@ -25,7 +25,7 @@ const MainBanner = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ amount: 1 }}
           >
-            Discover premium products, unbeatable deals, and fast delivery – all
+            Discover premium products, unbeatable deals, and fast delivery. All
             in one place.
           </motion.p>
         </div>
