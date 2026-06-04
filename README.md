@@ -1,7 +1,7 @@
 # E-Com Website
 
 Using DummyJson to populate products
-Using Store
+Using Global Store
 
 TO Do
 
