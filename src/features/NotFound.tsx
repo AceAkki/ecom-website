@@ -10,7 +10,7 @@ const NotFoundPage = () => {
   }, []);
   return (
     <>
-      <h1> NotFound</h1>
+      <h1> You seem lost = We couldn't find the page.</h1>
     </>
   );
 };
