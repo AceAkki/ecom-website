@@ -6,11 +6,14 @@ const NotFoundPage = () => {
   useEffect(() => {
     setTimeout(() => {
       navigate("/");
-    }, 5000);
+    }, 10000);
   }, []);
   return (
     <>
-      <h1> You seem lost = We couldn't find the page you were looking for.</h1>
+      <h1>
+        You seem lost = We couldn't find the page you were looking for. You will
+        be redirected to homepage soon.
+      </h1>
     </>
   );
 };
