@@ -173,7 +173,7 @@
   font-size: 1.2rem;
 }
 .page-btn.active {
-  background: var(--primary-color);
+  background: var(--gray-900);
   color: var(--gray-100);
 }
 .nav-btn:disabled {
