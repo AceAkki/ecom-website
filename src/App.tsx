@@ -16,6 +16,9 @@ import AboutPage from "./features/AboutPage";
 import ProductsPage from "./features/products/MainProductsPage";
 import ProductPage from "./features/products/product/ProductPage";
 
+import AboutPage from "./features/AboutPage";
+import HelpPage from "./features/HelpPage";
+
 import Login, { action as LoginAction } from "./features/user/LoginPage";
 import ErrorPage from "./features/ErrorPage";
 import NotFoundPage from "./features/NotFound";
@@ -123,6 +126,8 @@ const router = createBrowserRouter(
         */
       />
       <Route path="login" element={<Login />} action={() => LoginAction} />
+      <Route path="about" element={<AboutPage />} />
+      <Route path="help" element={<HelpPage />} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,
   ),

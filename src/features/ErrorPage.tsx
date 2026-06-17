@@ -3,7 +3,7 @@ const ErrorPage = () => {
   let error: any = useRouteError();
   return (
     <>
-      <h1> Error Occured</h1>
+      <h1> Error Occured !!</h1>
       <p>{error?.message}</p>
     </>
   );
