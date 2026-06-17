@@ -125,9 +125,9 @@ const router = createBrowserRouter(
         }
         */
       />
-      <Route path="login" element={<Login />} action={() => LoginAction} />
       <Route path="about" element={<AboutPage />} />
       <Route path="help" element={<HelpPage />} />
+      <Route path="login" element={<Login />} action={() => LoginAction} />
       <Route path="*" element={<NotFoundPage />} />
     </Route>,
   ),
