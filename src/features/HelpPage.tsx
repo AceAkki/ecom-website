@@ -1,7 +1,7 @@
 const HelpPage = () => {
   return (
     <>
-      <h1> Help</h1>
+      <h1> Help Page</h1>
     </>
   );
 };
