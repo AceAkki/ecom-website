@@ -11,8 +11,8 @@ const NotFoundPage = () => {
   return (
     <>
       <h1>
-        You seem lost = We couldn't find the page you were looking for. You will
-        be redirected to homepage soon.
+        You seem lost - We couldn't find the page you were looking for. Don't
+        worry, you will be redirected to the homepage soon.
       </h1>
     </>
   );
