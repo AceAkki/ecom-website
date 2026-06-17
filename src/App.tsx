@@ -12,12 +12,10 @@ import MainFrame from "./components/MainFrame";
 // import pages
 import MainPage from "./features/main/MainPage";
 import AboutPage from "./features/AboutPage";
+import HelpPage from "./features/HelpPage";
 
 import ProductsPage from "./features/products/MainProductsPage";
 import ProductPage from "./features/products/product/ProductPage";
-
-import AboutPage from "./features/AboutPage";
-import HelpPage from "./features/HelpPage";
 
 import Login, { action as LoginAction } from "./features/user/LoginPage";
 import ErrorPage from "./features/ErrorPage";
