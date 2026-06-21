@@ -8,6 +8,12 @@ const AboutPage = () => {
         Praesentium debitis ipsum iste cupiditate dicta libero asperiores ex
         blanditiis? Est.
       </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Exercitationem
+        esse minima aliquid neque, dignissimos voluptate iusto optio, in a
+        architecto libero amet sequi officia recusandae dolor inventore quo.
+        Placeat, quis?
+      </p>
     </>
   );
 };
