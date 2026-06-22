@@ -4,6 +4,7 @@ const ErrorPage = () => {
   return (
     <>
       <h1> An Error Occured !!</h1>
+      <hr />
       <p>{error?.message}</p>
     </>
   );
