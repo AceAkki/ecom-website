@@ -16,7 +16,7 @@ const MainBanner = () => {
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ amount: 1 }}
           >
-            Shop Smarter. <br />
+            Shop Smarter and. <br />
             Live Better !
           </motion.h1>
           <motion.p
