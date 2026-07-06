@@ -15,6 +15,12 @@ const AboutPage = () => {
         quae nulla nihil quos inventore provident animi labore accusantium ut.
         Aperiam, voluptate harum.
       </p>
+      <p>
+        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Rerum, ex quam
+        voluptates voluptatem illo reprehenderit. Tempore placeat minus deleniti
+        fuga, doloribus amet laborum totam itaque modi veniam nemo praesentium
+        perspiciatis.
+      </p>
     </>
   );
 };
