@@ -1,4 +1,4 @@
-# E-Com Website
+# E-Com Website - Currently Work In Progress
 
 Using DummyJson to populate products
 Using Global Store
@@ -8,5 +8,5 @@ TO Do
 - Needs Unified Consistent UI
 - Beautify UI
 - Stores dets on form
-- Session control
-- Cart
+- Session management
+- Cart addition
