@@ -13,3 +13,5 @@ const inputElem = ({ inputType, placeholderTxt, classNameTxt }: elemTypes) => {
     />
   );
 };
+
+export default inputElem;
