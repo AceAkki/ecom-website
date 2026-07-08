@@ -6,7 +6,7 @@ import "swiper/css";
 
 // components imports start
 import { StarsRatings, createStars } from "../components/StarsRatings.tsx";
-import FallBackLoader from "../../../components/FallbackLoader";
+import FallBackLoader from "../../../components/ui/FallbackLoader.tsx";
 // components imports end
 
 // custom hooks start

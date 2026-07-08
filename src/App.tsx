@@ -7,7 +7,7 @@ import {
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 // import components
-import MainFrame from "./components/MainFrame";
+import MainFrame from "./components/ui/MainFrame";
 
 // import pages
 import MainPage from "./features/main/MainPage";

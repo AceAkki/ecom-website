@@ -3,7 +3,7 @@ import { useShallow } from "zustand/shallow";
 // components imports start
 import Product from "./components/Product";
 import ProductsFilter from "./components/ProductsFilter";
-import FallBackLoader from "../../components/FallbackLoader";
+import FallBackLoader from "../../components/ui/FallbackLoader";
 // components imports end
 
 // custom hooks start

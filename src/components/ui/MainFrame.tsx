@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import { fetchCurrencyData } from "../services/api";
+import { fetchCurrencyData } from "../../services/api";
 import { useShallow } from "zustand/react/shallow";
-import useCurrencyStore from "../store/currencyStore";
+import useCurrencyStore from "../../store/currencyStore";
 // components imports
-import Header from "../components/Header";
+import Header from "./Header";
 import { useEffect } from "react";
 
 const MainFrame = () => {
