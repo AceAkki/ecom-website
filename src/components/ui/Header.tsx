@@ -1,5 +1,5 @@
 import { Link, NavLink } from "react-router-dom";
-import useHeader from "../hooks/useHeader";
+import useHeader from "../../hooks/useHeader";
 import * as Icon from "@phosphor-icons/react";
 import "./css/header.css";
 
