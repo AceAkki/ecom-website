@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <section className="login-section">
       <div className="form-wrap">
-        <h2 className="sec-title">Login</h2>
+        <h2 className="sec-title text-3xl font-bold underline">Login</h2>
         <Form action="post">
           <input type="text" name="username" placeholder="Username" />
           <input type="password" name="password" placeholder="Password" />
