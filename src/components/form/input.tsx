@@ -1,10 +1,14 @@
-interface elemTypes {
-  inputType: string;
+interface InputElemProps {
+  inputType: "text" | "email" | "password" | "number" | "tel" | "url";
   placeholderTxt: string;
   classNameTxt: string;
 }
 
-const inputElem = ({ inputType, placeholderTxt, classNameTxt }: elemTypes) => {
+const InputElem = ({
+  inputType,
+  placeholderTxt,
+  classNameTxt,
+}: InputElemProps) => {
   return (
     <input
       type={inputType}
@@ -14,4 +18,4 @@ const inputElem = ({ inputType, placeholderTxt, classNameTxt }: elemTypes) => {
   );
 };
 
-export default inputElem;
+export default InputElem;
