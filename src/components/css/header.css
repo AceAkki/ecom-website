@@ -182,8 +182,8 @@ span.menu-dropdown-btn:hover {
 }
 
 .user-wrap .user-btn:hover {
-  color: var(--white);
   /* background-color: var(--primary-color); */
+  color: var(--white);
   border-radius: 100%;
 }
 
