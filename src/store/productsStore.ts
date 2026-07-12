@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { productType } from "../features/products/productTypes";
 
+// all definitions of store
 interface productsStore {
   productsData: productType[];
   updateProductsData: (data: productType[]) => void;
@@ -17,6 +18,7 @@ interface FilterState {
   inStockOnly: boolean;
 }
 
+// initial filter
 const initialFilters: FilterState = {
   priceRange: [0, 1000],
   rating: 1,
@@ -24,6 +26,7 @@ const initialFilters: FilterState = {
   inStockOnly: true,
 };
 
+// product store
 const useproductsStore = create<productsStore>()(
   persist(
     (set) => ({
