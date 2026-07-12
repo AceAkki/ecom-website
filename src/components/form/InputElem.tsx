@@ -4,6 +4,7 @@ interface InputElemProps {
   classNameTxt: string;
 }
 
+// Input Element Component
 const InputElem = ({
   inputType,
   placeholderTxt,

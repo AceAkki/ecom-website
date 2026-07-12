@@ -1,7 +1,6 @@
 import { ThreeCircles } from "react-loader-spinner";
 
 // three circles loader - displays when page is loading
-
 export default function FallBackLoader({color:"#2563eb"}) {
   return (
     <section className="loader-wrapper">
