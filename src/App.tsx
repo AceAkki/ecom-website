@@ -56,6 +56,7 @@ const queryLoader = (params?: Params) => {
 };
 */
 
+// browser router - routes defined along with elements
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainFrame />} errorElement={<ErrorPage />}>
