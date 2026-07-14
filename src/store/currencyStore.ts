@@ -2,6 +2,7 @@ import { create } from "zustand";
 import { persist } from "zustand/middleware";
 import type { ExchangeRates } from "../services/api";
 
+// interface for currency store
 interface currencyStore {
   currentCurrency: string;
   currentCurrencySymbol: string;
@@ -11,6 +12,7 @@ interface currencyStore {
   selectCurrency: (selectedCurrency: string) => void;
 }
 
+// type definition for currency object
 type currencyObject = {
   code: string;
   name: string;
@@ -19,6 +21,7 @@ type currencyObject = {
   multiplerValue: number;
 };
 
+// storing currency
 const useCurrencyStore = create<currencyStore>()(
   persist(
     (set) => ({
