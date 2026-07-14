@@ -132,6 +132,8 @@ const router = createBrowserRouter(
   ),
 );
 
+
+// App component return router
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
