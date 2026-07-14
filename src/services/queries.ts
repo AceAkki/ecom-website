@@ -1,7 +1,10 @@
 import { queryOptions } from "@tanstack/react-query";
 import { fetchProductsData } from "./firebase";
 
+// default url param
 export const defaultParam = "allProducts";
+
+// all product queries
 export const productQueries = {
   allData: () =>
     queryOptions({
