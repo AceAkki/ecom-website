@@ -56,7 +56,7 @@ const queryLoader = (params?: Params) => {
 };
 */
 
-// browser router - routes defined along with elements
+// browser router - routes defined
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<MainFrame />} errorElement={<ErrorPage />}>
@@ -132,8 +132,7 @@ const router = createBrowserRouter(
   ),
 );
 
-
-// App component return router
+// App component that returns browser router
 export default function App() {
   return (
     <QueryClientProvider client={queryClient}>
