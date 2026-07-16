@@ -7,6 +7,7 @@ import useCurrencyStore from "../../store/currencyStore";
 import Header from "./Header";
 import { useEffect } from "react";
 
+// main frame that has header and main
 const MainFrame = () => {
   const { data, isLoading } = useQuery({
     queryKey: ["currency"],
