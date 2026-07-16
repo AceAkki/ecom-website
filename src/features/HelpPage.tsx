@@ -14,12 +14,6 @@ const HelpPage = () => {
         natus eligendi quos voluptate numquam at ex quas vel corrupti aspernatur
         ab quo rem tenetur iste enim omnis aperiam! Autem!
       </p>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quibusdam
-        nulla, maiores sed doloremque eum voluptatem ut fugit eius praesentium
-        consectetur totam laudantium odit fugiat consequatur neque velit
-        voluptas molestias cupiditate?
-      </p>
     </>
   );
 };
