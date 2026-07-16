@@ -1,6 +1,7 @@
 // currency API res
 export type ExchangeRates = Record<string, number>;
 
+// get currency data from api
 export const fetchCurrencyData = async () => {
   try {
     // fetches currency url
