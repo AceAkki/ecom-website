@@ -1,7 +1,7 @@
 const HelpPage = () => {
   return (
     <>
-      <h1> Help Page - ShopNova</h1>
+      <h1> Help Page</h1>
       <hr />
     </>
   );
