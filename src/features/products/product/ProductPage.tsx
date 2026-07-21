@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useShallow } from "zustand/shallow";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import * as Icon from "@phosphor-icons/react";
 import "swiper/css";
 
 // components imports start
@@ -100,6 +101,7 @@ const ProductPage = () => {
               {createStars(StarsRatings(finalData.rating))}
             </div>
             {/* <p>Stock : {finalData.stock}</p> */}
+            <Icon.StackPlusIcon size={32} />
             <p className="status">{finalData.availabilityStatus}</p>
           </div>
 
