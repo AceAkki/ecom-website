@@ -36,6 +36,10 @@ img.product-img {
   font-weight: 500;
 }
 
+.product-rating {
+  display: flex;
+}
+
 .product-rating svg {
   color: #ffd700;
   width: 2rem;
