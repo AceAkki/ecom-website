@@ -86,6 +86,7 @@ const ProductPage = () => {
             <p className="product-category">{finalData.category}</p>
             <h2 className="product-price">
               <span className="original-price">
+                {currentCurrencySymbol}
                 {(
                   (finalData.price * currentMultipler) /
                   (1 - finalData.discountPercentage / 100)
