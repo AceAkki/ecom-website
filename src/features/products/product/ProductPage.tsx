@@ -109,7 +109,7 @@ const ProductPage = () => {
             {finalData.tags.map((tag: string) => {
               return (
                 <p className="tag" key={tag}>
-                  {tag}
+                  #{tag}
                 </p>
               );
             })}
